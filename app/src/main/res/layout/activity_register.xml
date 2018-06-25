@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mostafa.android.bsor3a.LoginAndRegister.RegisterActivity">
+    <RelativeLayout style="@style/pageRelativeStyle"
+        android:layout_alignParentTop="true"
+        android:id="@+id/head">
+        <ImageView
+            android:id="@+id/backLogin"
+            style="@style/pageTitleIcon"
+            android:onClick="back" />
+
+        <TextView
+            android:id="@+id/TitleLogin"
+            style="@style/pageTitleText"
+            android:text="@string/Register" />
+    </RelativeLayout>
+
+    <ScrollView
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+        android:layout_below="@id/head">
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="vertical"
+         android:layout_centerInParent="true">
+         <ImageView
+             android:layout_width="120dp"
+             android:layout_height="160dp"
+             android:src="@mipmap/bsor3alogo"
+             android:layout_gravity="center"/>
+         <EditText
+             style="@style/editText"
+             android:drawablePadding="20dp"
+             android:hint="@string/FullName"
+             android:drawableLeft="@mipmap/bsor3alogo"/>
+         <EditText
+             style="@style/editText"
+             android:drawablePadding="20dp"
+             android:hint="@string/Phone"
+             android:drawableLeft="@mipmap/bsor3alogo"/>
+         <EditText
+             style="@style/editText"
+             android:drawablePadding="20dp"
+             android:hint="@string/Email"
+             android:drawableLeft="@mipmap/bsor3alogo"/>
+         <EditText
+             style="@style/editText"
+             android:drawablePadding="20dp"
+             android:hint="@string/ShortName"
+             android:drawableLeft="@mipmap/bsor3alogo"/>
+         <EditText
+             style="@style/editText"
+             android:drawablePadding="20dp"
+             android:hint="@string/Password"
+             android:inputType="textPassword"
+             android:drawableLeft="@mipmap/bsor3alogo"/>
+         <View
+             android:layout_width="wrap_content"
+             android:layout_height="1dp"
+             android:layout_marginTop="10dp"
+             android:layout_marginBottom="10dp"
+             android:layout_marginLeft="60dp"
+             android:layout_marginRight="60dp"
+             android:background="@color/black"/>
+         <CheckBox
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:text="@string/AcceptTerms"
+             android:layout_gravity="center"
+             android:layout_marginLeft="60dp"
+             android:layout_marginRight="60dp"
+             android:layout_marginBottom="20dp"
+             />
+     </LinearLayout>
+
+ </ScrollView>
+
+</RelativeLayout>

@@ -5,9 +5,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.mostafa.android.bsor3a.LoginAndRegister.LoginActivity;
 
 import java.util.Locale;
 
@@ -24,36 +27,36 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
-        SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
-        String restoredText = prefs.getString("Language",null);
-        if (restoredText != null) {
-            if(restoredText.equals("Arabic")){
-                Toast.makeText(this, getString(R.string.hi), Toast.LENGTH_SHORT).show();
-            }else if(restoredText.equals("English")){
-                Toast.makeText(this, getString(R.string.hi), Toast.LENGTH_SHORT).show();
+        try{
+            setContentView(R.layout.activity_main);
+            ButterKnife.bind(this);
+            SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+            String restoredText = prefs.getString("Language",null);
+            if (restoredText != null) {
             }
+            final SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+            ArabicButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    editor.putString("Language","Arabic");
+                    editor.apply();
+                    changeLang("ar");
+                    startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                }
+            });
+            EnglishButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    editor.putString("Language","English");
+                    editor.apply();
+                    changeLang("en");
+                    startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                }
+            });
+        }catch (Exception e){
+            Log.e("MainActivity",e.getMessage().toString());
         }
-        final SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
-        ArabicButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                editor.putString("Language","Arabic");
-                editor.apply();
-                changeLang("ar");
-                startActivity(new Intent(MainActivity.this,LoginActivity.class));
-            }
-        });
-        EnglishButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                editor.putString("Language","English");
-                editor.apply();
-                changeLang("en");
-                startActivity(new Intent(MainActivity.this,LoginActivity.class));
-            }
-        });
+
 
     }
 

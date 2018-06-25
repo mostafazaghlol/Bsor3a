@@ -5,5 +5,31 @@
     <string name="EnglishLanguage">English</string>
     <string name="hi">Eng</string>
     <string name="Login">LogIn</string>
+    <string name="ShortName">Short Name</string>
+    <string name="Password">Password</string>
+    <string name="DoYouForget">Do you forget</string>
+    <string name="YourPassword">Your Password</string>
+    <string name="DonhaveAccount">Don\'t hvave Account</string>
+    <string name="singup">signup</string>
+    <string name="Facebook" translatable="false">Facebook</string>
+    <string name="google" translatable="false">Gmail</string>
+    <string name="Register">Register</string>
+    <string name="FullName">Full Name</string>
+    <string name="Phone">Phone</string>
+    <string name="Email">Email</string>
+    <string name="AcceptTerms">Accept Terms</string>
+    <string name="title_activity_main_navigation" translatable="false">MainNavigationActivity</string>
+
+    <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
+    <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
+
+    <string name="action_settings" translatable="false">Settings</string>
+    <string name="RequestClient">Ask a delegate</string>
+    <string name="Modify_personal_data">Modify personal data</string>
+    <string name="Previous_shipments">Previous shipments</string>
+    <string name="Technical_support">Technical support</string>
+    <string name="sign_out">sign out</string>
+    <string name="detect_location">detect location</string>
+    <string name="Confirm">confirm</string>
 
 </resources>

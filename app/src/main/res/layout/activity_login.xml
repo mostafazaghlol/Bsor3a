@@ -1,31 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.mostafa.android.bsor3a.LoginActivity">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@drawable/gridentcolorfortitle"
-    android:orientation="horizontal">
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_back"
-        android:id="@+id/backLogin"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="20dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/TitleLogin"
-        android:layout_centerInParent="true"
-        android:layout_marginLeft="30dp"
-        android:text="@string/Login"
-        android:textColor="@color/white"
-        android:textAppearance="?android:textAppearanceLarge"/>
-</RelativeLayout>
-</android.support.constraint.ConstraintLayout>
+    android:orientation="vertical"
+    tools:context="com.mostafa.android.bsor3a.LoginAndRegister.LoginActivity">
+
+    <RelativeLayout style="@style/pageRelativeStyle">
+
+        <ImageView
+            android:id="@+id/backLogin"
+            style="@style/pageTitleIcon"
+            android:onClick="back" />
+
+        <TextView
+            android:id="@+id/TitleLogin"
+            style="@style/pageTitleText"
+            android:text="@string/Login" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="120dp"
+                android:layout_height="160dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/bsor3alogo" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="60dp"
+                android:background="@drawable/edittextbackground"
+                android:drawableLeft="@mipmap/ic_profile_edittext"
+                android:drawablePadding="20dp"
+                android:paddingRight="10dp"
+                android:hint="@string/ShortName"
+                android:textColorHint="@color/Orange" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="60dp"
+                android:layout_marginTop="10dp"
+                android:paddingRight="10dp"
+                android:background="@drawable/edittextbackground"
+                android:drawableLeft="@mipmap/ic_profile_edittext"
+                android:drawablePadding="20dp"
+                android:hint="@string/Password"
+                android:textColorHint="@color/Orange" />
+
+            <Button
+                android:id="@+id/Login"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/gridentcolor"
+                android:text="@string/Login"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:onClick="Signup"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/DonhaveAccount"
+                    android:textAppearance="?android:textAppearanceSmall" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/singup"
+                    android:textColor="@color/Orange"
+                    android:layout_marginLeft="5dp"
+                    android:textAppearance="?android:textAppearanceSmall"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/DoYouForget"
+                    android:textAppearance="?android:textAppearanceSmall" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/YourPassword"
+                    android:textColor="@color/Orange"
+                    android:layout_marginLeft="5dp"
+                    android:textAppearance="?android:textAppearanceSmall"/>
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/black"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="1dp"/>
+            <Button
+                android:id="@+id/facebook"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/facebookbutton"
+                android:text="@string/Facebook"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:textColor="@color/white" />
+
+           <Button
+                android:id="@+id/google"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/googlebutton"
+                android:text="@string/google"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:textColor="@color/white"
+                android:layout_marginBottom="10dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
