@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.mostafa.android.bsor3a.MainActivity">
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@mipmap/bsor3alogo"
+        android:layout_gravity="center"
+        android:layout_marginTop="130dp"
+        android:layout_marginBottom="40dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ChooseLanguage"
+        android:gravity="center"
+        android:textAppearance="?android:textAppearanceLarge"
+        android:textColor="@color/black"
+        android:textStyle="bold"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+        <Button
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/gridentcolor"
+            android:text="@string/ArabicLanguage"
+            android:textColor="@color/white"
+            android:id="@+id/ArabicButton"
+            android:textStyle="bold"
+            android:textAppearance="?android:textAppearanceLarge"/>
+        <Button
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/gridentcolor"
+            android:layout_marginTop="12dp"
+            android:text="@string/EnglishLanguage"
+            android:textColor="@color/white"
+            android:layout_below="@id/ArabicButton"
+            android:textStyle="bold"
+            android:id="@+id/EnglishButton"
+            android:textAppearance="?android:textAppearanceLarge"/>
+
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Bsor3a</string>
+    <string name="ChooseLanguage">اختيـار الغــة</string>
+    <string name="ArabicLanguage">اللغــة العـربيـة</string>
+    <string name="EnglishLanguage">English</string>
+    <string name="hi">اهلا</string>
+    <string name="Login">دخــول</string>
+</resources>

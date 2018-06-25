@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mostafa.android.bsor3a.LoginActivity">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/gridentcolorfortitle"
+    android:orientation="horizontal">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_back"
+        android:id="@+id/backLogin"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/TitleLogin"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="30dp"
+        android:text="@string/Login"
+        android:textColor="@color/white"
+        android:textAppearance="?android:textAppearanceLarge"/>
+</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Bsor3a</string>
+    <string name="ChooseLanguage">اختيـار الغــة</string>
+    <string name="ArabicLanguage">اللغــة العـربيـة</string>
+    <string name="EnglishLanguage">English</string>
+    <string name="hi">Eng</string>
+    <string name="Login">LogIn</string>
+
+</resources>
