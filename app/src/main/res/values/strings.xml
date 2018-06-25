@@ -18,6 +18,7 @@
     <string name="Phone">Phone</string>
     <string name="Email">Email</string>
     <string name="AcceptTerms">Accept Terms</string>
+    <string name="google_maps_key">AIzaSyAAZHMyx2aWKYbGTkVM00sLxpO1X3uHWpg</string>
     <string name="title_activity_main_navigation" translatable="false">MainNavigationActivity</string>
 
     <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>

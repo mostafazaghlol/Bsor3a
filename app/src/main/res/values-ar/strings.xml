@@ -21,5 +21,8 @@
     <string name="Previous_shipments">الشحنات السابقة</string>
     <string name="Technical_support">الدعم الفنـى</string>
     <string name="sign_out">تسجيل الخروج</string>
+    <string name="detect_location">حدد الموقع</string>
+    <string name="Confirm">تأكيد</string>
+    <string name="AcceptTerms">أوافق على الشروط</string>
 
 </resources>

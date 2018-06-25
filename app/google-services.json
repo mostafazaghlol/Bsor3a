@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "434021441572",
+    "firebase_url": "https://bsor3a-208322.firebaseio.com",
+    "project_id": "bsor3a-208322",
+    "storage_bucket": "bsor3a-208322.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:434021441572:android:dc8b76b24522f158",
+        "android_client_info": {
+          "package_name": "com.mostafa.android.bsor3a"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "434021441572-1ig9d316alh4rg4b9fojskckieqvuk3e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9DXqmMfut4I3GW_ob1EUikZk6S42FQMA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
