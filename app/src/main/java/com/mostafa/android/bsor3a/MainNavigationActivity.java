@@ -49,7 +49,7 @@ public class MainNavigationActivity extends AppCompatActivity
     }
 
     private void openMapActivity() {
-        Intent MapActivity = new Intent(MainNavigationActivity.this,OrderMapActivity.class);
+        Intent MapActivity = new Intent(MainNavigationActivity.this,MapsActivity.class);
         startActivity(MapActivity);
     }
 

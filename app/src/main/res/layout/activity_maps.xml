@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context="com.mostafa.android.bsor3a.OrderMapActivity">
-    <RelativeLayout style="@style/pageRelativeStyle">
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+tools:context="com.mostafa.android.bsor3a.MapsActivity">
+<RelativeLayout style="@style/pageRelativeStyle">
 
-        <ImageView
-            style="@style/pageTitleIcon"
-            android:onClick="back" />
+    <ImageView
+        style="@style/pageTitleIcon"
+        android:onClick="back" />
 
-        <TextView
-            android:id="@+id/detect_location"
-            style="@style/pageTitleText"
-            android:text="@string/detect_location" />
-    </RelativeLayout>
+    <TextView
+        android:id="@+id/detect_location"
+        style="@style/pageTitleText"
+        android:text="@string/detect_location" />
+</RelativeLayout>
 <FrameLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <fragment
-        android:id="@+id/mapq"
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

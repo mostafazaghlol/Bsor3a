@@ -18,7 +18,7 @@
     <string name="Phone">Phone</string>
     <string name="Email">Email</string>
     <string name="AcceptTerms">Accept Terms</string>
-    <string name="google_maps_key">AIzaSyAAZHMyx2aWKYbGTkVM00sLxpO1X3uHWpg</string>
+    <string name="google_maps_key">AIzaSyDdZJ4GG1C7InMVJC9eSEqU_rWVBbHNUxQ</string>
     <string name="title_activity_main_navigation" translatable="false">MainNavigationActivity</string>
 
     <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
@@ -32,5 +32,17 @@
     <string name="sign_out">sign out</string>
     <string name="detect_location">detect location</string>
     <string name="Confirm">confirm</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="ShippingDetalis">Shipping Details</string>
+    <string name="ShippingName">Shipping Name</string>
+    <string name="Detailedaddress">Detailed address</string>
+    <string name="PleaseEnglish">Please write the data in English</string>
+    <string name="Governorate">Governorate</string>
+    <string name="District">District</string>
+    <string name="street">street</string>
+    <string name="Dash">--</string>
+    <string name="HouseNumber">Houes Number</string>
+    <string name="Storey">Storey</string>
+    <string name="Apartmentnumber">Apartment number</string>
 
 </resources>
