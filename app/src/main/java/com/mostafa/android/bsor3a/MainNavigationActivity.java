@@ -109,7 +109,7 @@ public class MainNavigationActivity extends AppCompatActivity
         } else if (id == R.id.Technical_support) {
             startActivity(new Intent(MainNavigationActivity.this, TechincalActivity.class));
         } else if (id == R.id.Previous_shipments) {
-            startActivity(new Intent(MainNavigationActivity.this, TechincalActivity.class));
+            startActivity(new Intent(MainNavigationActivity.this, PerviousShipmentsActivity.class));
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

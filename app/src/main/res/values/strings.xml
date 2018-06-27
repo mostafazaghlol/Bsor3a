@@ -51,5 +51,9 @@
     <string name="Thefollowingnumbers">The following numbers</string>
     <string name="OrWithEmail">Or With Email</string>
     <string name="VisitWebsite">Visit our Website</string>
+    <string name="more">More</string>
+    <string name="more2">more</string>
+    <string name="more1">more</string>
+    <string name="fackdata">FackData</string>
 
 </resources>
