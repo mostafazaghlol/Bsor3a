@@ -24,5 +24,20 @@
     <string name="detect_location">حدد الموقع</string>
     <string name="Confirm">تأكيد</string>
     <string name="AcceptTerms">أوافق على الشروط</string>
+    <string name="title_activity_maps">الخريـطه</string>
+    <string name="ShippingDetalis">تفاصيل الشحنه</string>
+    <string name="ShippingName">اسم الشحنه</string>
+    <string name="Detailedaddress">العنوان بالتفصيل</string>
+    <string name="PleaseEnglish">برجاء كتابة البيانات باللغة العربية</string>
+    <string name="Governorate">المحافظه</string>
+    <string name="District">الحــى</string>
+    <string name="street">الشارع</string>
+    <string name="Dash">--</string>
+    <string name="HouseNumber">رقم المنـزل</string>
+    <string name="Storey">الدور</string>
+    <string name="Apartmentnumber">رقم الشقة</string>
+    <string name="thecurrentpassword">ادخال كلمة السر الحالية</string>
+    <string name="Cancel">الغـاء</string>
+    <string name="NotgetLocation">يرجى تحديد الموقع</string>
 
 </resources>

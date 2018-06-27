@@ -3,6 +3,8 @@ package com.mostafa.android.bsor3a;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -34,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
             String restoredText = prefs.getString("Language",null);
             if (restoredText != null) {
             }
+            if (ActivityCompat.checkSelfPermission(MainActivity.this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(MainActivity.this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(MainActivity.this, new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+            }
             final SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
             ArabicButton.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -42,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
                     editor.apply();
                     changeLang("ar");
                     startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                    finish();
                 }
             });
             EnglishButton.setOnClickListener(new View.OnClickListener() {
@@ -51,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
                     editor.apply();
                     changeLang("en");
                     startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                    finish();
                 }
             });
         }catch (Exception e){

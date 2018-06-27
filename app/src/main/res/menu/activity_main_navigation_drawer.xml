@@ -6,19 +6,19 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/Modify_personal_data"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/setting"
             android:title="@string/Modify_personal_data" />
         <item
             android:id="@+id/Previous_shipments"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/lastorder"
             android:title="@string/Previous_shipments" />
         <item
             android:id="@+id/Technical_support"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/support"
             android:title="@string/Technical_support" />
         <item
             android:id="@+id/sign_out"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/logout"
             android:title="@string/sign_out" />
     </group>
 

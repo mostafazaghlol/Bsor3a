@@ -52,7 +52,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     openActivtyShippingDetails.putExtra("lng",latLngSelected.longitude);
                     startActivity(openActivtyShippingDetails);
                 }else{
-
+                    Toast.makeText(MapsActivity.this, getString(R.string.NotgetLocation), Toast.LENGTH_SHORT).show();
                 }
             }
         });

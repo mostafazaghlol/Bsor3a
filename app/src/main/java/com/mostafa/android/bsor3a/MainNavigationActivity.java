@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,6 +17,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
+import com.mostafa.android.bsor3a.LoginAndRegister.ModifyTheDataActivity;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -22,28 +26,36 @@ public class MainNavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     @BindView(R.id.RequestClient)
     Button ButtonRequestClient;
+    NavigationView navigationView;
+    DrawerLayout drawer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_navigation);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        ButterKnife.bind(this);
+        try {
+            setContentView(R.layout.activity_main_navigation);
+            //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            ButterKnife.bind(this);
+            setBar.setStatusBarColored(this);
+//        navigationView.getBackground().setAlpha(122);
+            //setSupportActionBar(toolbar);
+            drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            //ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+            // this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+            //drawer.addDrawerListener(toggle);
+            //toggle.syncState();
 
-        setSupportActionBar(toolbar);
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-        ButtonRequestClient.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openMapActivity();
-            }
-        });
+            navigationView = (NavigationView) findViewById(R.id.nav_view);
+            navigationView.setNavigationItemSelectedListener(this);
+            navigationView.getBackground().setAlpha(30);
+            ButtonRequestClient.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    openMapActivity();
+                }
+            });
+        } catch (Exception e) {
+            Log.e("MainNavigationActivity", e.getMessage().toString());
+        }
 
 
     }
@@ -91,9 +103,20 @@ public class MainNavigationActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        if (id == R.id.Modify_personal_data) {
+            startActivity(new Intent(MainNavigationActivity.this, ModifyTheDataActivity.class));
 
+        } else if (id == R.id.Technical_support) {
+            startActivity(new Intent(MainNavigationActivity.this, TechincalActivity.class));
+        } else if (id == R.id.Previous_shipments) {
+            startActivity(new Intent(MainNavigationActivity.this, TechincalActivity.class));
+        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void openDrawer(View view) {
+        drawer.openDrawer(Gravity.LEFT);
     }
 }

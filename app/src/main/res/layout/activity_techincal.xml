@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.mostafa.android.bsor3a.TechincalActivity">
+
+    <RelativeLayout style="@style/pageRelativeStyle">
+
+        <ImageView
+            android:id="@+id/backLogin"
+            style="@style/pageTitleIcon"
+            android:onClick="back" />
+
+        <TextView
+            android:id="@+id/TitleLogin"
+            style="@style/pageTitleText"
+            android:text="@string/Technical_support" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="30dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="@string/ContactTheCompany"
+                android:textAppearance="?android:textAppearanceMedium" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Thefollowingnumbers"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/Orange" />
+
+            <TextView
+                style="@style/editText1"
+                android:text="000 000 000"
+                android:id="@+id/firstNumber"
+                android:onClick="call" />
+
+            <TextView
+                style="@style/editText1"
+                android:id="@+id/secondNumber"
+                android:text="000 000 000"
+                android:onClick="call" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/OrWithEmail"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/Orange" />
+
+            <TextView
+                style="@style/editText1"
+                android:text="info@bsor3a.com"
+                android:onClick="email" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/VisitWebsite"
+                android:textAppearance="?android:textAppearanceMedium"
+                android:textColor="@color/Orange" />
+
+            <TextView
+                style="@style/editText1"
+                android:text="www.bsor3a.com"
+                android:onClick="website" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

@@ -10,7 +10,7 @@
     <ImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@mipmap/bsor3alogo"
+        android:src="@drawable/logo"
         android:layout_gravity="center"
         android:layout_marginTop="130dp"
         android:layout_marginBottom="40dp"/>

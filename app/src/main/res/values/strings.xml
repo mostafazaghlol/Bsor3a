@@ -18,7 +18,7 @@
     <string name="Phone">Phone</string>
     <string name="Email">Email</string>
     <string name="AcceptTerms">Accept Terms</string>
-    <string name="google_maps_key">AIzaSyDdZJ4GG1C7InMVJC9eSEqU_rWVBbHNUxQ</string>
+    <string name="google_maps_key">AIzaSyDr-PGFlFC-Ee65nnZ_gqeRIAjt5TgWUJo</string>
     <string name="title_activity_main_navigation" translatable="false">MainNavigationActivity</string>
 
     <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
@@ -44,5 +44,12 @@
     <string name="HouseNumber">Houes Number</string>
     <string name="Storey">Storey</string>
     <string name="Apartmentnumber">Apartment number</string>
+    <string name="thecurrentpassword">Enter the current password</string>
+    <string name="Cancel">Cancel</string>
+    <string name="NotgetLocation">Please Spicfy The location</string>
+    <string name="ContactTheCompany">Contact the management company quickly by</string>
+    <string name="Thefollowingnumbers">The following numbers</string>
+    <string name="OrWithEmail">Or With Email</string>
+    <string name="VisitWebsite">Visit our Website</string>
 
 </resources>

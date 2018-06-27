@@ -32,30 +32,17 @@
                 android:layout_width="120dp"
                 android:layout_height="160dp"
                 android:layout_gravity="center"
-                android:src="@mipmap/bsor3alogo" />
+                android:src="@drawable/logo" />
 
             <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="60dp"
-                android:layout_marginRight="60dp"
-                android:background="@drawable/edittextbackground"
-                android:drawableLeft="@mipmap/ic_profile_edittext"
-                android:drawablePadding="20dp"
-                android:paddingRight="10dp"
+                style="@style/editText"
+                android:drawableLeft="@drawable/nname"
                 android:hint="@string/ShortName"
                 android:textColorHint="@color/Orange" />
 
             <EditText
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginLeft="60dp"
-                android:layout_marginRight="60dp"
-                android:layout_marginTop="10dp"
-                android:paddingRight="10dp"
-                android:background="@drawable/edittextbackground"
-                android:drawableLeft="@mipmap/ic_profile_edittext"
-                android:drawablePadding="20dp"
+                style="@style/editText"
+                android:drawableLeft="@drawable/pass"
                 android:hint="@string/Password"
                 android:textColorHint="@color/Orange" />
 
@@ -88,6 +75,7 @@
                     android:text="@string/singup"
                     android:textColor="@color/Orange"
                     android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
                     android:textAppearance="?android:textAppearanceSmall"/>
             </LinearLayout>
             <LinearLayout
@@ -106,6 +94,7 @@
                     android:text="@string/YourPassword"
                     android:textColor="@color/Orange"
                     android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
                     android:textAppearance="?android:textAppearanceSmall"/>
             </LinearLayout>
 
@@ -123,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/facebookbutton"
+                android:background="@drawable/face"
                 android:text="@string/Facebook"
                 android:textAppearance="?android:textAppearanceLarge"
                 android:textColor="@color/white" />
@@ -134,7 +123,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/googlebutton"
+               android:background="@drawable/gmail"
                 android:text="@string/google"
                 android:textAppearance="?android:textAppearanceLarge"
                 android:textColor="@color/white"

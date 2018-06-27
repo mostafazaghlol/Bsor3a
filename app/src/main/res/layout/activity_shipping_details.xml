@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/white"
     tools:context="com.mostafa.android.bsor3a.ShippingDetails">
     <RelativeLayout style="@style/pageRelativeStyle">
 
@@ -30,8 +31,10 @@
             <EditText
                 style="@style/editText"
                 android:hint="@string/ShippingName"
+                android:textColorHint="@color/Orange"
                 android:paddingLeft="30dp"
-                android:paddingRight="30dp" />
+                android:paddingRight="30dp"
+                android:drawableLeft="@drawable/person" />
 
             <View
                 android:layout_width="match_parent"
@@ -63,17 +66,23 @@
                 style="@style/editText"
                 android:hint="@string/Governorate"
                 android:paddingLeft="30dp"
-                android:paddingRight="30dp" />
+                android:paddingRight="30dp"
+                android:textColorHint="@color/Orange"
+                android:drawableLeft="@drawable/select" />
             <EditText
                 style="@style/editText"
                 android:hint="@string/District"
                 android:paddingLeft="30dp"
-                android:paddingRight="30dp" />
+                android:paddingRight="30dp"
+                android:drawableLeft="@drawable/select"
+                android:textColorHint="@color/Orange" />
             <EditText
                 style="@style/editText"
                 android:hint="@string/street"
                 android:paddingLeft="30dp"
-                android:paddingRight="30dp" />
+                android:textColorHint="@color/Orange"
+                android:paddingRight="30dp"
+                android:maxLines="1" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -90,15 +99,29 @@
                     <EditText
                         style="@style/SimpleeditText"
                         android:layout_marginBottom="5dp"
+                        android:inputType="number"
+                        android:hint="-- --"
+                        android:paddingLeft="5dp"
+                        android:textColorHint="@color/Orange"
+                        android:gravity="center"
                         android:textAppearance="?android:textAppearanceSmall" />
                     <EditText
                         android:layout_marginBottom="5dp"
                         style="@style/SimpleeditText"
+                        android:inputType="number"
+                        android:hint="-- --"
+                        android:paddingLeft="5dp"
+                        android:textColorHint="@color/Orange"
+                        android:gravity="center"
                         android:textAppearance="?android:textAppearanceSmall" />
                     <EditText
                         style="@style/SimpleeditText"
                         android:layout_marginBottom="5dp"
-
+                        android:inputType="number"
+                        android:hint="-- --"
+                        android:paddingLeft="5dp"
+                        android:textColorHint="@color/Orange"
+                        android:gravity="center"
                         android:textAppearance="?android:textAppearanceSmall" />
                 </LinearLayout>
                 <LinearLayout

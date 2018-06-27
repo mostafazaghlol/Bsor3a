@@ -31,34 +31,34 @@
          <ImageView
              android:layout_width="120dp"
              android:layout_height="160dp"
-             android:src="@mipmap/bsor3alogo"
+             android:src="@drawable/logo"
              android:layout_gravity="center"/>
          <EditText
              style="@style/editText"
              android:drawablePadding="20dp"
              android:hint="@string/FullName"
-             android:drawableLeft="@mipmap/bsor3alogo"/>
+             android:drawableLeft="@drawable/person" />
          <EditText
              style="@style/editText"
              android:drawablePadding="20dp"
              android:hint="@string/Phone"
-             android:drawableLeft="@mipmap/bsor3alogo"/>
+             android:drawableLeft="@drawable/mob" />
          <EditText
              style="@style/editText"
              android:drawablePadding="20dp"
              android:hint="@string/Email"
-             android:drawableLeft="@mipmap/bsor3alogo"/>
+             android:drawableLeft="@drawable/mail" />
          <EditText
              style="@style/editText"
              android:drawablePadding="20dp"
              android:hint="@string/ShortName"
-             android:drawableLeft="@mipmap/bsor3alogo"/>
+             android:drawableLeft="@drawable/nname" />
          <EditText
              style="@style/editText"
              android:drawablePadding="20dp"
              android:hint="@string/Password"
              android:inputType="textPassword"
-             android:drawableLeft="@mipmap/bsor3alogo"/>
+             android:drawableLeft="@drawable/pass" />
          <View
              android:layout_width="wrap_content"
              android:layout_height="1dp"

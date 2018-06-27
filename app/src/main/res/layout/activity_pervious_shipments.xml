@@ -5,21 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.mostafa.android.bsor3a.MainNavigationActivity">
+    tools:context="com.mostafa.android.bsor3a.PerviousShipmentsActivity">
 
     <RelativeLayout style="@style/pageRelativeStyle">
 
         <ImageView
             android:id="@+id/backLogin"
-            style="@style/pageNavigationIcon"
-            android:onClick="openDrawer" />
+            style="@style/pageTitleIcon"
+            android:onClick="back" />
 
         <TextView
             android:id="@+id/TitleLogin"
             style="@style/pageTitleText"
             android:text="@string/Login" />
     </RelativeLayout>
-
-    <include layout="@layout/content_main_navigation" />
 
 </LinearLayout>
