@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.mostafa.android.bsor3a.PerviousShipmentsDetailsActivity">
+
+    <RelativeLayout style="@style/pageRelativeStyle">
+
+        <ImageView
+            android:id="@+id/backLogin"
+            style="@style/pageTitleIcon"
+            android:onClick="back" />
+
+        <TextView
+            android:id="@+id/TitleLogin"
+            style="@style/pageTitleText"
+            android:text="@string/ShippingDetalis" />
+    </RelativeLayout>
+
+</LinearLayout>

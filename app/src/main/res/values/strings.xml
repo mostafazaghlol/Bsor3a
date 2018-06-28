@@ -59,5 +59,9 @@
     <string name="RestPassword">Rest Password</string>
     <string name="Continue">Continue</string>
     <string name="EmailOrMobile">Email OR Mobile</string>
+    <string name="Distance">Full Distance</string>
+    <string name="FullPrice">Full price</string>
+    <string name="netPrice">Net Price</string>
+    <string name="ShippingCost">Shipping Cost</string>
 
 </resources>

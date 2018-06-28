@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.mostafa.android.bsor3a.ShippingCostActivity">
+
+    <RelativeLayout style="@style/pageRelativeStyle">
+
+        <ImageView
+            android:id="@+id/backLogin"
+            style="@style/pageTitleIcon"
+            android:onClick="back" />
+
+        <TextView
+            android:id="@+id/TitleLogin"
+            style="@style/pageTitleText"
+            android:text="@string/ShippingCost" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/Distance"
+                android:textSize="30sp"
+                android:textColor="@color/Orange"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp"
+                android:text="32 KM"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="30dp"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/band" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp"
+                android:text="00:30:00"
+                android:layout_marginBottom="22dp"
+
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="30dp"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/band" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/netPrice"
+                android:textSize="30sp"
+                android:textColor="@color/Orange"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginTop="10dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp"
+                android:text="32 LE"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="30dp"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/band" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center|bottom"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp">
+
+                <Button
+                    android:id="@+id/Confirm"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/gridentcolor"
+                    android:text="@string/Cancel"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="25dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/Cancel"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:textSize="25dp"
+                    android:padding="10dp"
+                    android:background="@drawable/gridentcolor"
+                    android:text="@string/Confirm"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

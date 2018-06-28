@@ -47,5 +47,12 @@
     <string name="more2">المزيد</string>
     <string name="more1">المزيد</string>
     <string name="fackdata">بيانات زائفه</string>
+    <string name="RestPassword">استعاده كلمة السر</string>
+    <string name="Continue">استمر</string>
+    <string name="EmailOrMobile">البريد او رقم الموبيل</string>
+    <string name="Distance">المسافه الكليه</string>
+    <string name="FullPrice">اجمالى المبلغ</string>
+    <string name="netPrice">اجمالى المبلغ</string>
+    <string name="ShippingCost">تكلفة الشـحن</string>
 
 </resources>

@@ -1,10 +1,12 @@
 package com.mostafa.android.bsor3a.Recycler;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mostafa.android.bsor3a.PerviousShipmentsDetailsActivity;
 import com.mostafa.android.bsor3a.R;
 
 /**
@@ -24,6 +26,7 @@ public class ShippingViewHolder extends RecyclerView.ViewHolder implements View.
 
     @Override
     public void onClick(View view) {
-        Toast.makeText(view.getContext(), "Clicked ", Toast.LENGTH_SHORT).show();
+        Intent openDetails = new Intent(view.getContext(), PerviousShipmentsDetailsActivity.class);
+        view.getContext().startActivity(openDetails);
     }
 }

@@ -57,7 +57,9 @@
             android:parentActivityName=".MainNavigationActivity" />
         <activity
             android:name=".LoginAndRegister.ReSetPasswordActivity"
-            android:parentActivityName=".LoginAndRegister.LoginActivity"></activity>
+            android:parentActivityName=".LoginAndRegister.LoginActivity" />
+        <activity android:name=".ShippingCostActivity" />
+        <activity android:name=".PerviousShipmentsDetailsActivity"></activity>
     </application>
 
 </manifest>
