@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/splash"
+    tools:context="com.mostafa.android.bsor3a.LoginAndRegister.ConfirmationActivity">
+
+    <RelativeLayout style="@style/pageRelativeStyle">
+
+        <ImageView
+            style="@style/pageTitleIcon"
+            android:onClick="back" />
+
+        <TextView
+            android:id="@+id/detect_location"
+            style="@style/pageTitleText"
+            android:text="@string/Login" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/logo"
+                android:layout_gravity="center"
+                android:layout_marginTop="80dp" />
+
+            <EditText
+                style="@style/editText"
+                android:layout_marginTop="20dp"
+                android:hint="-- -- -- -- -- -- --"
+                android:textColorHint="@color/Orange"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:textSize="40sp"
+                android:gravity="center"
+                android:inputType="number" />
+
+            <Button
+                android:id="@+id/ConfirmRegisterNumber"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="10dp"
+                android:background="@drawable/gridentcolor"
+                android:text="@string/Confirm"
+                android:layout_marginTop="20dp"
+                android:textAppearance="?android:textAppearanceLarge"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

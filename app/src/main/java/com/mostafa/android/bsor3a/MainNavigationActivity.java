@@ -117,6 +117,15 @@ public class MainNavigationActivity extends AppCompatActivity
     }
 
     public void openDrawer(View view) {
-        drawer.openDrawer(Gravity.LEFT);
+        try {
+            if (MainActivity.lang == 2) {
+                drawer.openDrawer(Gravity.LEFT);
+            } else if (MainActivity.lang == 1) {
+                drawer.openDrawer(Gravity.RIGHT);
+            }
+
+        } catch (Exception e) {
+            Log.e("MainNavi", e.getMessage().toString());
+        }
     }
 }

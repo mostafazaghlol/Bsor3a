@@ -55,5 +55,9 @@
     <string name="more2">more</string>
     <string name="more1">more</string>
     <string name="fackdata">FackData</string>
+    <string name="Home" translatable="false">Home</string>
+    <string name="RestPassword">Rest Password</string>
+    <string name="Continue">Continue</string>
+    <string name="EmailOrMobile">Email OR Mobile</string>
 
 </resources>

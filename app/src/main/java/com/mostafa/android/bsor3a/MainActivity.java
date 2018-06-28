@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.EnglishButton)
     Button EnglishButton;
     private Locale myLocale;
+    //1 for arabic and 2 for english
+    public static int lang = 0;
     public static final String MY_PREFS_NAME = "MyPrefsFile";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
                     editor.putString("Language","Arabic");
                     editor.apply();
                     changeLang("ar");
+                    lang = 1;
                     startActivity(new Intent(MainActivity.this,LoginActivity.class));
                     finish();
                 }
@@ -56,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
                     editor.putString("Language","English");
                     editor.apply();
                     changeLang("en");
+                    lang = 2;
                     startActivity(new Intent(MainActivity.this,LoginActivity.class));
                     finish();
                 }

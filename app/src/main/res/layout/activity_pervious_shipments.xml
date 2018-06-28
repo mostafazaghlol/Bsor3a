@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/splash"
     tools:context="com.mostafa.android.bsor3a.PerviousShipmentsActivity">
 
     <RelativeLayout style="@style/pageRelativeStyle">
@@ -17,12 +18,18 @@
         <TextView
             android:id="@+id/TitleLogin"
             style="@style/pageTitleText"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="53dp"
+            android:layout_marginStart="53dp"
+            android:layout_toEndOf="@+id/backLogin"
+            android:layout_toRightOf="@+id/backLogin"
             android:text="@string/Previous_shipments" />
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:scrollbars="vertical"
+        android:layout_margin="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>

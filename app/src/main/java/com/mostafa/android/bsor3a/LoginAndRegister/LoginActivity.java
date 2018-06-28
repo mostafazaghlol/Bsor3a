@@ -58,4 +58,9 @@ public class LoginActivity extends AppCompatActivity {
         Intent openSignUp = new Intent(LoginActivity.this,RegisterActivity.class);
         startActivity(openSignUp);
     }
+
+    public void ResetPassword(View view) {
+        Intent openSignUp = new Intent(LoginActivity.this, ReSetPasswordActivity.class);
+        startActivity(openSignUp);
+    }
 }

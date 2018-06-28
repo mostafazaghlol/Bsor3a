@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/splash"
     tools:context="com.mostafa.android.bsor3a.LoginAndRegister.RegisterActivity">
     <RelativeLayout style="@style/pageRelativeStyle"
         android:layout_alignParentTop="true"
@@ -42,6 +43,8 @@
              style="@style/editText"
              android:drawablePadding="20dp"
              android:hint="@string/Phone"
+             android:inputType="number"
+             android:maxLength="10"
              android:drawableLeft="@drawable/mob" />
          <EditText
              style="@style/editText"
@@ -76,6 +79,19 @@
              android:layout_marginRight="60dp"
              android:layout_marginBottom="20dp"
              />
+
+         <Button
+             android:id="@+id/Register"
+             android:layout_width="190dp"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center"
+             android:padding="10dp"
+             android:background="@drawable/gridentcolor"
+             android:text="@string/Register"
+             android:layout_marginBottom="10dp"
+             android:textAppearance="?android:textAppearanceLarge"
+             android:textColor="@color/white"
+             android:textStyle="bold" />
      </LinearLayout>
 
  </ScrollView>

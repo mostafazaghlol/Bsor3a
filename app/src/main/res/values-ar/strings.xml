@@ -39,5 +39,13 @@
     <string name="thecurrentpassword">ادخال كلمة السر الحالية</string>
     <string name="Cancel">الغـاء</string>
     <string name="NotgetLocation">يرجى تحديد الموقع</string>
+    <string name="ContactTheCompany">تواصل مـع ادارة شركة بسرعه عن طريق</string>
+    <string name="Thefollowingnumbers">الأرقام الأتية:</string>
+    <string name="OrWithEmail">أو البريد الالكترونى:</string>
+    <string name="VisitWebsite">زوروا موقعنا:</string>
+    <string name="more">المزيد</string>
+    <string name="more2">المزيد</string>
+    <string name="more1">المزيد</string>
+    <string name="fackdata">بيانات زائفه</string>
 
 </resources>
