@@ -44,7 +44,7 @@
              android:drawablePadding="20dp"
              android:hint="@string/Phone"
              android:inputType="number"
-             android:maxLength="10"
+             android:maxLength="11"
              android:drawableLeft="@drawable/mob" />
          <EditText
              style="@style/editText"

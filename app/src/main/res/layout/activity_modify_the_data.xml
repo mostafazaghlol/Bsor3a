@@ -42,6 +42,8 @@
                 style="@style/editText"
                 android:drawablePadding="20dp"
                 android:hint="@string/Phone"
+                android:inputType="number"
+                android:maxLength="11"
                 android:drawableLeft="@drawable/mob" />
 
             <EditText
@@ -98,52 +100,8 @@
                 android:inputType="textPassword"
                 android:drawableLeft="@drawable/pass" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:onClick="Signup"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="@string/DonhaveAccount"
-                    android:textAppearance="?android:textAppearanceSmall" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/singup"
-                    android:textColor="@color/Orange"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:textAppearance="?android:textAppearanceSmall" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="@string/DoYouForget"
-                    android:textAppearance="?android:textAppearanceSmall" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/YourPassword"
-                    android:textColor="@color/Orange"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:textAppearance="?android:textAppearanceSmall" />
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"

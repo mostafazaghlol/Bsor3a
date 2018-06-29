@@ -59,7 +59,9 @@
             android:name=".LoginAndRegister.ReSetPasswordActivity"
             android:parentActivityName=".LoginAndRegister.LoginActivity" />
         <activity android:name=".ShippingCostActivity" />
-        <activity android:name=".PerviousShipmentsDetailsActivity"></activity>
+        <activity
+            android:name=".PerviousShipmentsDetailsActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

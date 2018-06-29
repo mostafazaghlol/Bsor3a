@@ -63,5 +63,10 @@
     <string name="FullPrice">Full price</string>
     <string name="netPrice">Net Price</string>
     <string name="ShippingCost">Shipping Cost</string>
+    <string name="table_layout_4_open" translatable="false">hi</string>
+    <string name="Shippinhtype">Shipping Type</string>
+    <string name="Date">Date</string>
+    <string name="From">From</string>
+    <string name="To">To</string>
 
 </resources>

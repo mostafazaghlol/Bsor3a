@@ -54,5 +54,9 @@
     <string name="FullPrice">اجمالى المبلغ</string>
     <string name="netPrice">اجمالى المبلغ</string>
     <string name="ShippingCost">تكلفة الشـحن</string>
+    <string name="Shippinhtype">نوع الشحنه</string>
+    <string name="Date">التاريخ</string>
+    <string name="From">من</string>
+    <string name="To">الى</string>
 
 </resources>

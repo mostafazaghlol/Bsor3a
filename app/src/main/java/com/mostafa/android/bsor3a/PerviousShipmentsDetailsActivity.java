@@ -10,6 +10,12 @@ public class PerviousShipmentsDetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pervious_shipments_details);
+        setBar.setStatusBarColored(this);
+        if (MainActivity.lang == 1) {
+
+        } else if (MainActivity.lang == 2) {
+
+        }
     }
 
     public void back(View view) {
