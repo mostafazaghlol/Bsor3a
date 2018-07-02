@@ -4,6 +4,8 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
+        <item android:title="@string/Space" />
+        <item android:title="@string/Space" />
         <item
             android:id="@+id/Modify_personal_data"
             android:icon="@drawable/setting"

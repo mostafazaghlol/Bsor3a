@@ -58,5 +58,13 @@
     <string name="Date">التاريخ</string>
     <string name="From">من</string>
     <string name="To">الى</string>
+    <string name="enterName">ادخل الاسم هنا !</string>
+    <string name="enterPhone">ادخل رقم التليفون هنا !</string>
+    <string name="enterPassword">ادخل كلمه السر هنا !</string>
+    <string name="enterEmail">ادخل البريد الالكترونى هنا !</string>
+    <string name="enterShortName">ادخل الاسم المختصر هنا !</string>
+    <string name="yes">نعم</string>
+    <string name="pleasewait">"من فضلك انتظر "</string>
+    <string name="okay">نعم</string>
 
 </resources>

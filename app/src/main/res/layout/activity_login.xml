@@ -39,12 +39,15 @@
                 style="@style/editText"
                 android:drawableLeft="@drawable/nname"
                 android:hint="@string/ShortName"
+                android:id="@+id/Eduser"
                 android:textColorHint="@color/Orange" />
 
             <EditText
                 style="@style/editText"
                 android:drawableLeft="@drawable/pass"
                 android:hint="@string/Password"
+                android:id="@+id/Edpassword"
+                android:inputType="textPassword"
                 android:textColorHint="@color/Orange" />
 
             <Button

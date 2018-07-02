@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                     editor.putString("Language","Arabic");
                     editor.apply();
                     changeLang("ar");
-                    lang = 1;
+                    lang = 2;
                     startActivity(new Intent(MainActivity.this,LoginActivity.class));
                     finish();
                 }
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                     editor.putString("Language","English");
                     editor.apply();
                     changeLang("en");
-                    lang = 2;
+                    lang = 1;
                     startActivity(new Intent(MainActivity.this,LoginActivity.class));
                     finish();
                 }

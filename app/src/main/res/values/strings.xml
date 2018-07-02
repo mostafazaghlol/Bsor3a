@@ -68,5 +68,19 @@
     <string name="Date">Date</string>
     <string name="From">From</string>
     <string name="To">To</string>
+    <string name="Space" translatable="false" />
+    <string name="choosePicture" translatable="false">Choose Picture</string>
+    <string name="choosePic" translatable="false">take a picture</string>
+    <string name="picfromstudio" translatable="false">Photo from the studio</string>
+    <string name="cancel" translatable="false">Cancel</string>
+    <string name="enterName">Enter Full Name  Here !</string>
+    <string name="enterPhone">Enter Phone Here !</string>
+    <string name="enterPassword">Enter Password Here !</string>
+    <string name="enterEmail">Enter Email Here !</string>
+    <string name="enterShortName">Enter Short Name Here !</string>
+    <string name="yes">Yes</string>
+    <string name="UploadData" translatable="false">Upload Data</string>
+    <string name="pleasewait">Please wait</string>
+    <string name="okay">Okay</string>
 
 </resources>

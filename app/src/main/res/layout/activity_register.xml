@@ -32,17 +32,20 @@
          <ImageView
              android:layout_width="120dp"
              android:layout_height="160dp"
-             android:src="@drawable/logo"
+             android:src="@drawable/user"
+             android:id="@+id/userImage"
              android:layout_gravity="center"/>
          <EditText
              style="@style/editText"
              android:drawablePadding="20dp"
              android:hint="@string/FullName"
+             android:id="@+id/fullname"
              android:drawableLeft="@drawable/person" />
          <EditText
              style="@style/editText"
              android:drawablePadding="20dp"
              android:hint="@string/Phone"
+             android:id="@+id/phone"
              android:inputType="number"
              android:maxLength="11"
              android:drawableLeft="@drawable/mob" />
@@ -50,16 +53,19 @@
              style="@style/editText"
              android:drawablePadding="20dp"
              android:hint="@string/Email"
+             android:id="@+id/email"
              android:drawableLeft="@drawable/mail" />
          <EditText
              style="@style/editText"
              android:drawablePadding="20dp"
              android:hint="@string/ShortName"
+             android:id="@+id/shortname"
              android:drawableLeft="@drawable/nname" />
          <EditText
              style="@style/editText"
              android:drawablePadding="20dp"
              android:hint="@string/Password"
+             android:id="@+id/password"
              android:inputType="textPassword"
              android:drawableLeft="@drawable/pass" />
          <View
@@ -74,6 +80,7 @@
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
              android:text="@string/AcceptTerms"
+             android:id="@+id/CBAccecpt"
              android:layout_gravity="center"
              android:layout_marginLeft="60dp"
              android:layout_marginRight="60dp"
