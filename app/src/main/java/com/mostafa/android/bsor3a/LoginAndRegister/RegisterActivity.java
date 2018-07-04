@@ -3,6 +3,7 @@ package com.mostafa.android.bsor3a.LoginAndRegister;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
@@ -16,11 +17,13 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
 import android.util.JsonReader;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.mostafa.android.bsor3a.MainActivity;
 import com.mostafa.android.bsor3a.R;
@@ -37,6 +40,8 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.mostafa.android.bsor3a.MainActivity.MY_PREFS_NAME;
+
 public class RegisterActivity extends AppCompatActivity {
     @BindView(R.id.Register)
     Button ButtonRegister;
@@ -52,6 +57,14 @@ public class RegisterActivity extends AppCompatActivity {
     EditText Edshortname;
     @BindView(R.id.password)
     EditText Edpassword;
+    @BindView(R.id.EditReStateid)
+    EditText Edstateid;
+    @BindView(R.id.EditRebuilding_number)
+    EditText Edbuilding;
+    @BindView(R.id.EditReFlower_number)
+    EditText EdFlowerNumber;
+    @BindView(R.id.EditReStreetName)
+    EditText EdStreetName;
     @BindView(R.id.CBAccecpt)
     CheckBox CBAccecpt;
     private int CAMERA_REQUEST = 188;
@@ -60,13 +73,18 @@ public class RegisterActivity extends AppCompatActivity {
     Uri imageUri;
     ProgressDialog progDailog;
     String name, phone, message = "Noting", state_id, email, nickname, street_name, building_number, flower_number, password, urluser = "https://bsor3a.com/clients/register", result;
-
+    int messageId;
+    String codeFromServer, emailFromServer, nicknameFromServer;
+    SharedPreferences prefs;
+    SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         setBar.setStatusBarColored(this);
         ButterKnife.bind(this);
+        prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+        editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
         final CharSequence[] items = {getString(R.string.choosePic), getString(R.string.picfromstudio), getString(R.string.cancel)};
         //get Camera Request
         if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
@@ -98,7 +116,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void onRegisterSuccess() {
         processing();
-        new GetDateUser().execute(name, phone, email, nickname, password, encodimg);
+        new GetDateUser().execute(name, phone, email, nickname, password, street_name, building_number, flower_number, state_id);
 
     }
 
@@ -116,7 +134,7 @@ public class RegisterActivity extends AppCompatActivity {
                     try {
                         progDailog.setProgress(progress);
                         progress++;
-                        Thread.sleep(700);
+                        Thread.sleep(1000);
                     } catch (Exception e) {
 
                     }
@@ -134,6 +152,10 @@ public class RegisterActivity extends AppCompatActivity {
         email = getTextFromEditText(Edemail, R.string.enterEmail);
         nickname = getTextFromEditText(Edshortname, R.string.enterShortName);
         password = getTextFromEditText(Edpassword, R.string.enterPassword);
+        state_id = getTextFromEditText(Edstateid, R.string.enterstateid);
+        street_name = getTextFromEditText(EdStreetName, R.string.enterstreetname);
+        flower_number = getTextFromEditText(EdFlowerNumber, R.string.enterFlowerNumber);
+        building_number = getTextFromEditText(Edbuilding, R.string.enterbuildingnumber);
     }
 
     public String getTextFromEditText(EditText editText, int id) {
@@ -148,13 +170,16 @@ public class RegisterActivity extends AppCompatActivity {
 
     public boolean validate() {
         boolean valid = true;
-        if (encodimg == "0") {
-            AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-            builder.setMessage(getString(R.string.choosePicture))
-                    .setNegativeButton(getString(R.string.yes), null)
-                    .create()
-                    .show();
-            valid = false;
+//        if (encodimg == "0") {
+//            AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+//            builder.setMessage(getString(R.string.choosePicture))
+//                    .setNegativeButton(getString(R.string.yes), null)
+//                    .create()
+//                    .show();
+//            valid = false;
+//        }
+        if (name.equals("") || phone.equals("") || email.equals("") || nickname.equals("") || password.equals("") || state_id.equals("") || street_name.equals("") || flower_number.equals("") || building_number.equals("")) {
+            return false;
         }
         return valid;
     }
@@ -218,24 +243,24 @@ public class RegisterActivity extends AppCompatActivity {
             String email = strings[2];
             String nickname = strings[3];
             String password = strings[4];
-            String img = strings[5];
-            String streetName = "hi";
-            String buildingNumber = "q0";
-            String flowerNumber = "10";
-            String state_id = "1";
+            //         String img = strings[5];
+            String streetName = strings[5];
+            String buildingNumber = strings[6];
+            String flowerNumber = strings[7];
+            String state_id = strings[8];
             // if  you have  to send  data  to the databse
             ArrayList<NameValuePair> pairs = new ArrayList<NameValuePair>();
             pairs.add(new BasicNameValuePair("lang", String.valueOf(MainActivity.lang)));
-            pairs.add(new BasicNameValuePair("name", "mostafa"));
-            pairs.add(new BasicNameValuePair("phone", "0101255552"));
-            pairs.add(new BasicNameValuePair("state_id", "10"));
-            pairs.add(new BasicNameValuePair("email", "mostafas.zaghlol@gmail.com"));
-            pairs.add(new BasicNameValuePair("nickname", "sasa"));
-            pairs.add(new BasicNameValuePair("street_name", "buildingNumber"));
-            pairs.add(new BasicNameValuePair("building_number", "10"));
-            pairs.add(new BasicNameValuePair("flower_number", "22"));
-            pairs.add(new BasicNameValuePair("password", "100000000"));
-            pairs.add(new BasicNameValuePair("img", img));
+            pairs.add(new BasicNameValuePair("name", name));
+            pairs.add(new BasicNameValuePair("phone", phone));
+            pairs.add(new BasicNameValuePair("state_id", state_id));
+            pairs.add(new BasicNameValuePair("email", email));
+            pairs.add(new BasicNameValuePair("nickname", nickname));
+            pairs.add(new BasicNameValuePair("street_name", streetName));
+            pairs.add(new BasicNameValuePair("building_number", buildingNumber));
+            pairs.add(new BasicNameValuePair("flower_number", flowerNumber));
+            pairs.add(new BasicNameValuePair("password", password));
+            //  pairs.add(new BasicNameValuePair("img", img));
 
 
             com.mostafa.android.bsor3a.LoginAndRegister.JsonReader j = new com.mostafa.android.bsor3a.LoginAndRegister.JsonReader(urluser, pairs);
@@ -247,7 +272,21 @@ public class RegisterActivity extends AppCompatActivity {
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonobject = jsonArray.getJSONObject(i);
                     message = jsonobject.getString("message");
+                    messageId = jsonobject.getInt("messageID");
                 }
+                if (messageId == 1) {
+                    JSONArray array = jsonObject.getJSONArray("data");
+                    JSONObject ob = array.getJSONObject(0);
+                    codeFromServer = ob.getString("code");
+                    Log.e("codeFromServer", codeFromServer);
+                    Toast.makeText(RegisterActivity.this, "" + codeFromServer, Toast.LENGTH_LONG).show();
+                    emailFromServer = ob.getString("email");
+                    nicknameFromServer = ob.getString("nickname");
+                    editor.putString("nickname", nicknameFromServer);
+                    editor.putString("customer_email", emailFromServer);
+                    editor.apply();
+                }
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -266,12 +305,18 @@ public class RegisterActivity extends AppCompatActivity {
                     .setNegativeButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            end();
+                            openConfirmationActivity();
                         }
                     })
                     .create()
                     .show();
 
+        }
+
+        private void openConfirmationActivity() {
+            Intent intent = new Intent(RegisterActivity.this, ConfirmationActivity.class);
+            intent.putExtra("code", codeFromServer);
+            startActivity(intent);
         }
     }
 

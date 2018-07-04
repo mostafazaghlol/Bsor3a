@@ -3,6 +3,7 @@ package com.mostafa.android.bsor3a.LoginAndRegister;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.Toast;
@@ -32,6 +34,8 @@ import org.json.JSONObject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.mostafa.android.bsor3a.MainActivity.MY_PREFS_NAME;
+
 public class LoginActivity extends AppCompatActivity {
     @BindView(R.id.Login)
     Button loginButton;
@@ -39,7 +43,11 @@ public class LoginActivity extends AppCompatActivity {
     EditText Eduser;
     @BindView(R.id.Edpassword)
     EditText Edpassword;
+    @BindView(R.id.RemeberMe)
+    CheckBox ChRemeberMe;
     String user, pass, lang;
+    SharedPreferences prefs;
+    SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +56,12 @@ public class LoginActivity extends AppCompatActivity {
             ButterKnife.bind(this);
             lang = String.valueOf(MainActivity.lang);
             setBar.setStatusBarColored(this);
+            prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+            editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+            if (prefs.getString("phone", null) != null && prefs.getString("customer_id", null) != null) {
+                openNavigationOffTheApp();
+                finish();
+            }
             loginButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -91,6 +105,25 @@ public class LoginActivity extends AppCompatActivity {
                                     .show();
                         } else if (messsageid == 1) {
                             Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
+                            JSONArray data = jsonResponse.getJSONArray("data");
+                            for (int k = 0; k < data.length(); k++) {
+                                JSONObject object = data.optJSONObject(k);
+                                String customer_id = object.getString("customer_id");
+                                String customer_phone = object.getString("customer_phone");
+                                String customer_email = object.getString("customer_email");
+                                String customer_img = object.getString("customer_img");
+                                String nickname = object.getString("nick name");
+                                if (ChRemeberMe.isChecked()) {
+                                    editor.putString("nickname", nickname);
+                                    editor.putString("customer_email", customer_email);
+                                    editor.putString("customer_phone", customer_phone);
+                                    editor.putString("customer_id", customer_id);
+                                    editor.putString("customer_img", customer_img);
+                                    editor.apply();
+                                }
+
+                            }
+                            openNavigationOffTheApp();
                             finish();
                         }
                     }

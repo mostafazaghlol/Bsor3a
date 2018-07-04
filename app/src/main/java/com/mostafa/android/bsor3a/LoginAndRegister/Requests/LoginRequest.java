@@ -9,24 +9,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by mostafa on 7/2/18.
+ * Created by mostafa salah zaghloul
+ *you can reach me on 01148295140 on 7/2/18.
  */
-/*
-1-Login Client
-https://bsor3a.com/clients/login
-post('username');
-post('password');
-post('lang');
-return
-{
-Message
-customer_id
-customer_phone
-customer_email
-customer_img
-nick name
-}
- */
+
 public class LoginRequest extends StringRequest {
     private static final String url = "https://bsor3a.com/clients/login";
     private Map<String, String> posts;

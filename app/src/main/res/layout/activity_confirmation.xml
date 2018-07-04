@@ -38,13 +38,14 @@
 
             <EditText
                 style="@style/editText"
+                android:id="@+id/EditTextConfirmation"
                 android:layout_marginTop="20dp"
                 android:hint="-- -- -- -- -- -- --"
                 android:textColorHint="@color/Orange"
                 android:textAppearance="?android:textAppearanceLarge"
                 android:textSize="40sp"
                 android:gravity="center"
-                android:inputType="number" />
+                android:inputType="text" />
 
             <Button
                 android:id="@+id/ConfirmRegisterNumber"

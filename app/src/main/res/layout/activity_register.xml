@@ -68,6 +68,38 @@
              android:id="@+id/password"
              android:inputType="textPassword"
              android:drawableLeft="@drawable/pass" />
+
+         <EditText
+             android:id="@+id/EditReStateid"
+             style="@style/editText"
+             android:drawableLeft="@drawable/select"
+             android:drawablePadding="20dp"
+             android:hint="@string/Stateid"
+             android:inputType="number" />
+
+         <EditText
+             android:id="@+id/EditReStreetName"
+             style="@style/editText"
+             android:drawableLeft="@drawable/select"
+             android:drawablePadding="20dp"
+             android:hint="@string/streetName"
+             android:inputType="text" />
+
+         <EditText
+             android:id="@+id/EditRebuilding_number"
+             style="@style/editText"
+             android:drawableLeft="@drawable/select"
+             android:drawablePadding="20dp"
+             android:hint="@string/building_number"
+             android:inputType="number" />
+
+         <EditText
+             android:id="@+id/EditReFlower_number"
+             style="@style/editText"
+             android:drawableLeft="@drawable/select"
+             android:drawablePadding="20dp"
+             android:hint="@string/flower_number"
+             android:inputType="number" />
          <View
              android:layout_width="wrap_content"
              android:layout_height="1dp"

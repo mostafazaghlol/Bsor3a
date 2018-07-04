@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/splash"
+    android:orientation="vertical"
     tools:context="com.mostafa.android.bsor3a.LoginAndRegister.ModifyTheDataActivity">
 
     <RelativeLayout
@@ -33,98 +32,83 @@
             android:orientation="vertical">
 
             <EditText
+                android:id="@+id/EditFullName"
                 style="@style/editText"
+                android:drawableLeft="@drawable/person"
                 android:drawablePadding="20dp"
-                android:hint="@string/FullName"
-                android:drawableLeft="@drawable/person" />
+                android:hint="@string/FullName" />
 
             <EditText
+                android:id="@+id/EditNumber"
                 style="@style/editText"
+                android:drawableLeft="@drawable/mob"
                 android:drawablePadding="20dp"
                 android:hint="@string/Phone"
                 android:inputType="number"
-                android:maxLength="11"
-                android:drawableLeft="@drawable/mob" />
+                android:maxLength="11" />
 
             <EditText
+                android:id="@+id/EditEmail"
                 style="@style/editText"
+                android:drawableLeft="@drawable/mail"
                 android:drawablePadding="20dp"
-                android:hint="@string/Email"
-                android:drawableLeft="@drawable/mail" />
+                android:hint="@string/Email" />
 
             <EditText
+                android:id="@+id/EditShortName"
                 style="@style/editText"
+                android:drawableLeft="@drawable/nname"
                 android:drawablePadding="20dp"
-                android:hint="@string/ShortName"
-                android:drawableLeft="@drawable/nname" />
+                android:hint="@string/ShortName" />
 
             <EditText
+                android:id="@+id/EditPassword"
                 style="@style/editText"
+                android:drawableLeft="@drawable/pass"
                 android:drawablePadding="20dp"
                 android:hint="@string/Password"
-                android:inputType="textPassword"
-                android:drawableLeft="@drawable/pass" />
+                android:inputType="textPassword" />
 
-            <View
-                android:layout_width="wrap_content"
-                android:layout_height="1dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:background="@color/black" />
+            <EditText
+                android:id="@+id/EditStateid"
+                style="@style/editText"
+                android:drawableLeft="@drawable/select"
+                android:drawablePadding="20dp"
+                android:hint="@string/Stateid"
+                android:inputType="number" />
 
+            <EditText
+                android:id="@+id/EditStreetName"
+                style="@style/editText"
+                android:drawableLeft="@drawable/select"
+                android:drawablePadding="20dp"
+                android:hint="@string/streetName"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/Editbuilding_number"
+                style="@style/editText"
+                android:drawableLeft="@drawable/select"
+                android:drawablePadding="20dp"
+                android:hint="@string/building_number"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/Editflower_number"
+                style="@style/editText"
+                android:drawableLeft="@drawable/select"
+                android:drawablePadding="20dp"
+                android:hint="@string/flower_number"
+                android:inputType="number" />
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_marginLeft="60dp"
-                android:layout_marginRight="60dp"
+                android:layout_marginTop="11dp"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:text="@string/thecurrentpassword" />
-
-
-            </LinearLayout>
-
-            <EditText
-                style="@style/editText"
-                android:drawablePadding="20dp"
-                android:hint="@string/Password"
-                android:inputType="textPassword"
-                android:drawableLeft="@drawable/pass" />
-
-
-
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_gravity="center"
-                android:layout_marginTop="11dp">
-
                 <Button
-                    android:id="@+id/Confirm"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:background="@drawable/gridentcolor"
-                    android:text="@string/Cancel"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:textAppearance="?android:textAppearanceLarge"
-                    android:textColor="@color/white"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/Cancel"
+                    android:id="@+id/modifyConfirm"
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -132,6 +116,19 @@
                     android:layout_marginRight="10dp"
                     android:background="@drawable/gridentcolor"
                     android:text="@string/Confirm"
+                    android:textAppearance="?android:textAppearanceLarge"
+                    android:textColor="@color/white"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/modifyCancel"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/gridentcolor"
+                    android:text="@string/Cancel"
                     android:textAppearance="?android:textAppearanceLarge"
                     android:textColor="@color/white"
                     android:textStyle="bold" />

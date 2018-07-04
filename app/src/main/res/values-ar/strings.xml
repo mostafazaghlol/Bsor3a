@@ -66,5 +66,16 @@
     <string name="yes">نعم</string>
     <string name="pleasewait">"من فضلك انتظر "</string>
     <string name="okay">نعم</string>
+    <string name="choosePicture">اختر الصوره</string>
+    <string name="choosePic">التقط الصوره</string>
+    <string name="picfromstudio">الصوره من الاستديو</string>
+    <string name="cancel">الغاء</string>
+    <string name="RemeberMe">تذكرنى</string>
+    <string name="streetName">اسم الشارع</string>
+    <string name="building_number">رقم المبني</string>
+    <string name="flower_number">رقم الدور</string>
+    <string name="enterstreetname">ادخل اسم الشارع</string>
+    <string name="enterbuildingnumber">ادخل رقم المبنى</string>
+    <string name="enterFlowerNumber">ادخل رقم الدور</string>
 
 </resources>

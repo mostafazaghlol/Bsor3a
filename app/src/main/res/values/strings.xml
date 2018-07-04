@@ -69,10 +69,10 @@
     <string name="From">From</string>
     <string name="To">To</string>
     <string name="Space" translatable="false" />
-    <string name="choosePicture" translatable="false">Choose Picture</string>
-    <string name="choosePic" translatable="false">take a picture</string>
-    <string name="picfromstudio" translatable="false">Photo from the studio</string>
-    <string name="cancel" translatable="false">Cancel</string>
+    <string name="choosePicture">Choose Picture</string>
+    <string name="choosePic">take a picture</string>
+    <string name="picfromstudio">Photo from the studio</string>
+    <string name="cancel">Cancel</string>
     <string name="enterName">Enter Full Name  Here !</string>
     <string name="enterPhone">Enter Phone Here !</string>
     <string name="enterPassword">Enter Password Here !</string>
@@ -82,5 +82,22 @@
     <string name="UploadData" translatable="false">Upload Data</string>
     <string name="pleasewait">Please wait</string>
     <string name="okay">Okay</string>
+    <string name="RemeberMe">Remember me</string>
+    <string name="Stateid" translatable="false">state id</string>
+    <string name="streetName">street name</string>
+    <string name="building_number">building number</string>
+    <string name="flower_number">flower number</string>
+    <string name="enterstateid" translatable="false">Enter State id !</string>
+    <string name="enterstreetname">Enter Street Name !</string>
+    <string name="enterbuildingnumber">Enter building number !</string>
+    <string name="enterFlowerNumber">Enter Flower Number !</string>
+    <string name="enterconfirmation">Enter The Confirmation code !</string>
+    <string name="errorcode">The Code is incorrect !</string>
+    <string name="enterShipping">Enter Shipping Name !</string>
+    <string name="enterGovernorate">enter The Governorate !</string>
+    <string name="enterDiscrete">enter the Discrete !</string>
+    <string name="enterHouseNumber">enter the house number !</string>
+    <string name="enterStorey">enter the story !</string>
+    <string name="enterApartmentNumber">enter the ApartmentNumber !</string>
 
 </resources>
