@@ -1,4 +1,4 @@
-package com.mostafa.android.bsor3a.LoginAndRegister;
+package com.mostafa.android.bsor3a;
 
 import android.util.Log;
 
@@ -15,18 +15,18 @@ import java.util.List;
 import java.util.Scanner;
 
 
-public class JsonReader {
+public class JsonReader2 {
 
     private String url;
 
     private List<NameValuePair> pairs;
 
-    public JsonReader(String url, List<NameValuePair> pairs) {
+    public JsonReader2(String url, List<NameValuePair> pairs) {
         this.url = url;
         this.pairs = pairs;
     }
 
-    public JsonReader(String url) {
+    public JsonReader2(String url) {
         this.url = url;
     }
 
@@ -44,7 +44,7 @@ public class JsonReader {
             connection.setConnectTimeout(15000);
             connection.setRequestMethod("POST");
             connection.setDoInput(true);
-            connection.setDoOutput(true);
+            connection.setDoOutput(false);
 
             // set value
             OutputStream outputStream = connection.getOutputStream();
@@ -56,9 +56,18 @@ public class JsonReader {
 
             // then connect
             connection.connect();
+            Log.e("url", writer.toString());
             Log.e("JsonReader", String.valueOf(connection.getResponseCode()));
             // get response from connection
-            InputStream is = connection.getInputStream();
+            InputStream is;
+
+            int status = connection.getResponseCode();
+
+            if (status != HttpURLConnection.HTTP_OK)
+                is = connection.getErrorStream();
+            else
+                is = connection.getInputStream();
+
 
             // convert input stream to string response
             Scanner s = new Scanner(is).useDelimiter("\\A");

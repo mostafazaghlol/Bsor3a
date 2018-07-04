@@ -58,7 +58,8 @@ public class LoginActivity extends AppCompatActivity {
             setBar.setStatusBarColored(this);
             prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
             editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
-            if (prefs.getString("phone", null) != null && prefs.getString("customer_id", null) != null) {
+            if (prefs.getString("phone", null) != null || prefs.getString("customer_id", null) != null || prefs.getString("customer_email", null) != null ||
+                    prefs.getString("customer_phone", null) != null || prefs.getString("customer_img", null) != null || prefs.getString("nickname", null) != null) {
                 openNavigationOffTheApp();
                 finish();
             }
