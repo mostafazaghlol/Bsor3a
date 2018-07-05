@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -38,11 +39,16 @@ public class PerviousShipmentsActivity extends AppCompatActivity {
     RecyclerView mHistoryRecyclerView;
     @BindView(R.id.Progress)
     ProgressBar progressBar;
+    @BindView(R.id.TextEmpty)
+    TextView TxEmpty;
     private RecyclerView.Adapter mHistoryAdapter;
     private RecyclerView.LayoutManager mHistoryLayoutManager;
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
     String clientID;
+    int messageId;
+    String message;
+    JSONArray data;
     static List<Shipping> dataList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,11 +78,19 @@ public class PerviousShipmentsActivity extends AppCompatActivity {
             public void onResponse(String response) {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
-                    JSONArray data = jsonObject.getJSONArray("data");
-                    int size = data.length();
-                    JSONObject check = data.getJSONObject(size - 1);
-                    String message = check.getString("message");
-                    int messageId = check.getInt("messageID");
+                    if (jsonObject.has("data")) {
+                        JSONArray data = jsonObject.getJSONArray("data");
+                        int size = data.length();
+                        JSONObject check = data.getJSONObject(size - 1);
+                        message = check.getString("message");
+                        messageId = check.getInt("messageID");
+                    } else if (jsonObject.has("message")) {
+                        JSONArray data = jsonObject.getJSONArray("message");
+                        int size = data.length();
+                        JSONObject check = data.getJSONObject(size - 1);
+                        message = check.getString("message");
+                        messageId = check.getInt("messageID");
+                    }
                     if (messageId == 1) {
                         Toast.makeText(PerviousShipmentsActivity.this, "" + message, Toast.LENGTH_SHORT).show();
                         progressBar.setVisibility(View.INVISIBLE);
@@ -112,6 +126,7 @@ public class PerviousShipmentsActivity extends AppCompatActivity {
                         mHistoryAdapter.notifyDataSetChanged();
 
                     } else if (messageId == 0) {
+                        progressBar.setVisibility(View.INVISIBLE);
                         AlertDialog.Builder builder = new AlertDialog.Builder(PerviousShipmentsActivity.this);
                         builder.setMessage(message)
                                 .setNegativeButton("" + getString(R.string.Okay), new DialogInterface.OnClickListener() {

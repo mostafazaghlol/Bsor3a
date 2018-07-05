@@ -72,7 +72,7 @@ public class RegisterActivity extends AppCompatActivity {
     String encodimg = "0";
     Uri imageUri;
     ProgressDialog progDailog;
-    String name, phone, message = "Noting", state_id, email, nickname, street_name, building_number, flower_number, password, urluser = "https://bsor3a.com/clients/register", result;
+    String name, phone, message = "Noting", messageError, state_id, email, nickname, street_name, building_number, flower_number, password, urluser = "https://bsor3a.com/clients/register", result;
     int messageId;
     String codeFromServer, emailFromServer, nicknameFromServer;
     SharedPreferences prefs;
@@ -99,7 +99,11 @@ public class RegisterActivity extends AppCompatActivity {
         ButtonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sendData();
+                if (CBAccecpt.isChecked()) {
+                    sendData();
+                } else {
+                    Toast.makeText(RegisterActivity.this, "" + getString(R.string.PlAcceptTerms), Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -116,7 +120,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void onRegisterSuccess() {
         processing();
-        new GetDateUser().execute(name, phone, email, nickname, password, street_name, building_number, flower_number, state_id);
+        new GetDateUser().execute(name, phone, email, nickname, password, street_name, building_number, flower_number, state_id, encodimg);
 
     }
 
@@ -170,14 +174,6 @@ public class RegisterActivity extends AppCompatActivity {
 
     public boolean validate() {
         boolean valid = true;
-//        if (encodimg == "0") {
-//            AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-//            builder.setMessage(getString(R.string.choosePicture))
-//                    .setNegativeButton(getString(R.string.yes), null)
-//                    .create()
-//                    .show();
-//            valid = false;
-//        }
         if (name.equals("") || phone.equals("") || email.equals("") || nickname.equals("") || password.equals("") || state_id.equals("") || street_name.equals("") || flower_number.equals("") || building_number.equals("")) {
             return false;
         }
@@ -243,7 +239,7 @@ public class RegisterActivity extends AppCompatActivity {
             String email = strings[2];
             String nickname = strings[3];
             String password = strings[4];
-            //         String img = strings[5];
+            String img = strings[9];
             String streetName = strings[5];
             String buildingNumber = strings[6];
             String flowerNumber = strings[7];
@@ -260,17 +256,20 @@ public class RegisterActivity extends AppCompatActivity {
             pairs.add(new BasicNameValuePair("building_number", buildingNumber));
             pairs.add(new BasicNameValuePair("flower_number", flowerNumber));
             pairs.add(new BasicNameValuePair("password", password));
-            //  pairs.add(new BasicNameValuePair("img", img));
+            pairs.add(new BasicNameValuePair("img", img));
 
 
             com.mostafa.android.bsor3a.LoginAndRegister.JsonReader j = new com.mostafa.android.bsor3a.LoginAndRegister.JsonReader(urluser, pairs);
             result = j.sendRequest();
-
+            JSONObject jsonobject;
             try {
                 JSONObject jsonObject = new JSONObject(result);
                 JSONArray jsonArray = jsonObject.getJSONArray("message");
                 for (int i = 0; i < jsonArray.length(); i++) {
-                    JSONObject jsonobject = jsonArray.getJSONObject(i);
+                    jsonobject = jsonArray.getJSONObject(0);
+                    messageError = jsonobject.getString("message");
+                    messageId = jsonobject.getInt("messageID");
+                    jsonobject = jsonArray.getJSONObject(i);
                     message = jsonobject.getString("message");
                     messageId = jsonobject.getInt("messageID");
                 }
@@ -279,7 +278,8 @@ public class RegisterActivity extends AppCompatActivity {
                     JSONObject ob = array.getJSONObject(0);
                     codeFromServer = ob.getString("code");
                     Log.e("codeFromServer", codeFromServer);
-                    Toast.makeText(RegisterActivity.this, "" + codeFromServer, Toast.LENGTH_LONG).show();
+
+//                    Toast.makeText(RegisterActivity.this, "" + codeFromServer, Toast.LENGTH_LONG).show();
                     emailFromServer = ob.getString("email");
                     nicknameFromServer = ob.getString("nickname");
                     editor.putString("nickname", nicknameFromServer);
@@ -298,14 +298,22 @@ public class RegisterActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Boolean aBoolean) {
             super.onPostExecute(aBoolean);
-
             progDailog.cancel();
             AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
             builder.setMessage(message)
                     .setNegativeButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            openConfirmationActivity();
+                            if (messageId == 1) {
+                                openConfirmationActivity();
+                            } else {
+                                android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(RegisterActivity.this);
+                                builder.setMessage("" + messageError).setCancelable(false).setPositiveButton("again", null);
+                                android.app.AlertDialog alert = builder.create();
+                                alert.setTitle(message);
+                                alert.show();
+                            }
+
                         }
                     })
                     .create()
@@ -317,6 +325,7 @@ public class RegisterActivity extends AppCompatActivity {
             Intent intent = new Intent(RegisterActivity.this, ConfirmationActivity.class);
             intent.putExtra("code", codeFromServer);
             startActivity(intent);
+            finish();
         }
     }
 

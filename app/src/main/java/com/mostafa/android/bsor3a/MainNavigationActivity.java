@@ -3,6 +3,7 @@ package com.mostafa.android.bsor3a;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -15,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
+import com.mostafa.android.bsor3a.LoginAndRegister.LoginActivity;
 import com.mostafa.android.bsor3a.LoginAndRegister.ModifyTheDataActivity;
 import com.mostafa.android.bsor3a.Shipping.ShippingDetails;
 import com.mostafa.android.bsor3a.Techincal.TechincalActivity;
@@ -22,16 +24,23 @@ import com.mostafa.android.bsor3a.Techincal.TechincalActivity;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static com.mostafa.android.bsor3a.MainActivity.MY_PREFS_NAME;
+
 public class MainNavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     @BindView(R.id.RequestClient)
     Button ButtonRequestClient;
     NavigationView navigationView;
     DrawerLayout drawer;
+    SharedPreferences prefs;
+    SharedPreferences.Editor editor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         try {
+            prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+            editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+
             setContentView(R.layout.activity_main_navigation);
             //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
             ButterKnife.bind(this);
@@ -107,12 +116,21 @@ public class MainNavigationActivity extends AppCompatActivity
         } else if (id == R.id.Previous_shipments) {
             startActivity(new Intent(MainNavigationActivity.this, PerviousShipmentsActivity.class));
         } else if (id == R.id.sign_out) {
+
             AlertDialog.Builder builder = new AlertDialog.Builder(MainNavigationActivity.this);
             builder.setTitle(getResources().getString(R.string.goout));
             builder.setMessage(getResources().getString(R.string.dogoout));
             builder.setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
+                    editor.clear();
+                    editor.remove("nickname");
+                    editor.remove("customer_email");
+                    editor.remove("customer_phone");
+                    editor.remove("customer_id");
+                    editor.remove("customer_img");
+                    editor.commit();
+                    startActivity(new Intent(MainNavigationActivity.this, LoginActivity.class));
                     finish();
                 }
             });

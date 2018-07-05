@@ -24,6 +24,7 @@ import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.android.gms.maps.model.LatLng;
 import com.mostafa.android.bsor3a.Connection.AddDieRequest;
+import com.mostafa.android.bsor3a.LoginAndRegister.RegisterActivity;
 import com.mostafa.android.bsor3a.MainActivity;
 import com.mostafa.android.bsor3a.R;
 import com.mostafa.android.bsor3a.setBar;
@@ -188,7 +189,7 @@ public class CompleteShippingActivity extends AppCompatActivity {
         Log.e("SendData", street_number_reciver);
         Log.e("SendData", flower_number_reciver);
         Log.e("SendData", building_number_reciver);
-//        processing();
+        processing();
 //        new GetDataRequest().execute(name, id_client, map_address_client, clientlat, clientlag, map_address_reciver, reciver_lat, reciver_lag, delivery_time,
 //         space, name_receiver, phone_receiver, address_reciver, street_number_reciver, flower_number_reciver, building_number_reciver);
 ////
@@ -200,6 +201,7 @@ public class CompleteShippingActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 try {
+                    progDailog.cancel();
                     JSONObject jsonResponse = new JSONObject(response);
                     JSONArray jsonArray = jsonResponse.getJSONArray("message");
                     for (int i = 0; i < jsonArray.length(); i++) {
@@ -218,6 +220,7 @@ public class CompleteShippingActivity extends AppCompatActivity {
 
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    Toast.makeText(CompleteShippingActivity.this, "Error with the server", Toast.LENGTH_LONG).show();
                 }
             }
         };
@@ -228,6 +231,7 @@ public class CompleteShippingActivity extends AppCompatActivity {
         RequestQueue queue = Volley.newRequestQueue(CompleteShippingActivity.this);
         queue.add(registerRequest);
     }
+
 
     ProgressDialog progDailog;
 

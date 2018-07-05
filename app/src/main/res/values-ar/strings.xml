@@ -24,6 +24,7 @@
     <string name="detect_location">حدد الموقع</string>
     <string name="Confirm">تأكيد</string>
     <string name="AcceptTerms">أوافق على الشروط</string>
+    <string name="PlAcceptTerms">يجيب الموافقه على الشروط</string>
     <string name="title_activity_maps">الخريـطه</string>
     <string name="ShippingDetalis">تفاصيل الشحنه</string>
     <string name="ShippingName">اسم الشحنه</string>

@@ -53,6 +53,7 @@
              style="@style/editText"
              android:drawablePadding="20dp"
              android:hint="@string/Email"
+             android:textSize="20sp"
              android:id="@+id/email"
              android:drawableLeft="@drawable/mail" />
          <EditText

@@ -87,18 +87,6 @@ public class ModifyTheDataActivity extends AppCompatActivity {
                     JSONObject ob = new JSONObject(response);
                     JSONArray array = ob.getJSONArray("data");
                     JSONObject data = array.optJSONObject(0);
-                    /*
-                    "name": "ashraf",
-            "email": "ashraf.mohammed82@gmail.com",
-            "phone": "01223846167",
-            "state_id": "1",
-            "nickname": "eee",
-            "street_name": "ee",
-            "building_number": "hhhhhhhhh",
-            "flower_number": "e33",
-            "img": "https://bsor3a.com/site/ar/images/clients/defaultmain.png",
-            "id_client": "25"
-                     */
                     String name = data.getString("name");
                     String email = data.getString("email");
                     String state_id = data.getString("state_id");
@@ -130,7 +118,8 @@ public class ModifyTheDataActivity extends AppCompatActivity {
 
     private void sendData() {
         initalize();
-        if (FullName.isEmpty() && Number.isEmpty() && Email.isEmpty() && ShortName.isEmpty() && Password.isEmpty() && State_id.isEmpty() && StreetName.isEmpty() && BuildingNumber.isEmpty() && FlowerNumber.isEmpty()) {
+        if (FullName.isEmpty() || Number.isEmpty() || Email.isEmpty() || ShortName.isEmpty() || Password.isEmpty() ||
+                State_id.isEmpty() || StreetName.isEmpty() || BuildingNumber.isEmpty() || FlowerNumber.isEmpty()) {
 
         } else {
             prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
@@ -152,17 +141,15 @@ public class ModifyTheDataActivity extends AppCompatActivity {
                         JSONObject respons = jsonArray.getJSONObject(i);
                         String message = respons.getString("message");
                         int messageID = respons.getInt("messageID");
-                        if (messageID == 0) {
+                        if (messageID == 1) {
                             AlertDialog.Builder builder = new AlertDialog.Builder(ModifyTheDataActivity.this);
                             builder.setMessage(message)
                                     .setNegativeButton(getString(R.string.okay), null)
                                     .create()
                                     .show();
-                        } else if (messageID == 1) {
                             JSONArray data = jsonObject.getJSONArray("data");
                             for (int k = 0; k < data.length(); k++) {
                                 JSONObject object1 = data.getJSONObject(k);
-                                Toast.makeText(ModifyTheDataActivity.this, "hi", Toast.LENGTH_SHORT).show();
                                 String fullName = object1.getString("name");
                                 String number = object1.getString("phone");
                                 String email = object1.getString("email");

@@ -16,7 +16,7 @@
 
         <TextView
             android:id="@+id/TitleLogin"
-            style="@style/pageTitleText"
+            style="@style/pageNaviTitleText"
             android:text="@string/Home" />
     </RelativeLayout>
 

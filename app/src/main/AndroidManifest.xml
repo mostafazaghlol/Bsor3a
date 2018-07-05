@@ -44,7 +44,8 @@
         </activity>
         <activity
             android:name=".LoginAndRegister.ModifyTheDataActivity"
-            android:parentActivityName=".MainNavigationActivity" />
+            android:parentActivityName=".MainNavigationActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".Techincal.TechincalActivity"
             android:parentActivityName=".MainNavigationActivity" />
@@ -53,14 +54,19 @@
             android:parentActivityName=".MainNavigationActivity" />
         <activity
             android:name=".LoginAndRegister.ConfirmationActivity"
-            android:parentActivityName=".MainNavigationActivity" />
+            android:parentActivityName=".MainNavigationActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".LoginAndRegister.ReSetPasswordActivity"
-            android:parentActivityName=".LoginAndRegister.LoginActivity" />
-        <activity android:name=".ShippingCostActivity" />
+            android:parentActivityName=".LoginAndRegister.LoginActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ShippingCostActivity"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".PerviousShipmentsDetailsActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" />
         <activity android:name=".SplachActivity">
 
             <intent-filter>
@@ -70,7 +76,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Shipping.CompleteShippingActivity">
+        <activity
+            android:name=".Shipping.CompleteShippingActivity"
+            android:windowSoftInputMode="adjustPan">
 
         </activity>
     </application>

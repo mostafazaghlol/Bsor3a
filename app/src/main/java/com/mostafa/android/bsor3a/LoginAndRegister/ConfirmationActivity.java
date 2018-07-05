@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -34,6 +35,8 @@ public class ConfirmationActivity extends AppCompatActivity {
     EditText EdConfirmation;
     @BindView(R.id.ConfirmRegisterNumber)
     Button BtConfirmation;
+    @BindView(R.id.code)
+    TextView TxCode;
     String Confirmation, message;
     int messageId;
     SharedPreferences.Editor editor;
@@ -46,6 +49,7 @@ public class ConfirmationActivity extends AppCompatActivity {
         setBar.setStatusBarColored(this);
         ButterKnife.bind(this);
         RecentCode = getIntent().getStringExtra("code");
+        TxCode.setText("Code is " + RecentCode);
         prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
         BtConfirmation.setOnClickListener(new View.OnClickListener() {
@@ -97,6 +101,7 @@ public class ConfirmationActivity extends AppCompatActivity {
     private void openMainNavigationActivity() {
         startActivity(new Intent(ConfirmationActivity.this, MainNavigationActivity.class));
         Toast.makeText(this, "" + message, Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     public String getTextFromEditText(EditText editText, int id) {
