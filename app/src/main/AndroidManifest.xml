@@ -46,7 +46,7 @@
             android:name=".LoginAndRegister.ModifyTheDataActivity"
             android:parentActivityName=".MainNavigationActivity" />
         <activity
-            android:name=".TechincalActivity"
+            android:name=".Techincal.TechincalActivity"
             android:parentActivityName=".MainNavigationActivity" />
         <activity
             android:name=".PerviousShipmentsActivity"

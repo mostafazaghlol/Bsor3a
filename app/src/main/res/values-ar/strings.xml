@@ -77,5 +77,19 @@
     <string name="enterstreetname">ادخل اسم الشارع</string>
     <string name="enterbuildingnumber">ادخل رقم المبنى</string>
     <string name="enterFlowerNumber">ادخل رقم الدور</string>
+    <string name="enterconfirmation">أدخل رمز التأكيد!</string>
+    <string name="errorcode">الرمز غير صحيح !</string>
+    <string name="enterShipping">ادخل اسم الشحنه !</string>
+    <string name="enterGovernorate">ادخل اسم المحافظه !</string>
+    <string name="enterDiscrete">ادخل اسم الحى !</string>
+    <string name="enterHouseNumber">ادخل رقم المنزل !</string>
+    <string name="enterStorey">ادخل رقم الطابق !</string>
+    <string name="enterApartmentNumber">ادخل رقم الشقه !</string>
+    <string name="goout">"خروج "</string>
+    <string name="dogoout">هل تريد الخروج ؟</string>
+    <string name="no">لا</string>
+    <string name="Okay">نعم</string>
+    <string name="Empty_Field">لم يتم تحديده</string>
+    <string name="Home">"الرئيسيه "</string>
 
 </resources>

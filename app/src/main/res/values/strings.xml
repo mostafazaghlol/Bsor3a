@@ -55,7 +55,7 @@
     <string name="more2">more</string>
     <string name="more1">more</string>
     <string name="fackdata">FackData</string>
-    <string name="Home" translatable="false">Home</string>
+    <string name="Home">Home</string>
     <string name="RestPassword">Rest Password</string>
     <string name="Continue">Continue</string>
     <string name="EmailOrMobile">Email OR Mobile</string>
@@ -99,5 +99,10 @@
     <string name="enterHouseNumber">enter the house number !</string>
     <string name="enterStorey">enter the story !</string>
     <string name="enterApartmentNumber">enter the ApartmentNumber !</string>
+    <string name="goout">Quit</string>
+    <string name="dogoout">Do you want to go out !</string>
+    <string name="no">No</string>
+    <string name="Okay">okay</string>
+    <string name="Empty_Field">Empty Field</string>
 
 </resources>

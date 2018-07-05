@@ -44,7 +44,7 @@ public class JsonReader2 {
             connection.setConnectTimeout(15000);
             connection.setRequestMethod("POST");
             connection.setDoInput(true);
-            connection.setDoOutput(false);
+            connection.setDoOutput(true);
 
             // set value
             OutputStream outputStream = connection.getOutputStream();

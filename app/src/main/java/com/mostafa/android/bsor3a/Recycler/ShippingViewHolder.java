@@ -13,20 +13,24 @@ import com.mostafa.android.bsor3a.R;
  * Created by mostafa on 6/27/18.
  */
 
-public class ShippingViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class ShippingViewHolder extends RecyclerView.ViewHolder {
 
     public TextView ShippingName, ShippingFromTo;
 
     public ShippingViewHolder(View itemView) {
         super(itemView);
-        itemView.setOnClickListener(this);
         ShippingName = (TextView) itemView.findViewById(R.id.ShippingName);
         ShippingFromTo = (TextView) itemView.findViewById(R.id.ShippingFromTo);
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int postion = getAdapterPosition();
+                Intent openDetails = new Intent(view.getContext(), PerviousShipmentsDetailsActivity.class);
+                openDetails.putExtra("id", postion);
+                view.getContext().startActivity(openDetails);
+            }
+        });
     }
 
-    @Override
-    public void onClick(View view) {
-        Intent openDetails = new Intent(view.getContext(), PerviousShipmentsDetailsActivity.class);
-        view.getContext().startActivity(openDetails);
-    }
+
 }

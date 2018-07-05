@@ -6,31 +6,24 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.location.Location;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.android.gms.maps.model.LatLng;
-import com.mostafa.android.bsor3a.CustomRequest;
-import com.mostafa.android.bsor3a.JsonReader2;
-import com.mostafa.android.bsor3a.LoginAndRegister.ConfirmationActivity;
-import com.mostafa.android.bsor3a.LoginAndRegister.RegisterActivity;
+import com.mostafa.android.bsor3a.Connection.AddDieRequest;
 import com.mostafa.android.bsor3a.MainActivity;
 import com.mostafa.android.bsor3a.R;
 import com.mostafa.android.bsor3a.setBar;
@@ -42,8 +35,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -166,20 +157,76 @@ public class CompleteShippingActivity extends AppCompatActivity {
         startPoint.setLatitude(latLng.latitude);
         startPoint.setLongitude(latLng.longitude);
 
-        Location endPoint = new Location("locationA");
+        Location endPoint = new Location("locationB");
         endPoint.setLatitude(latLng1.latitude);
         endPoint.setLongitude(latLng1.longitude);
 
         double distance = startPoint.distanceTo(endPoint);
         double distanceInKm = distance / 1000;
+        if (distanceInKm < 1) {
+            return "1";
+        }
         return String.valueOf(distanceInKm);
     }
 
     String message, name, id_client, map_address_client, clientlat, clientlag, map_address_reciver, reciver_lat, reciver_lag, delivery_time, space, name_receiver, phone_receiver, address_reciver, street_number_reciver, flower_number_reciver, building_number_reciver;
 
     private void sendData() {
-        processing();
-        new GetDataRequest().execute(name, id_client, map_address_client, clientlat, clientlag, map_address_reciver, reciver_lat, reciver_lag, delivery_time, space, name_receiver, phone_receiver, address_reciver, street_number_reciver, flower_number_reciver, building_number_reciver);
+        Log.e("SendData", name);
+        Log.e("SendData", id_client);
+        Log.e("SendData", map_address_client);
+        Log.e("SendData", clientlat);
+        Log.e("SendData", clientlag);
+        Log.e("SendData", map_address_reciver);
+        Log.e("SendData", reciver_lat);
+        Log.e("SendData", reciver_lag);
+        Log.e("SendData", delivery_time);
+        Log.e("SendData", space);
+        Log.e("SendData", name_receiver);
+        Log.e("SendData", phone_receiver);
+        Log.e("SendData", address_reciver);
+        Log.e("SendData", street_number_reciver);
+        Log.e("SendData", flower_number_reciver);
+        Log.e("SendData", building_number_reciver);
+//        processing();
+//        new GetDataRequest().execute(name, id_client, map_address_client, clientlat, clientlag, map_address_reciver, reciver_lat, reciver_lag, delivery_time,
+//         space, name_receiver, phone_receiver, address_reciver, street_number_reciver, flower_number_reciver, building_number_reciver);
+////
+//    new GetDataRequest().execute(" "," "," "," "," "," ",
+//                " "," "," "," "," "," " ," "," "," "," ");
+//
+
+        Response.Listener<String> responseListener = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject jsonResponse = new JSONObject(response);
+                    JSONArray jsonArray = jsonResponse.getJSONArray("message");
+                    for (int i = 0; i < jsonArray.length(); i++) {
+                        JSONObject respons = jsonArray.getJSONObject(i);
+                        int messageID = respons.getInt("messageID");
+                        String message = respons.getString("message");
+                        String price = respons.getString("price");
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(CompleteShippingActivity.this);
+                        builder.setMessage(message + "\n" + "سعر الطلب: " + price)
+                                .setNegativeButton("موافق", null)
+                                .create()
+                                .show();
+                    }
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        AddDieRequest registerRequest = new AddDieRequest(String.valueOf(MainActivity.lang), name, id_client, map_address_client, clientlat, clientlag, map_address_reciver,
+                reciver_lat, reciver_lag, delivery_time, space, name_receiver, phone_receiver, address_reciver,
+                street_number_reciver, flower_number_reciver, building_number_reciver, responseListener);
+        RequestQueue queue = Volley.newRequestQueue(CompleteShippingActivity.this);
+        queue.add(registerRequest);
     }
 
     ProgressDialog progDailog;
@@ -209,6 +256,7 @@ public class CompleteShippingActivity extends AppCompatActivity {
         thread.start();
         progDailog.show();
     }
+
     private boolean validate() {
         if (ShippingName.isEmpty() || Governorate.isEmpty() || Discrete.isEmpty() || Street.isEmpty() || HouseNumber.isEmpty() || Storey.isEmpty() || ApartmentNumber.isEmpty()) {
             return false;
@@ -259,8 +307,42 @@ public class CompleteShippingActivity extends AppCompatActivity {
             String street_number_reciver = strings[13];
             String flower_number_reciver = strings[14];
             String building_number_reciver = strings[15];
+            Log.d("Values", name);
+            Log.d("Values", id_client);
+            Log.d("Values", map_address_client);
+            Log.d("Values", clientlat);
+            Log.d("Values", clientlag);
+            Log.d("Values", map_address_reciver);
+            Log.d("Values", reciver_lat);
+            Log.d("Values", reciver_lag);
+            Log.d("Values", delivery_time);
+            Log.d("Values", space);
+            Log.d("Values", name_receiver);
+            Log.d("Values", phone_receiver);
+            Log.d("Values", address_reciver);
+            Log.d("Values", street_number_reciver);
+            Log.d("Values", flower_number_reciver);
+            Log.d("Values", building_number_reciver);
             // if  you have  to send  data  to the databse
             ArrayList<NameValuePair> pairs = new ArrayList<NameValuePair>();
+//pairs.add(new BasicNameValuePair("lang", String.valueOf(MainActivity.lang)));
+//pairs.add(new BasicNameValuePair("name", name));
+//pairs.add(new BasicNameValuePair("id_client", id_client));
+//pairs.add(new BasicNameValuePair("map_address_client", map_address_client));
+//            pairs.add(new BasicNameValuePair("client_lat", clientlat));
+//           pairs.add(new BasicNameValuePair("client_lag", clientlag));
+//            pairs.add(new BasicNameValuePair("map_address_reciver", map_address_reciver));
+//            pairs.add(new BasicNameValuePair("reciver_lat", reciver_lat));
+//            pairs.add(new BasicNameValuePair("reciver_lag", reciver_lag));
+//            pairs.add(new BasicNameValuePair("delivery_time", delivery_time));
+//            pairs.add(new BasicNameValuePair("space", space));
+//            pairs.add(new BasicNameValuePair("name_reciver", name_receiver));
+//            pairs.add(new BasicNameValuePair("phone_reciver", phone_receiver));
+//            pairs.add(new BasicNameValuePair("address_reciver", address_reciver));
+//            pairs.add(new BasicNameValuePair("street_number_reciver", street_number_reciver));
+//            pairs.add(new BasicNameValuePair("flower_number_reciver", flower_number_reciver));
+//            pairs.add(new BasicNameValuePair("building_number_reciver", "jjj"));
+
             pairs.add(new BasicNameValuePair("lang", String.valueOf(MainActivity.lang)));
             pairs.add(new BasicNameValuePair("name", name));
             pairs.add(new BasicNameValuePair("id_client", id_client));
@@ -270,26 +352,8 @@ public class CompleteShippingActivity extends AppCompatActivity {
             pairs.add(new BasicNameValuePair("map_address_reciver", map_address_reciver));
             pairs.add(new BasicNameValuePair("reciver_lat", reciver_lat));
             pairs.add(new BasicNameValuePair("reciver_lag", reciver_lag));
-            pairs.add(new BasicNameValuePair("delivery_time", delivery_time));
+            pairs.add(new BasicNameValuePair("delivery_time", "55"));
             pairs.add(new BasicNameValuePair("space", space));
-            pairs.add(new BasicNameValuePair("name_reciver", name_receiver));
-            pairs.add(new BasicNameValuePair("phone_reciver", phone_receiver));
-            pairs.add(new BasicNameValuePair("address_reciver", address_reciver));
-            pairs.add(new BasicNameValuePair("street_number_reciver", street_number_reciver));
-            pairs.add(new BasicNameValuePair("flower_number_reciver", flower_number_reciver));
-            pairs.add(new BasicNameValuePair("building_number_reciver", "jjj"));
-
-            pairs.add(new BasicNameValuePair("lang", String.valueOf(MainActivity.lang)));
-            pairs.add(new BasicNameValuePair("name", "1"));
-            pairs.add(new BasicNameValuePair("id_client", "1"));
-            pairs.add(new BasicNameValuePair("map_address_client", "2"));
-            pairs.add(new BasicNameValuePair("client_lat", "3"));
-            pairs.add(new BasicNameValuePair("client_lag", "3"));
-            pairs.add(new BasicNameValuePair("map_address_reciver", "4"));
-            pairs.add(new BasicNameValuePair("reciver_lat", "5"));
-            pairs.add(new BasicNameValuePair("reciver_lag", "6"));
-            pairs.add(new BasicNameValuePair("delivery_time", "7"));
-            pairs.add(new BasicNameValuePair("space", "4"));
             pairs.add(new BasicNameValuePair("name_reciver", "5"));
             pairs.add(new BasicNameValuePair("phone_reciver", "20"));
             pairs.add(new BasicNameValuePair("address_reciver", "5"));
@@ -297,7 +361,7 @@ public class CompleteShippingActivity extends AppCompatActivity {
             pairs.add(new BasicNameValuePair("flower_number_reciver", "5"));
             pairs.add(new BasicNameValuePair("building_number_reciver", "5"));
 
-// pairs.add(new BasicNameValuePair("promo_code", "20"));
+            // pairs.add(new BasicNameValuePair("promo_code", "20"));
 
             //  pairs.add(new BasicNameValuePair(address_reciver));
 

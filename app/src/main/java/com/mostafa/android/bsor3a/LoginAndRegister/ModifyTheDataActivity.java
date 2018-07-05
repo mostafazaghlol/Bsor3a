@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.mostafa.android.bsor3a.LoginAndRegister.Requests.GetDataRequest;
 import com.mostafa.android.bsor3a.LoginAndRegister.Requests.LoginRequest;
 import com.mostafa.android.bsor3a.LoginAndRegister.Requests.ModifyRequest;
 import com.mostafa.android.bsor3a.MainActivity;
@@ -60,6 +61,7 @@ public class ModifyTheDataActivity extends AppCompatActivity {
         setContentView(R.layout.activity_modify_the_data);
         ButterKnife.bind(this);
         setBar.setStatusBarColored(this);
+        getTheData();
         BtCancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,6 +74,58 @@ public class ModifyTheDataActivity extends AppCompatActivity {
                 sendData();
             }
         });
+    }
+
+    private void getTheData() {
+        prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+        editor = prefs.edit();
+        String clientID = prefs.getString("customer_id", null);
+        Response.Listener<String> listener = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject ob = new JSONObject(response);
+                    JSONArray array = ob.getJSONArray("data");
+                    JSONObject data = array.optJSONObject(0);
+                    /*
+                    "name": "ashraf",
+            "email": "ashraf.mohammed82@gmail.com",
+            "phone": "01223846167",
+            "state_id": "1",
+            "nickname": "eee",
+            "street_name": "ee",
+            "building_number": "hhhhhhhhh",
+            "flower_number": "e33",
+            "img": "https://bsor3a.com/site/ar/images/clients/defaultmain.png",
+            "id_client": "25"
+                     */
+                    String name = data.getString("name");
+                    String email = data.getString("email");
+                    String state_id = data.getString("state_id");
+                    String nickname = data.getString("nickname");
+                    String streetname = data.getString("street_name");
+                    String buildingnumber = data.getString("building_number");
+                    String flowernumber = data.getString("flower_number");
+                    String id_client = data.getString("id_client");
+                    String phone = data.getString("phone");
+                    EdFullName.setText(name);
+                    EdEmail.setText(email);
+                    EdNumber.setText(phone);
+                    EdShortName.setText(nickname);
+                    EdStateid.setText(state_id);
+                    EdStreetName.setText(streetname);
+                    EdBuildingNumber.setText(buildingnumber);
+                    EdFlower_number.setText(flowernumber);
+                    EdBuildingNumber.setText(buildingnumber);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        };
+        GetDataRequest getDataRequest = new GetDataRequest(clientID, listener);
+        RequestQueue requestQueue = Volley.newRequestQueue(ModifyTheDataActivity.this);
+        requestQueue.add(getDataRequest);
     }
 
     private void sendData() {

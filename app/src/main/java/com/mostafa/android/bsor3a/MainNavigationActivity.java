@@ -1,5 +1,7 @@
 package com.mostafa.android.bsor3a;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +17,7 @@ import android.widget.Button;
 
 import com.mostafa.android.bsor3a.LoginAndRegister.ModifyTheDataActivity;
 import com.mostafa.android.bsor3a.Shipping.ShippingDetails;
+import com.mostafa.android.bsor3a.Techincal.TechincalActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -103,6 +106,20 @@ public class MainNavigationActivity extends AppCompatActivity
             startActivity(new Intent(MainNavigationActivity.this, TechincalActivity.class));
         } else if (id == R.id.Previous_shipments) {
             startActivity(new Intent(MainNavigationActivity.this, PerviousShipmentsActivity.class));
+        } else if (id == R.id.sign_out) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainNavigationActivity.this);
+            builder.setTitle(getResources().getString(R.string.goout));
+            builder.setMessage(getResources().getString(R.string.dogoout));
+            builder.setPositiveButton(getResources().getString(R.string.yes), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    finish();
+                }
+            });
+            builder.setNegativeButton(getResources().getString(R.string.no), null);
+            AlertDialog alertDialog = builder.create();
+            alertDialog.show();
+
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
