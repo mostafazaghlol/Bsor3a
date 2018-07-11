@@ -88,10 +88,11 @@
         </activity>
         <activity android:name=".Shipping.CompleteShippingActivity" />
         <activity android:name=".Scroll" />
-        <activity android:name=".PolicyActivity"></activity>
+        <activity android:name=".PolicyActivity" />
         <activity
             android:name=".NewShipmentsActivity"
             android:label="@string/Newly_shipments" />
+        <activity android:name=".FullShippmentActivity"></activity>
     </application>
 
 </manifest>

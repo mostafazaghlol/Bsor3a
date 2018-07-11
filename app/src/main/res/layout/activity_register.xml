@@ -84,49 +84,51 @@
                 android:id="@+id/EditReGovernoateid"
                 style="@style/editText"
                 android:drawableLeft="@drawable/home"
-                android:drawableTint="@color/Orange"
                 android:drawablePadding="20dp"
+                android:drawableTint="@color/Orange"
                 android:hint="@string/Governorate" />
 
             <EditText
                 android:id="@+id/EditReStateid"
                 style="@style/editText"
                 android:drawableLeft="@drawable/home"
-                android:drawableTint="@color/Orange"
                 android:drawablePadding="20dp"
+                android:drawableTint="@color/Orange"
                 android:hint="@string/Statename" />
 
             <EditText
                 android:id="@+id/EditReStreetName"
                 style="@style/editText"
                 android:drawableLeft="@drawable/home"
-                android:drawableTint="@color/Orange"
                 android:drawablePadding="20dp"
-                android:hint="@string/streetName" />
+                android:drawableTint="@color/Orange"
+                android:hint="@string/address" />
 
             <EditText
                 android:id="@+id/EditRebuilding_number"
                 style="@style/editText"
                 android:drawableLeft="@drawable/home"
-                android:drawableTint="@color/Orange"
                 android:drawablePadding="20dp"
+                android:drawableTint="@color/Orange"
                 android:hint="@string/building_number" />
 
             <EditText
                 android:id="@+id/EditReFlower_number"
                 style="@style/editText"
                 android:drawableLeft="@drawable/home"
-                android:drawableTint="@color/Orange"
                 android:drawablePadding="20dp"
-                android:hint="@string/flower_number" />
+                android:drawableTint="@color/Orange"
+                android:hint="@string/flower_number"
+                android:inputType="number" />
 
             <EditText
                 android:id="@+id/EditReFlat_number"
                 style="@style/editText"
                 android:drawableLeft="@drawable/home"
-                android:drawableTint="@color/Orange"
                 android:drawablePadding="20dp"
-                android:hint="@string/flat_number" />
+                android:drawableTint="@color/Orange"
+                android:hint="@string/flat_number"
+                android:inputType="number" />
 
             <View
                 android:layout_width="wrap_content"
@@ -140,9 +142,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_gravity="center"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <CheckBox
                     android:id="@+id/CBAccecpt"

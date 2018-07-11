@@ -3,9 +3,8 @@ package com.mostafa.android.bsor3a;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -20,7 +19,6 @@ import com.android.volley.toolbox.Volley;
 import com.mostafa.android.bsor3a.Connection.PerviousShippingActivityRequest;
 import com.mostafa.android.bsor3a.Recycler.Shipping;
 import com.mostafa.android.bsor3a.Recycler.ShippingAdapter;
-import com.mostafa.android.bsor3a.Shipping.CompleteShippingActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,26 +29,26 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 import static com.mostafa.android.bsor3a.MainActivity.MY_PREFS_NAME;
 
 public class PerviousShipmentsActivity extends Activity {
+    static List<Shipping> dataList = new ArrayList<>();
     @BindView(R.id.recycler_view)
     RecyclerView mHistoryRecyclerView;
     @BindView(R.id.Progress)
     ProgressBar progressBar;
     @BindView(R.id.TextEmpty)
     TextView TxEmpty;
-    private RecyclerView.Adapter mHistoryAdapter;
-    private RecyclerView.LayoutManager mHistoryLayoutManager;
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
     String clientID;
     int messageId;
     String message;
     JSONArray data;
-    static List<Shipping> dataList = new ArrayList<>();
+    private RecyclerView.Adapter mHistoryAdapter;
+    private RecyclerView.LayoutManager mHistoryLayoutManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -176,17 +174,19 @@ public class PerviousShipmentsActivity extends Activity {
                             mHistoryAdapter.notifyDataSetChanged();
 
                         } else if (messageId == 0) {
-                            progressBar.setVisibility(View.INVISIBLE);
-                            AlertDialog.Builder builder = new AlertDialog.Builder(PerviousShipmentsActivity.this);
-                            builder.setMessage(message)
-                                    .setNegativeButton("" + getString(R.string.Okay), new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialogInterface, int i) {
-                                            finish();
-                                        }
-                                    })
-                                    .create()
-                                    .show();
+//                            progressBar.setVisibility(View.INVISIBLE);
+//                            AlertDialog.Builder builder = new AlertDialog.Builder(PerviousShipmentsActivity.this);
+//                            builder.setMessage(message)
+//                                    .setNegativeButton("" + getString(R.string.Okay), new DialogInterface.OnClickListener() {
+//                                        @Override
+//                                        public void onClick(DialogInterface dialogInterface, int i) {
+//                                            finish();
+//                                        }
+//                                    })
+//                                    .create()
+//                                    .show();
+                            Toast.makeText(PerviousShipmentsActivity.this, "" + message, Toast.LENGTH_SHORT).show();
+                            finish();
                         }
                     }
 

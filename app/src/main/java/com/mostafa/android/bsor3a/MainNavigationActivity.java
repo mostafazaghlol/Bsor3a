@@ -6,27 +6,24 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.util.Log;
-import android.view.Gravity;
-import android.view.SubMenu;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.SubMenu;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.mostafa.android.bsor3a.Connection.NewShippingActivityRequest;
 import com.mostafa.android.bsor3a.LoginAndRegister.LoginActivity;
 import com.mostafa.android.bsor3a.LoginAndRegister.ModifyTheDataActivity;
-import com.mostafa.android.bsor3a.Shipping.ShippingDetails;
 import com.mostafa.android.bsor3a.Techincal.TechincalActivity;
 import com.squareup.picasso.Picasso;
 
@@ -64,13 +61,13 @@ public class MainNavigationActivity extends AppCompatActivity
             //setBar.setStatusBarColored(this);
 //        navigationView.getBackground().setAlpha(122);
             //setSupportActionBar(toolbar);
-            drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            drawer = findViewById(R.id.drawer_layout);
             //ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
             // this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
             //drawer.addDrawerListener(toggle);
             //toggle.syncState();
 
-            navigationView = (NavigationView) findViewById(R.id.nav_view);
+            navigationView = findViewById(R.id.nav_view);
             navigationView.setNavigationItemSelectedListener(this);
             navigationView.getBackground().setAlpha(30);
             View view = navigationView.getHeaderView(0);
@@ -90,8 +87,8 @@ public class MainNavigationActivity extends AppCompatActivity
                 //the method we have create in activity
                 applyFontToMenuItem(mi);
             }
-            ImageView imageView = (ImageView) view.findViewById(R.id.profile_image);
-            if (imageUrl == "") {
+            ImageView imageView = view.findViewById(R.id.profile_image);
+            if (imageUrl.isEmpty()) {
                 imageView.setImageResource(R.drawable.person);
             } else {
                 Picasso.get().load(imageUrl).into(imageView);
@@ -110,13 +107,13 @@ public class MainNavigationActivity extends AppCompatActivity
     }
 
     private void openMapActivity() {
-        Intent MapActivity = new Intent(MainNavigationActivity.this, ShippingDetails.class);
+        Intent MapActivity = new Intent(MainNavigationActivity.this, FullShippmentActivity.class);
         startActivity(MapActivity);
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -190,7 +187,7 @@ public class MainNavigationActivity extends AppCompatActivity
             alertDialog.show();
 
         }
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

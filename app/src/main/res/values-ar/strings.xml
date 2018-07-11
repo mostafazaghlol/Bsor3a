@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Bsor3a</string>
+    <string name="app_name">بسـرعه</string>
     <string name="ChooseLanguage">اختيـار اللغــة</string>
     <string name="ArabicLanguage">اللغــة العـربيـة</string>
     <string name="EnglishLanguage">English</string>
@@ -116,6 +116,11 @@
     <string name="wewill">سوف يصل اليك اقرب مندوب  بسرعه</string>
     <string name="Statename">"الحى "</string>
     <string name="ChoosePlace">اختر مكان المرسل ؟</string>
+    <string name="address">العنـوان</string>
+    <string name="getLocationofreceiver">مكان المستلم</string>
+    <string name="getLocationofreceiverplz">حدد مكان المستلم</string>
+    <string name="getLocationofsender">مكان المرسل</string>
+    <string name="SendTheRequest">"ابعت طلب "</string>
 
 
 </resources>

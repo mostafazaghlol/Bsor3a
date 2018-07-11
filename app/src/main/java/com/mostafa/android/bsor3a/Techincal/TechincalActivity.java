@@ -5,17 +5,18 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
-import com.mostafa.android.bsor3a.*;
 import com.mostafa.android.bsor3a.R;
+import com.mostafa.android.bsor3a.setBar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,6 +34,7 @@ public class TechincalActivity extends AppCompatActivity {
     TextView TxEmail;
     @BindView(R.id.WebSite)
     TextView TxWebSite;
+    String phone, email, hot_line, fax, face_account, googleplus, twitter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,13 +58,13 @@ public class TechincalActivity extends AppCompatActivity {
                     JSONArray array = jsonObject.getJSONArray("data");
                     for (int i = 0; i < array.length(); i++) {
                         JSONObject ob = array.getJSONObject(i);
-                        String phone = ob.getString("phone");
-                        String email = ob.getString("email");
-                        String hot_line = ob.getString("hot_line");
-                        String fax = ob.getString("fax");
-                        String face_account = ob.getString("face_account");
-                        String googleplus = ob.getString("googleplus");
-                        String twitter = ob.getString("twitter");
+                        phone = ob.getString("phone");
+                        email = ob.getString("email");
+                        hot_line = ob.getString("hot_line");
+                        fax = ob.getString("fax");
+                        face_account = ob.getString("face_account");
+                        googleplus = ob.getString("googleplus");
+                        twitter = ob.getString("twitter");
                         TxFirstNumber.setText(phone);
                         TxSecound.setText(hot_line);
                         TxEmail.setText(email);
@@ -111,4 +113,28 @@ public class TechincalActivity extends AppCompatActivity {
         i.setData(Uri.parse(url));
         startActivity(i);
     }
+
+    public void plus(View view) {
+        openwebsite(googleplus);
+    }
+
+    public void facebook(View view) {
+        openwebsite(face_account);
+    }
+
+    public void twitter(View view) {
+        openwebsite(twitter);
+    }
+
+    private void openwebsite(String web) {
+        if (web.isEmpty()) {
+            String url = web;
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(url));
+            startActivity(i);
+        } else {
+            Toast.makeText(this, "No Web Site On The DataBase SOOOOOOOOOON Will be Add ", Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }

@@ -129,5 +129,10 @@
     <string name="enterflatNumber">Enter the flat number !</string>
     <string name="Besor3a">بســــــــرعه</string>
     <string name="wewill">سوف يصل اليك اقرب مندوب  بسرعه</string>
+    <string name="address">Address</string>
+    <string name="getLocationofsender">Location Sender</string>
+    <string name="getLocationofreceiver">Reciver Loction</string>
+    <string name="SendTheRequest">send the request</string>
+    <string name="getLocationofreceiverplz">Get  The Location OF The Reciver</string>
 
 </resources>

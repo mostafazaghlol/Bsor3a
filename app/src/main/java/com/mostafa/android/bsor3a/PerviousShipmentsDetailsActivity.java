@@ -1,10 +1,6 @@
 package com.mostafa.android.bsor3a;
 
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,8 +15,6 @@ import com.android.volley.Response;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.mostafa.android.bsor3a.Recycler.Shipping;
-import com.mostafa.android.bsor3a.Shipping.CompleteShippingActivity;
-import com.mostafa.android.bsor3a.Shipping.ShippingDetails;
 
 import org.json.JSONArray;
 import org.json.JSONException;

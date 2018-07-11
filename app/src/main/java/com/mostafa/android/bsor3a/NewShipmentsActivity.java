@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -17,7 +16,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.mostafa.android.bsor3a.Connection.NewShippingActivityRequest;
-import com.mostafa.android.bsor3a.Connection.PerviousShippingActivityRequest;
 import com.mostafa.android.bsor3a.Recycler.Shipping;
 import com.mostafa.android.bsor3a.Recycler.ShippingAdapter;
 
@@ -34,21 +32,21 @@ import butterknife.ButterKnife;
 import static com.mostafa.android.bsor3a.MainActivity.MY_PREFS_NAME;
 
 public class NewShipmentsActivity extends Activity {
+    static List<Shipping> dataList = new ArrayList<>();
     @BindView(R.id.recycler_view1)
     RecyclerView mHistoryRecyclerView;
     @BindView(R.id.Progress1)
     ProgressBar progressBar;
     @BindView(R.id.TextEmpty1)
     TextView TxEmpty;
-    private RecyclerView.Adapter mHistoryAdapter;
-    private RecyclerView.LayoutManager mHistoryLayoutManager;
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
     String clientID;
     int messageId;
     String message;
     JSONArray data;
-    static List<Shipping> dataList = new ArrayList<>();
+    private RecyclerView.Adapter mHistoryAdapter;
+    private RecyclerView.LayoutManager mHistoryLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -177,16 +175,18 @@ public class NewShipmentsActivity extends Activity {
 
                         } else if (messageId == 0) {
                             progressBar.setVisibility(View.INVISIBLE);
-                            AlertDialog.Builder builder = new AlertDialog.Builder(NewShipmentsActivity.this);
-                            builder.setMessage(message)
-                                    .setNegativeButton("" + getString(R.string.Okay), new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialogInterface, int i) {
-                                            finish();
-                                        }
-                                    })
-                                    .create()
-                                    .show();
+//                            AlertDialog.Builder builder = new AlertDialog.Builder(NewShipmentsActivity.this);
+//                            builder.setMessage(message)
+//                                    .setNegativeButton("" + getString(R.string.Okay), new DialogInterface.OnClickListener() {
+//                                        @Override
+//                                        public void onClick(DialogInterface dialogInterface, int i) {
+//                                            finish();
+//                                        }
+//                                    })
+//                                    .create()
+//                                    .show();
+                            Toast.makeText(NewShipmentsActivity.this, "" + message, Toast.LENGTH_SHORT).show();
+                            finish();
                         }
                     }
 

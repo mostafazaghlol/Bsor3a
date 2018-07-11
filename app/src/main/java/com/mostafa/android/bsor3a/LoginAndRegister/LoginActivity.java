@@ -1,48 +1,30 @@
 package com.mostafa.android.bsor3a.LoginAndRegister;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
 import android.widget.Toast;
 
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
-import com.facebook.appevents.AppEventsLogger;
-
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
-import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
 import com.mostafa.android.bsor3a.LoginAndRegister.Requests.LoginRequest;
 import com.mostafa.android.bsor3a.MainActivity;
 import com.mostafa.android.bsor3a.MainNavigationActivity;
 import com.mostafa.android.bsor3a.R;
-import com.mostafa.android.bsor3a.Scroll;
-import com.mostafa.android.bsor3a.setBar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.Arrays;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -94,8 +76,10 @@ public class LoginActivity extends AppCompatActivity {
                         Edpassword.setError("Enter password !");
                     }
                     login(user, pass, lang);
-                    scrollView.setVisibility(View.INVISIBLE);
-                    progressBar.setVisibility(View.VISIBLE);
+                    if (!Eduser.getText().toString().isEmpty() && !Edpassword.getText().toString().isEmpty()) {
+                        scrollView.setVisibility(View.INVISIBLE);
+                        progressBar.setVisibility(View.VISIBLE);
+                    }
                 }
             });
 
