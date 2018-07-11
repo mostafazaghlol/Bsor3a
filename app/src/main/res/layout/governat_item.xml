@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/image_view_flag"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:src="@drawable/select" />
+
+    <TextView
+        android:id="@+id/text_view_name"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/Governorate"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/Orange"
+        android:textSize="20sp" />
+
+</LinearLayout>

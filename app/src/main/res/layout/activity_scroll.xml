@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_sign_up"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffff"
+    tools:context="com.mostafa.android.bsor3a.Scroll">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#000000"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/back" />
+
+        <TextView
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:text="تسجيل حساب جديد"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:layout_marginLeft="60dp"
+            android:textSize="17dp"
+            android:textColor="#ffffff" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/logo"
+        android:id="@+id/Doc" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_width="260dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/Name"
+                    android:hint="إسم المستخدم"
+                    android:inputType="textEmailAddress"
+                    android:gravity="center"
+                    android:textColorHint="#b6b0b0"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:background="#ffffff">
+
+                    <ImageView
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/user" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_width="260dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/Email"
+                    android:hint="البريد الإلكتروني"
+                    android:inputType="textEmailAddress"
+                    android:textColorHint="#b6b0b0"
+                    android:gravity="center"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:background="#ffffff">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/mail" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_width="260dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/Phone"
+                    android:hint="رقم الجوال"
+                    android:inputType="phone"
+                    android:textColorHint="#b6b0b0"
+                    android:gravity="center"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:background="#ffffff">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_width="260dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/Password"
+                    android:hint="كلمة المرور"
+                    android:inputType="textPassword"
+                    android:textColorHint="#b6b0b0"
+                    android:gravity="center"
+                    android:textStyle="bold" />
+
+
+                <LinearLayout
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:background="#ffffff">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:layout_width="259dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/RPassword"
+                    android:hint="أعد كتابة كلمة المرور"
+                    android:inputType="textPassword"
+                    android:textColorHint="#b6b0b0"
+                    android:gravity="center"
+                    android:textStyle="bold" />
+
+
+                <LinearLayout
+                    android:layout_width="50dp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:background="#ffffff">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <Button
+                android:layout_width="240dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:text="تسجيل"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:layout_marginBottom="40dp"
+                android:textSize="16dp"
+                android:layout_marginTop="35dp"
+                android:id="@+id/Register" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

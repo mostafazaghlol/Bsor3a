@@ -2,10 +2,10 @@
 <resources>
     <color name="colorPrimary">#EE8224</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#EE8230</color>
     <color name="black">#000000</color>
-    <color name="Orange">#EE8212</color>
-    <color name="Offblack">#FF0000</color>
+    <color name="Orange">#EE8230</color>
+    <color name="Offblack">#FF7101</color>
     <color name="white">#FFFFFF</color>
     <color name="blue">#0000FF</color>
     <color name="brown">#964B00</color>

@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.mostafa.android.bsor3a.LoginAndRegister.LoginActivity">
 
-    <RelativeLayout style="@style/pageRelativeStyle">
+    <RelativeLayout
+        style="@style/pageRelativeStyle2"
+        android:id="@+id/re">
 
         <ImageView
             android:id="@+id/backLogin"
@@ -19,9 +21,17 @@
             android:text="@string/Login" />
     </RelativeLayout>
 
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/re3"
+        android:visibility="invisible" />
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/re"
+        android:id="@+id/scroo"
         android:background="@drawable/splash">
 
         <LinearLayout
@@ -38,7 +48,7 @@
             <EditText
                 style="@style/editText"
                 android:drawableLeft="@drawable/nname"
-                android:hint="@string/ShortName"
+                android:hint="@string/phoneoremail"
                 android:id="@+id/Eduser"
                 android:gravity="left|center"
                 android:textColorHint="@color/Orange" />
@@ -155,4 +165,4 @@
     </ScrollView>
 
 
-</LinearLayout>
+</RelativeLayout>

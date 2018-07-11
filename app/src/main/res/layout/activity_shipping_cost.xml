@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context="com.mostafa.android.bsor3a.ShippingCostActivity">
 
-    <RelativeLayout style="@style/pageRelativeStyle">
+    <RelativeLayout style="@style/pageRelativeStyle2">
 
         <ImageView
             android:id="@+id/backLogin"

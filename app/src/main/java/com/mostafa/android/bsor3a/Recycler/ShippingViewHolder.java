@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mostafa.android.bsor3a.MainActivity;
+import com.mostafa.android.bsor3a.MainNavigationActivity;
 import com.mostafa.android.bsor3a.PerviousShipmentsDetailsActivity;
 import com.mostafa.android.bsor3a.R;
 
@@ -27,6 +29,7 @@ public class ShippingViewHolder extends RecyclerView.ViewHolder {
                 int postion = getAdapterPosition();
                 Intent openDetails = new Intent(view.getContext(), PerviousShipmentsDetailsActivity.class);
                 openDetails.putExtra("id", postion);
+                openDetails.putExtra("idTag", MainActivity.NEWOROLD);
                 view.getContext().startActivity(openDetails);
             }
         });

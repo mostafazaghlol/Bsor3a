@@ -1,5 +1,6 @@
 package com.mostafa.android.bsor3a;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -9,7 +10,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class SplachActivity extends AppCompatActivity {
+public class SplachActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

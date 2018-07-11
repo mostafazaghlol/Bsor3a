@@ -85,10 +85,12 @@ public class TechincalActivity extends AppCompatActivity {
     public void call(View view) {
         int id = view.getId();
         if (id == R.id.firstNumber) {
-            Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "000000000"));
+            TextView textView = (TextView) view;
+            Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + textView.getText()));
             startActivity(intent);
         } else if (id == R.id.secondNumber) {
-            Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "000000000"));
+            TextView textView = (TextView) view;
+            Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + textView.getText().toString().trim()));
             startActivity(intent);
         }
 

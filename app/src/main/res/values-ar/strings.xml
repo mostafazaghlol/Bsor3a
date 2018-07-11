@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Bsor3a</string>
-    <string name="ChooseLanguage">اختيـار الغــة</string>
+    <string name="ChooseLanguage">اختيـار اللغــة</string>
     <string name="ArabicLanguage">اللغــة العـربيـة</string>
     <string name="EnglishLanguage">English</string>
     <string name="hi">اهلا</string>
@@ -27,9 +27,9 @@
     <string name="PlAcceptTerms">يجيب الموافقه على الشروط</string>
     <string name="title_activity_maps">الخريـطه</string>
     <string name="ShippingDetalis">تفاصيل الشحنه</string>
-    <string name="ShippingName">اسم الشحنه</string>
+    <string name="ShippingName">نوع الشحنه</string>
     <string name="Detailedaddress">العنوان بالتفصيل</string>
-    <string name="PleaseEnglish">برجاء كتابة البيانات باللغة العربية</string>
+    <string name="PleaseEnglish">برجاء كتابة بيانات المرسل</string>
     <string name="Governorate">المحافظه</string>
     <string name="District">الحــى</string>
     <string name="street">الشارع</string>
@@ -49,7 +49,7 @@
     <string name="more1">المزيد</string>
     <string name="fackdata">بيانات زائفه</string>
     <string name="RestPassword">استعاده كلمة السر</string>
-    <string name="Continue">استمر</string>
+    <string name="Continue">استمرار</string>
     <string name="EmailOrMobile">البريد او رقم الموبيل</string>
     <string name="Distance">المسافه الكليه</string>
     <string name="FullPrice">اجمالى المبلغ</string>
@@ -92,5 +92,30 @@
     <string name="Okay">نعم</string>
     <string name="Empty_Field">لم يتم تحديده</string>
     <string name="Home">"الرئيسيه "</string>
+    <string name="ShippingReciverName">اسم مسقبل الشحنه</string>
+    <string name="phoneoremail">"الموبايل / الايميل "</string>
+    <string name="Stateid">"الحى "</string>
+    <string name="Promocode">كود الخصم</string>
+    <string name="PleaseEnglisha">يرجى كتابة بيانات المستقبل</string>
+    <string name="enter_Promo_code">ادخل كود الخصم</string>
+    <string name="orderprice">سعر الطلب:</string>
+    <string name="Policy">السياسة العامة</string>
+    <string name="delete">حذف</string>
+    <string name="sure">متأكد هل تريد حذف الطلب ؟</string>
+    <string name="sureWord">متأكد</string>
+    <string name="No">لأ</string>
+    <string name="Would">هل تريد عمل طلب جديد ؟</string>
+    <string name="Newly_shipments">الشحنات الجديده</string>
+    <string name="Location">حدد مكان إستلام الشحنة</string>
+    <string name="enterEmailOrPhone">ادخل الايميل او التليفون !</string>
+    <string name="Location2">حدد مكان تسليم الشحنة</string>
+    <string name="messageAnt5a">انتخ .... واحنا نسد</string>
+    <string name="flat_number">رقم الشقه</string>
+    <string name="enterflatNumber">ادخل رقم الشقه !</string>
+    <string name="Besor3a">بســــــــرعه</string>
+    <string name="wewill">سوف يصل اليك اقرب مندوب  بسرعه</string>
+    <string name="Statename">"الحى "</string>
+    <string name="ChoosePlace">اختر مكان المرسل ؟</string>
+
 
 </resources>

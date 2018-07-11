@@ -16,20 +16,33 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.ProgressBar;
+import android.widget.ScrollView;
 import android.widget.Toast;
+
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.appevents.AppEventsLogger;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.mostafa.android.bsor3a.LoginAndRegister.Requests.LoginRequest;
 import com.mostafa.android.bsor3a.MainActivity;
 import com.mostafa.android.bsor3a.MainNavigationActivity;
 import com.mostafa.android.bsor3a.R;
+import com.mostafa.android.bsor3a.Scroll;
 import com.mostafa.android.bsor3a.setBar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Arrays;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -43,6 +56,10 @@ public class LoginActivity extends AppCompatActivity {
     EditText Eduser;
     @BindView(R.id.Edpassword)
     EditText Edpassword;
+    @BindView(R.id.re3)
+    ProgressBar progressBar;
+    @BindView(R.id.scroo)
+    ScrollView scrollView;
     @BindView(R.id.RemeberMe)
     CheckBox ChRemeberMe;
     String user, pass, lang;
@@ -55,7 +72,7 @@ public class LoginActivity extends AppCompatActivity {
             setContentView(R.layout.activity_login);
             ButterKnife.bind(this);
             lang = String.valueOf(MainActivity.lang);
-            setBar.setStatusBarColored(this);
+            //setBar.setStatusBarColored(this);
             prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
             editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
             if (prefs.getString("phone", null) != null || prefs.getString("customer_id", null) != null || prefs.getString("customer_email", null) != null ||
@@ -77,6 +94,8 @@ public class LoginActivity extends AppCompatActivity {
                         Edpassword.setError("Enter password !");
                     }
                     login(user, pass, lang);
+                    scrollView.setVisibility(View.INVISIBLE);
+                    progressBar.setVisibility(View.VISIBLE);
                 }
             });
 
@@ -92,6 +111,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 try {
+                    progressBar.setVisibility(View.INVISIBLE);
+                    scrollView.setVisibility(View.VISIBLE);
                     JSONObject jsonResponse = new JSONObject(response);
                     JSONArray jsonArray = jsonResponse.getJSONArray("message");
                     for (int i = 0; i < jsonArray.length(); i++) {
@@ -154,11 +175,13 @@ public class LoginActivity extends AppCompatActivity {
     public void Signup(View view) {
         Intent openSignUp = new Intent(LoginActivity.this,RegisterActivity.class);
         startActivity(openSignUp);
+        finish();
     }
 
     public void ResetPassword(View view) {
         Intent openSignUp = new Intent(LoginActivity.this, ReSetPasswordActivity.class);
         startActivity(openSignUp);
+        finish();
     }
 
 }

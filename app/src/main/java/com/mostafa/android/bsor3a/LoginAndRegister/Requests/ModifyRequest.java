@@ -15,7 +15,7 @@ public class ModifyRequest extends StringRequest {
     private static final String url = "https://bsor3a.com/clients/edit_profile";
     private Map<String, String> params;
 
-    public ModifyRequest(String lang, String building_number, String street_name, String state_id, String password, String email, String id_client, String phone, String name, String flower_number, String nickname, Response.Listener<String> listener) {
+    public ModifyRequest(String lang, String building_number, String street_name, String state_id, String password, String email, String id_client, String phone, String name, String flower_number, String nickname, String city, String flat_number, Response.Listener<String> listener) {
         super(Method.POST, url, listener, null);
         params = new HashMap<>();
         params.put("lang", lang);
@@ -29,6 +29,8 @@ public class ModifyRequest extends StringRequest {
         params.put("building_number", building_number);
         params.put("flower_number", flower_number);
         params.put("nickname", nickname);
+        params.put("flat_number", flat_number);
+        params.put("city_name", city);
     }
 
     @Override

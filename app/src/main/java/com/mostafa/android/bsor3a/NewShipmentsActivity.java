@@ -3,9 +3,8 @@ package com.mostafa.android.bsor3a;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -17,10 +16,10 @@ import android.widget.Toast;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
+import com.mostafa.android.bsor3a.Connection.NewShippingActivityRequest;
 import com.mostafa.android.bsor3a.Connection.PerviousShippingActivityRequest;
 import com.mostafa.android.bsor3a.Recycler.Shipping;
 import com.mostafa.android.bsor3a.Recycler.ShippingAdapter;
-import com.mostafa.android.bsor3a.Shipping.CompleteShippingActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,16 +30,15 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 import static com.mostafa.android.bsor3a.MainActivity.MY_PREFS_NAME;
 
-public class PerviousShipmentsActivity extends Activity {
-    @BindView(R.id.recycler_view)
+public class NewShipmentsActivity extends Activity {
+    @BindView(R.id.recycler_view1)
     RecyclerView mHistoryRecyclerView;
-    @BindView(R.id.Progress)
+    @BindView(R.id.Progress1)
     ProgressBar progressBar;
-    @BindView(R.id.TextEmpty)
+    @BindView(R.id.TextEmpty1)
     TextView TxEmpty;
     private RecyclerView.Adapter mHistoryAdapter;
     private RecyclerView.LayoutManager mHistoryLayoutManager;
@@ -51,11 +49,13 @@ public class PerviousShipmentsActivity extends Activity {
     String message;
     JSONArray data;
     static List<Shipping> dataList = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pervious_shipments);
-        MainActivity.NEWOROLD = 2;
+        setContentView(R.layout.activity_new_shipments);
+        setTitle(R.string.Newly_shipments);
+        MainActivity.NEWOROLD = 1;
         //setBar.setStatusBarColored(this);
         ButterKnife.bind(this);
         prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
@@ -67,9 +67,9 @@ public class PerviousShipmentsActivity extends Activity {
 
         mHistoryRecyclerView.setNestedScrollingEnabled(true);
         mHistoryRecyclerView.setHasFixedSize(true);
-        mHistoryLayoutManager = new LinearLayoutManager(PerviousShipmentsActivity.this);
+        mHistoryLayoutManager = new LinearLayoutManager(NewShipmentsActivity.this);
         mHistoryRecyclerView.setLayoutManager(mHistoryLayoutManager);
-        mHistoryAdapter = new ShippingAdapter(dataList, PerviousShipmentsActivity.this);
+        mHistoryAdapter = new ShippingAdapter(dataList, NewShipmentsActivity.this);
         mHistoryRecyclerView.setAdapter(mHistoryAdapter);
         mHistoryAdapter.notifyDataSetChanged();
 
@@ -89,7 +89,7 @@ public class PerviousShipmentsActivity extends Activity {
                         message = check.getString("message");
                         messageId = check.getInt("messageID");
                         if (messageId == 1) {
-                            Toast.makeText(PerviousShipmentsActivity.this, "" + message, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(NewShipmentsActivity.this, "" + message, Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.INVISIBLE);
                             for (int i = 0; i < data.length() - 1; i++) {
                                 JSONObject Shippingdata = data.getJSONObject(i);
@@ -124,7 +124,7 @@ public class PerviousShipmentsActivity extends Activity {
 
                         } else if (messageId == 0) {
                             progressBar.setVisibility(View.INVISIBLE);
-                            AlertDialog.Builder builder = new AlertDialog.Builder(PerviousShipmentsActivity.this);
+                            AlertDialog.Builder builder = new AlertDialog.Builder(NewShipmentsActivity.this);
                             builder.setMessage(message)
                                     .setNegativeButton("" + getString(R.string.Okay), new DialogInterface.OnClickListener() {
                                         @Override
@@ -142,7 +142,7 @@ public class PerviousShipmentsActivity extends Activity {
                         message = check.getString("message");
                         messageId = check.getInt("messageID");
                         if (messageId == 1) {
-                            Toast.makeText(PerviousShipmentsActivity.this, "" + message, Toast.LENGTH_SHORT).show();
+                            Toast.makeText(NewShipmentsActivity.this, "" + message, Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.INVISIBLE);
                             for (int i = 0; i < data.length() - 1; i++) {
                                 JSONObject Shippingdata = data.getJSONObject(i);
@@ -177,7 +177,7 @@ public class PerviousShipmentsActivity extends Activity {
 
                         } else if (messageId == 0) {
                             progressBar.setVisibility(View.INVISIBLE);
-                            AlertDialog.Builder builder = new AlertDialog.Builder(PerviousShipmentsActivity.this);
+                            AlertDialog.Builder builder = new AlertDialog.Builder(NewShipmentsActivity.this);
                             builder.setMessage(message)
                                     .setNegativeButton("" + getString(R.string.Okay), new DialogInterface.OnClickListener() {
                                         @Override
@@ -195,36 +195,33 @@ public class PerviousShipmentsActivity extends Activity {
                 }
             }
         };
-        PerviousShippingActivityRequest perviousShippingActivityRequest = new PerviousShippingActivityRequest(clientID, listener);
-        RequestQueue requestQueue = Volley.newRequestQueue(PerviousShipmentsActivity.this);
+        NewShippingActivityRequest perviousShippingActivityRequest = new NewShippingActivityRequest(clientID, listener);
+        RequestQueue requestQueue = Volley.newRequestQueue(NewShipmentsActivity.this);
         requestQueue.add(perviousShippingActivityRequest);
 
     }
 
 
-    public void back(View view) {
-        Log.e("hi", "hihi2");
-
-        dataList.clear();
-        onBackPressed();
-    }
-
     @Override
     protected void onStop() {
-        Log.e("hi", "hihi");
         dataList.clear();
+        getData(clientID);
         super.onStop();
     }
 
     @Override
     protected void onResume() {
-        Log.e("hi", "hihi3");
+        getData(clientID);
         super.onResume();
     }
 
     @Override
     protected void onStart() {
+        getData(clientID);
         super.onStart();
     }
 
+    public void back(View view) {
+        onBackPressed();
+    }
 }

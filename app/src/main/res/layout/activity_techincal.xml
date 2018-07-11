@@ -7,7 +7,7 @@
     android:background="@drawable/splash"
     tools:context="com.mostafa.android.bsor3a.Techincal.TechincalActivity">
 
-    <RelativeLayout style="@style/pageRelativeStyle">
+    <RelativeLayout style="@style/pageRelativeStyle2">
 
         <ImageView
             android:id="@+id/backLogin"

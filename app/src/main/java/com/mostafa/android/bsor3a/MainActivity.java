@@ -10,7 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+
 
 import com.mostafa.android.bsor3a.LoginAndRegister.LoginActivity;
 
@@ -20,6 +20,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
+    public static int NEWOROLD = 0;
     @BindView(R.id.ArabicButton)
     Button ArabicButton;
     @BindView(R.id.EnglishButton)

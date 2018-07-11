@@ -15,21 +15,19 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_logo_icon"
+        android:icon="@mipmap/ic_launcher2"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_logo_icon"
+        android:roundIcon="@mipmap/ic_launcher2"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
         <activity android:name=".LoginAndRegister.LoginActivity" />
-        <activity
-            android:name=".LoginAndRegister.RegisterActivity"
-            android:windowSoftInputMode="adjustPan" />
+        <activity android:name=".LoginAndRegister.RegisterActivity" />
         <activity
             android:name=".MainNavigationActivity"
             android:label="@string/title_activity_main_navigation"
@@ -39,13 +37,10 @@
             android:label="@string/title_activity_maps" />
         <activity
             android:name=".Shipping.ShippingDetails"
-            android:parentActivityName=".MainNavigationActivity">
-
-        </activity>
+            android:parentActivityName=".MainNavigationActivity" />
         <activity
             android:name=".LoginAndRegister.ModifyTheDataActivity"
-            android:parentActivityName=".MainNavigationActivity"
-            android:windowSoftInputMode="adjustPan" />
+            android:parentActivityName=".MainNavigationActivity" />
         <activity
             android:name=".Techincal.TechincalActivity"
             android:parentActivityName=".MainNavigationActivity" />
@@ -58,29 +53,45 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".LoginAndRegister.ReSetPasswordActivity"
-            android:parentActivityName=".LoginAndRegister.LoginActivity"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".ShippingCostActivity"
-            android:windowSoftInputMode="adjustPan" />
+            android:parentActivityName=".LoginAndRegister.LoginActivity" />
+        <activity android:name=".ShippingCostActivity" />
         <activity
             android:name=".PerviousShipmentsDetailsActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan" />
-        <activity android:name=".SplachActivity">
+            android:screenOrientation="portrait" />
 
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".SplachActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Shipping.CompleteShippingActivity" />
+        <activity android:name=".Scroll" />
+        <activity android:name=".PolicyActivity"></activity>
         <activity
-            android:name=".Shipping.CompleteShippingActivity"
-            android:windowSoftInputMode="adjustPan">
-
-        </activity>
+            android:name=".NewShipmentsActivity"
+            android:label="@string/Newly_shipments" />
     </application>
 
 </manifest>

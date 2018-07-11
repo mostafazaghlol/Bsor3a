@@ -6,6 +6,8 @@ package com.mostafa.android.bsor3a.Recycler;
 public class Shipping {
     private String From, To, id, name, code_order, id_client, creation_date, status, id_reciver, map_address_client, client_lat, client_lag, map_address_reciver, reciver_lag, reciver_lat, total_price, promo_id, delivery_time, space, rate_client, rate_delivery, date_delivery;
 
+    public Shipping() {
+    }
     public String getFrom() {
         return From;
     }
@@ -18,8 +20,6 @@ public class Shipping {
         return To;
     }
 
-    private Shipping() {
-    }
 
     public Shipping(String mshippingName, String mfrom, String mto,
                     String mid, String mcode_order, String mid_client, String mcreation_date,

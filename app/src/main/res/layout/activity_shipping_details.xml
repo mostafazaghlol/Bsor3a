@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,7 +7,10 @@
     android:orientation="vertical"
     android:background="@drawable/splash"
     tools:context="com.mostafa.android.bsor3a.Shipping.ShippingDetails">
-    <RelativeLayout style="@style/pageRelativeStyle">
+
+    <RelativeLayout
+        style="@style/pageRelativeStyle2"
+        android:id="@+id/relative">
 
         <ImageView
             android:id="@+id/backLogin"
@@ -22,7 +25,10 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@id/relative"
+        android:visibility="invisible"
+        android:id="@+id/scrollView">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -50,40 +56,45 @@
                 android:gravity="center"
                 android:layout_marginTop="10dp"
                 android:orientation="horizontal">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="@string/Detailedaddress"
-                    android:textAppearance="?android:textAppearanceSmall" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/PleaseEnglish"
-                    android:textColor="@color/Orange"
+                    android:id="@+id/typefaceText"
+                    android:textColor="@color/black"
+
                     android:layout_marginLeft="5dp"
-                    android:textAppearance="?android:textAppearanceSmall"/>
+                    android:textAppearance="?android:textAppearanceMedium" />
             </LinearLayout>
-            <EditText
-                style="@style/editText"
+
+            <Spinner
                 android:id="@+id/EditTextGovernorate"
-                android:hint="@string/Governorate"
+                android:prompt="@string/Governorate"
                 android:paddingLeft="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
                 android:paddingRight="30dp"
-                android:textColorHint="@color/Orange"
-                android:drawableLeft="@drawable/select" />
-            <EditText
                 style="@style/editText"
-                android:hint="@string/District"
-                android:id="@+id/EditTextDistrict"
-                android:paddingLeft="30dp"
-                android:paddingRight="30dp"
-                android:drawableLeft="@drawable/select"
                 android:textColorHint="@color/Orange" />
+
+            <Spinner
+
+                android:id="@+id/EditTextDistrict"
+                android:prompt="@string/Governorate"
+                android:paddingLeft="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:paddingRight="30dp"
+                style="@style/editText"
+                android:textColorHint="@color/Orange" />
+
             <EditText
                 style="@style/editText"
                 android:hint="@string/street"
                 android:id="@+id/EditTextStreet"
                 android:paddingLeft="30dp"
+
                 android:textColorHint="@color/Orange"
                 android:paddingRight="30dp"
                 android:maxLines="1" />
@@ -103,7 +114,6 @@
                     <EditText
                         style="@style/SimpleeditText"
                         android:layout_marginBottom="5dp"
-                        android:inputType="number"
                         android:hint="-- --"
                         android:id="@+id/EditTextHouseNumber"
                         android:paddingLeft="5dp"
@@ -113,7 +123,6 @@
                     <EditText
                         android:layout_marginBottom="5dp"
                         style="@style/SimpleeditText"
-                        android:inputType="number"
                         android:id="@+id/EditTextStorey"
                         android:hint="-- --"
                         android:paddingLeft="5dp"
@@ -123,7 +132,6 @@
                     <EditText
                         style="@style/SimpleeditText"
                         android:layout_marginBottom="5dp"
-                        android:inputType="number"
                         android:hint="-- --"
                         android:id="@+id/EditTextApartmentNumber"
                         android:paddingLeft="5dp"
@@ -167,6 +175,14 @@
                 </LinearLayout>
 
             </LinearLayout>
+
+            <EditText
+                style="@style/editText"
+                android:id="@+id/promo"
+                android:textColorHint="@color/Orange"
+                android:textColor="#808080"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:hint="@string/Promocode" />
             <Button
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
@@ -182,4 +198,10 @@
                 android:textAppearance="?android:textAppearanceLarge"/>
         </LinearLayout>
     </ScrollView>
-</LinearLayout>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/progress_bar" />
+</RelativeLayout>

@@ -4,9 +4,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.SubMenu;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -15,11 +19,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.mostafa.android.bsor3a.Connection.NewShippingActivityRequest;
 import com.mostafa.android.bsor3a.LoginAndRegister.LoginActivity;
 import com.mostafa.android.bsor3a.LoginAndRegister.ModifyTheDataActivity;
 import com.mostafa.android.bsor3a.Shipping.ShippingDetails;
 import com.mostafa.android.bsor3a.Techincal.TechincalActivity;
+import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,17 +43,25 @@ public class MainNavigationActivity extends AppCompatActivity
     DrawerLayout drawer;
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
+    String imageUrl;
+    Typeface face;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         try {
             prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
             editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+            imageUrl = prefs.getString("customer_img", "");
+
+
+            // custom_font = Typeface.createFromAsset(getAssets(), "font.otf");
+            face = Typeface.createFromAsset(getAssets(), "font.otf");
 
             setContentView(R.layout.activity_main_navigation);
-            //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+            //            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
             ButterKnife.bind(this);
-            setBar.setStatusBarColored(this);
+            //setBar.setStatusBarColored(this);
 //        navigationView.getBackground().setAlpha(122);
             //setSupportActionBar(toolbar);
             drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -56,6 +73,29 @@ public class MainNavigationActivity extends AppCompatActivity
             navigationView = (NavigationView) findViewById(R.id.nav_view);
             navigationView.setNavigationItemSelectedListener(this);
             navigationView.getBackground().setAlpha(30);
+            View view = navigationView.getHeaderView(0);
+            Menu m = navigationView.getMenu();
+            for (int i = 0; i < m.size(); i++) {
+                MenuItem mi = m.getItem(i);
+
+                //for aapplying a font to subMenu ...
+                SubMenu subMenu = mi.getSubMenu();
+                if (subMenu != null && subMenu.size() > 0) {
+                    for (int j = 0; j < subMenu.size(); j++) {
+                        MenuItem subMenuItem = subMenu.getItem(j);
+                        applyFontToMenuItem(subMenuItem);
+                    }
+                }
+
+                //the method we have create in activity
+                applyFontToMenuItem(mi);
+            }
+            ImageView imageView = (ImageView) view.findViewById(R.id.profile_image);
+            if (imageUrl == "") {
+                imageView.setImageResource(R.drawable.person);
+            } else {
+                Picasso.get().load(imageUrl).into(imageView);
+            }
             ButtonRequestClient.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -88,9 +128,19 @@ public class MainNavigationActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main_navigation, menu);
+
+
+        TextView textView = (TextView) menu.getItem(0).getActionView();
+        textView.setText("hhhhhhhh");
         return true;
     }
 
+    private void applyFontToMenuItem(MenuItem mi) {
+        Typeface font = Typeface.createFromAsset(getAssets(), "font.otf");
+        SpannableString mNewTitle = new SpannableString(mi.getTitle());
+        mNewTitle.setSpan(new CustomTypefaceSpan("", font), 0, mNewTitle.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+        mi.setTitle(mNewTitle);
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -110,11 +160,12 @@ public class MainNavigationActivity extends AppCompatActivity
 
         if (id == R.id.Modify_personal_data) {
             startActivity(new Intent(MainNavigationActivity.this, ModifyTheDataActivity.class));
-
         } else if (id == R.id.Technical_support) {
             startActivity(new Intent(MainNavigationActivity.this, TechincalActivity.class));
         } else if (id == R.id.Previous_shipments) {
             startActivity(new Intent(MainNavigationActivity.this, PerviousShipmentsActivity.class));
+        } else if (id == R.id.Newly_shipments) {
+            startActivity(new Intent(MainNavigationActivity.this, NewShipmentsActivity.class));
         } else if (id == R.id.sign_out) {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(MainNavigationActivity.this);

@@ -5,12 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/splash"
-    tools:context="com.mostafa.android.bsor3a.PerviousShipmentsActivity">
+    tools:context="com.mostafa.android.bsor3a.PolicyActivity">
 
     <RelativeLayout
         style="@style/pageRelativeStyle2"
-        android:id="@+id/relative">
+        android:id="@+id/node">
 
         <ImageView
             android:id="@+id/backLogin"
@@ -18,28 +17,21 @@
             android:onClick="back" />
 
         <TextView
-            android:id="@+id/TitleLogin"
+            android:id="@+id/Policy"
             style="@style/pageTitleText"
-            android:text="@string/Previous_shipments" />
+            android:text="@string/Policy" />
     </RelativeLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:scrollbars="vertical"
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/relative" />
+        android:layout_height="match_parent"
+        android:id="@+id/policyText"
+        android:padding="10dp"
+        android:layout_below="@id/node" />
 
     <ProgressBar
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:id="@+id/Progress"
-        android:layout_centerInParent="true" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/TextEmpty"
-        android:visibility="invisible" />
+        android:layout_centerInParent="true"
+        android:id="@+id/pro" />
 </RelativeLayout>

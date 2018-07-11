@@ -1,5 +1,6 @@
 package com.mostafa.android.bsor3a.LoginAndRegister;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -26,6 +27,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.mostafa.android.bsor3a.MainActivity;
+import com.mostafa.android.bsor3a.PolicyActivity;
 import com.mostafa.android.bsor3a.R;
 import com.mostafa.android.bsor3a.setBar;
 
@@ -42,7 +44,7 @@ import butterknife.ButterKnife;
 
 import static com.mostafa.android.bsor3a.MainActivity.MY_PREFS_NAME;
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity extends Activity {
     @BindView(R.id.Register)
     Button ButtonRegister;
     @BindView(R.id.userImage)
@@ -65,6 +67,11 @@ public class RegisterActivity extends AppCompatActivity {
     EditText EdFlowerNumber;
     @BindView(R.id.EditReStreetName)
     EditText EdStreetName;
+    @BindView(R.id.EditReFlat_number)
+    EditText EdFlat;
+    @BindView(R.id.EditReGovernoateid)
+    EditText EdGovernote;
+
     @BindView(R.id.CBAccecpt)
     CheckBox CBAccecpt;
     private int CAMERA_REQUEST = 188;
@@ -72,7 +79,7 @@ public class RegisterActivity extends AppCompatActivity {
     String encodimg = "0";
     Uri imageUri;
     ProgressDialog progDailog;
-    String name, phone, message = "Noting", messageError, state_id, email, nickname, street_name, building_number, flower_number, password, urluser = "https://bsor3a.com/clients/register", result;
+    String name, phone, message = "Noting", messageError, state_id, email, nickname, street_name, building_number, flower_number, password, urluser = "https://bsor3a.com/clients/register", result, Governoate, flat;
     int messageId;
     String codeFromServer, emailFromServer, nicknameFromServer;
     SharedPreferences prefs;
@@ -81,7 +88,7 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        setBar.setStatusBarColored(this);
+        // setBar.setStatusBarColored(this);
         ButterKnife.bind(this);
         prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
         editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
@@ -120,7 +127,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void onRegisterSuccess() {
         processing();
-        new GetDateUser().execute(name, phone, email, nickname, password, street_name, building_number, flower_number, state_id, encodimg);
+        new GetDateUser().execute(name, phone, email, nickname, password, street_name, building_number, flower_number, state_id, encodimg, Governoate, flat);
 
     }
 
@@ -160,6 +167,8 @@ public class RegisterActivity extends AppCompatActivity {
         street_name = getTextFromEditText(EdStreetName, R.string.enterstreetname);
         flower_number = getTextFromEditText(EdFlowerNumber, R.string.enterFlowerNumber);
         building_number = getTextFromEditText(Edbuilding, R.string.enterbuildingnumber);
+        Governoate = getTextFromEditText(EdGovernote, R.string.enterGovernorate);
+        flat = getTextFromEditText(EdFlat, R.string.enterflatNumber);
     }
 
     public String getTextFromEditText(EditText editText, int id) {
@@ -174,7 +183,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     public boolean validate() {
         boolean valid = true;
-        if (name.equals("") || phone.equals("") || email.equals("") || nickname.equals("") || password.equals("") || state_id.equals("") || street_name.equals("") || flower_number.equals("") || building_number.equals("")) {
+        if (name.equals("") || phone.equals("") || email.equals("") || nickname.equals("") || password.equals("") || state_id.equals("") || street_name.equals("") || flower_number.equals("") || building_number.equals("") || flat.isEmpty() || Governoate.isEmpty()) {
             return false;
         }
         return valid;
@@ -231,6 +240,11 @@ public class RegisterActivity extends AppCompatActivity {
         onBackPressed();
     }
 
+    public void openTerms(View view) {
+        Intent intent = new Intent(RegisterActivity.this, PolicyActivity.class);
+        startActivity(intent);
+    }
+
     class GetDateUser extends AsyncTask<String, Boolean, Boolean> {
         @Override
         protected Boolean doInBackground(String... strings) {
@@ -244,12 +258,14 @@ public class RegisterActivity extends AppCompatActivity {
             String buildingNumber = strings[6];
             String flowerNumber = strings[7];
             String state_id = strings[8];
+            String city_name = strings[9];
+            String flat = strings[10];
             // if  you have  to send  data  to the databse
             ArrayList<NameValuePair> pairs = new ArrayList<NameValuePair>();
             pairs.add(new BasicNameValuePair("lang", String.valueOf(MainActivity.lang)));
             pairs.add(new BasicNameValuePair("name", name));
             pairs.add(new BasicNameValuePair("phone", phone));
-            pairs.add(new BasicNameValuePair("state_id", state_id));
+            pairs.add(new BasicNameValuePair("state_name", state_id));
             pairs.add(new BasicNameValuePair("email", email));
             pairs.add(new BasicNameValuePair("nickname", nickname));
             pairs.add(new BasicNameValuePair("street_name", streetName));
@@ -257,6 +273,8 @@ public class RegisterActivity extends AppCompatActivity {
             pairs.add(new BasicNameValuePair("flower_number", flowerNumber));
             pairs.add(new BasicNameValuePair("password", password));
             pairs.add(new BasicNameValuePair("img", img));
+            pairs.add(new BasicNameValuePair("city_name", city_name));
+            pairs.add(new BasicNameValuePair("flat_number", flat));
 
 
             com.mostafa.android.bsor3a.LoginAndRegister.JsonReader j = new com.mostafa.android.bsor3a.LoginAndRegister.JsonReader(urluser, pairs);
@@ -278,12 +296,12 @@ public class RegisterActivity extends AppCompatActivity {
                     JSONObject ob = array.getJSONObject(0);
                     codeFromServer = ob.getString("code");
                     Log.e("codeFromServer", codeFromServer);
-
-//                    Toast.makeText(RegisterActivity.this, "" + codeFromServer, Toast.LENGTH_LONG).show();
                     emailFromServer = ob.getString("email");
                     nicknameFromServer = ob.getString("nickname");
+                    String customer_img = ob.getString("img");
                     editor.putString("nickname", nicknameFromServer);
                     editor.putString("customer_email", emailFromServer);
+                    editor.putString("customer_img", customer_img);
                     editor.apply();
                 }
 
@@ -294,7 +312,6 @@ public class RegisterActivity extends AppCompatActivity {
 
             return false;
         }
-
         @Override
         protected void onPostExecute(Boolean aBoolean) {
             super.onPostExecute(aBoolean);
@@ -320,7 +337,6 @@ public class RegisterActivity extends AppCompatActivity {
                     .show();
 
         }
-
         private void openConfirmationActivity() {
             Intent intent = new Intent(RegisterActivity.this, ConfirmationActivity.class);
             intent.putExtra("code", codeFromServer);
@@ -328,9 +344,7 @@ public class RegisterActivity extends AppCompatActivity {
             finish();
         }
     }
-
     public void end() {
         finish();
     }
-
 }

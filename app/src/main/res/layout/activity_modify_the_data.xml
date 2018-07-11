@@ -7,8 +7,7 @@
     android:orientation="vertical"
     tools:context="com.mostafa.android.bsor3a.LoginAndRegister.ModifyTheDataActivity">
 
-    <RelativeLayout
-        style="@style/pageRelativeStyle">
+    <RelativeLayout style="@style/pageRelativeStyle2">
 
         <ImageView
             android:id="@+id/backLogin"
@@ -17,6 +16,7 @@
 
         <TextView
             style="@style/pageTitleText"
+            android:paddingLeft="25dp"
             android:text="@string/Modify_personal_data" />
     </RelativeLayout>
 
@@ -34,7 +34,6 @@
                 style="@style/editText"
                 android:drawableLeft="@drawable/person"
                 android:drawablePadding="20dp"
-                android:layout_gravity="left"
                 android:hint="@string/FullName" />
 
             <EditText
@@ -42,7 +41,6 @@
                 style="@style/editText"
                 android:drawableLeft="@drawable/mob"
                 android:drawablePadding="20dp"
-                android:layout_gravity="left"
                 android:hint="@string/Phone"
                 android:inputType="number"
                 android:maxLength="11" />
@@ -50,7 +48,7 @@
             <EditText
                 android:id="@+id/EditEmail"
                 style="@style/editText"
-                android:layout_gravity="left"
+
 
                 android:drawableLeft="@drawable/mail"
                 android:drawablePadding="20dp"
@@ -59,7 +57,6 @@
             <EditText
                 android:id="@+id/EditShortName"
                 style="@style/editText"
-                android:layout_gravity="left"
 
                 android:drawableLeft="@drawable/nname"
                 android:drawablePadding="20dp"
@@ -68,7 +65,6 @@
             <EditText
                 android:id="@+id/EditPassword"
                 style="@style/editText"
-                android:layout_gravity="left"
 
                 android:drawableLeft="@drawable/pass"
                 android:drawablePadding="20dp"
@@ -76,21 +72,30 @@
                 android:inputType="textPassword" />
 
             <EditText
+                android:id="@+id/EditCityid"
+                style="@style/editText"
+
+                android:drawableLeft="@drawable/home"
+                android:drawableTint="@color/Orange"
+                android:drawablePadding="20dp"
+                android:hint="@string/Governorate" />
+            <EditText
                 android:id="@+id/EditStateid"
                 style="@style/editText"
-                android:layout_gravity="left"
 
-                android:drawableLeft="@drawable/select"
+                android:drawableLeft="@drawable/home"
+                android:drawableTint="@color/Orange"
                 android:drawablePadding="20dp"
-                android:hint="@string/Stateid"
-                android:inputType="number" />
+                android:hint="@string/Statename" />
+
 
             <EditText
                 android:id="@+id/EditStreetName"
                 style="@style/editText"
                 android:layout_gravity="left"
 
-                android:drawableLeft="@drawable/select"
+                android:drawableLeft="@drawable/home"
+                android:drawableTint="@color/Orange"
                 android:drawablePadding="20dp"
                 android:hint="@string/streetName"
                 android:inputType="text" />
@@ -100,20 +105,29 @@
                 style="@style/editText"
                 android:layout_gravity="left"
 
-                android:drawableLeft="@drawable/select"
+                android:drawableLeft="@drawable/home"
+                android:drawableTint="@color/Orange"
                 android:drawablePadding="20dp"
-                android:hint="@string/building_number"
-                android:inputType="number" />
+                android:hint="@string/building_number" />
 
             <EditText
                 android:id="@+id/Editflower_number"
                 style="@style/editText"
                 android:layout_gravity="left"
                 android:gravity="center|left"
-                android:drawableLeft="@drawable/select"
+                android:drawableLeft="@drawable/home"
+                android:drawableTint="@color/Orange"
                 android:drawablePadding="20dp"
-                android:hint="@string/flower_number"
-                android:inputType="number" />
+                android:hint="@string/flower_number" />
+
+            <EditText
+                android:id="@+id/Editflatid"
+                style="@style/editText"
+
+                android:drawableLeft="@drawable/home"
+                android:drawableTint="@color/Orange"
+                android:drawablePadding="20dp"
+                android:hint="@string/flat_number" />
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

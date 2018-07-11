@@ -1,6 +1,8 @@
 package com.mostafa.android.bsor3a.LoginAndRegister;
 
+import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -30,7 +32,7 @@ import butterknife.ButterKnife;
 
 import static com.mostafa.android.bsor3a.MainActivity.MY_PREFS_NAME;
 
-public class ModifyTheDataActivity extends AppCompatActivity {
+public class ModifyTheDataActivity extends Activity {
     @BindView(R.id.EditFullName)
     EditText EdFullName;
     @BindView(R.id.EditNumber)
@@ -49,6 +51,10 @@ public class ModifyTheDataActivity extends AppCompatActivity {
     EditText EdBuildingNumber;
     @BindView(R.id.Editflower_number)
     EditText EdFlower_number;
+    @BindView(R.id.EditCityid)
+    EditText Edcityname;
+    @BindView(R.id.Editflatid)
+    EditText Edflat;
     @BindView(R.id.modifyConfirm)
     Button BtConfirm;
     @BindView(R.id.modifyCancel)
@@ -60,7 +66,7 @@ public class ModifyTheDataActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modify_the_data);
         ButterKnife.bind(this);
-        setBar.setStatusBarColored(this);
+        //setBar.setStatusBarColored(this);
         getTheData();
         BtCancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,13 +95,14 @@ public class ModifyTheDataActivity extends AppCompatActivity {
                     JSONObject data = array.optJSONObject(0);
                     String name = data.getString("name");
                     String email = data.getString("email");
-                    String state_id = data.getString("state_id");
+                    String state_id = data.getString("state_name");
                     String nickname = data.getString("nickname");
                     String streetname = data.getString("street_name");
                     String buildingnumber = data.getString("building_number");
                     String flowernumber = data.getString("flower_number");
-                    String id_client = data.getString("id_client");
                     String phone = data.getString("phone");
+                    String cityname = data.getString("city_name");
+                    String flat_number = data.getString("flat_number");
                     EdFullName.setText(name);
                     EdEmail.setText(email);
                     EdNumber.setText(phone);
@@ -105,6 +112,8 @@ public class ModifyTheDataActivity extends AppCompatActivity {
                     EdBuildingNumber.setText(buildingnumber);
                     EdFlower_number.setText(flowernumber);
                     EdBuildingNumber.setText(buildingnumber);
+                    Edcityname.setText(cityname);
+                    Edflat.setText(flat_number);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -125,11 +134,11 @@ public class ModifyTheDataActivity extends AppCompatActivity {
             prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
             editor = prefs.edit();
             String clientID = prefs.getString("customer_id", null);
-            modifyData(FullName, Number, Email, ShortName, Password, State_id, StreetName, BuildingNumber, FlowerNumber, clientID);
+            modifyData(FullName, Number, Email, ShortName, Password, State_id, StreetName, BuildingNumber, FlowerNumber, clientID, City, flat_number);
         }
     }
 
-    private void modifyData(String fullName, String number, String email, String shortName, String password, String state_id, String streetName, String buildingNumber, String flowerNumber, String customer_id) {
+    private void modifyData(String fullName, String number, String email, String shortName, String password, String state_id, String streetName, String buildingNumber, String flowerNumber, String customer_id, String city, String flat_number) {
 
         Response.Listener<String> listener = new Response.Listener<String>() {
             @Override
@@ -144,7 +153,12 @@ public class ModifyTheDataActivity extends AppCompatActivity {
                         if (messageID == 1) {
                             AlertDialog.Builder builder = new AlertDialog.Builder(ModifyTheDataActivity.this);
                             builder.setMessage(message)
-                                    .setNegativeButton(getString(R.string.okay), null)
+                                    .setNegativeButton(getString(R.string.okay), new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            finish();
+                                        }
+                                    })
                                     .create()
                                     .show();
                             JSONArray data = jsonObject.getJSONArray("data");
@@ -175,12 +189,12 @@ public class ModifyTheDataActivity extends AppCompatActivity {
             }
         };
         ModifyRequest modifyRequest = new ModifyRequest(String.valueOf(MainActivity.lang), BuildingNumber, StreetName, State_id, Password
-                , Email, customer_id, Number, FullName, FlowerNumber, ShortName, listener);
+                , Email, customer_id, Number, FullName, FlowerNumber, ShortName, city, flat_number, listener);
         RequestQueue queue = Volley.newRequestQueue(ModifyTheDataActivity.this);
         queue.add(modifyRequest);
     }
 
-    private String FullName, Number, Email, ShortName, Password, State_id, StreetName, BuildingNumber, FlowerNumber;
+    private String FullName, Number, Email, ShortName, Password, State_id, StreetName, BuildingNumber, FlowerNumber, City, flat_number;
 
     private void initalize() {
         FullName = getTextFromEditText(EdFullName, R.string.enterName);
@@ -192,6 +206,8 @@ public class ModifyTheDataActivity extends AppCompatActivity {
         StreetName = getTextFromEditText(EdStreetName, R.string.enterstreetname);
         BuildingNumber = getTextFromEditText(EdBuildingNumber, R.string.enterbuildingnumber);
         FlowerNumber = getTextFromEditText(EdFlower_number, R.string.enterFlowerNumber);
+        City = getTextFromEditText(Edcityname, R.string.enterGovernorate);
+        flat_number = getTextFromEditText(Edflat, R.string.enterflatNumber);
     }
 
     public String getTextFromEditText(EditText editText, int id) {

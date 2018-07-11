@@ -52,10 +52,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             public void onClick(View view) {
                 if(isLocationSet){
-                    Intent openActivtyShippingDetails  =new Intent(MapsActivity.this,ShippingDetails.class);
+                    Intent openActivtyShippingDetails = getIntent();
                     openActivtyShippingDetails.putExtra("lat",latLngSelected.latitude);
-                    openActivtyShippingDetails.putExtra("lng",latLngSelected.longitude);
-                    startActivity(openActivtyShippingDetails);
+                    openActivtyShippingDetails.putExtra("lag", latLngSelected.longitude);
+                    setResult(100, openActivtyShippingDetails);
+                    finish();
                 }else{
                     Toast.makeText(MapsActivity.this, getString(R.string.NotgetLocation), Toast.LENGTH_SHORT).show();
                 }

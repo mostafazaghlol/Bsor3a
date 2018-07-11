@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/splash"
-    tools:context="com.mostafa.android.bsor3a.PerviousShipmentsActivity">
+    tools:context="com.mostafa.android.bsor3a.NewShipmentsActivity">
 
     <RelativeLayout
         style="@style/pageRelativeStyle2"
@@ -20,11 +20,11 @@
         <TextView
             android:id="@+id/TitleLogin"
             style="@style/pageTitleText"
-            android:text="@string/Previous_shipments" />
+            android:text="@string/Newly_shipments" />
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
+        android:id="@+id/recycler_view1"
         android:scrollbars="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,12 +34,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:id="@+id/Progress"
+        android:id="@+id/Progress1"
         android:layout_centerInParent="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/TextEmpty"
+        android:id="@+id/TextEmpty1"
         android:visibility="invisible" />
 </RelativeLayout>

@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Bsor3a</string>
-    <string name="ChooseLanguage">اختيـار الغــة</string>
+    <string name="ChooseLanguage">اختيـار اللغــة</string>
     <string name="ArabicLanguage">اللغــة العـربيـة</string>
     <string name="EnglishLanguage">English</string>
     <string name="hi">Eng</string>
@@ -21,7 +21,8 @@
     <string name="PlAcceptTerms">Please Accept Terms</string>
     <string name="google_maps_key">AIzaSyDr-PGFlFC-Ee65nnZ_gqeRIAjt5TgWUJo</string>
     <string name="title_activity_main_navigation" translatable="false">MainNavigationActivity</string>
-
+    <string name="facebook_app_id" translatable="false">418072448598793</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb418072448598793</string>
     <string name="navigation_drawer_open" translatable="false">Open navigation drawer</string>
     <string name="navigation_drawer_close" translatable="false">Close navigation drawer</string>
 
@@ -30,14 +31,15 @@
     <string name="Modify_personal_data">Modify personal data</string>
     <string name="Previous_shipments">Previous shipments</string>
     <string name="Technical_support">Technical support</string>
-    <string name="sign_out">sign out</string>
+    <string name="sign_out">Sign out</string>
     <string name="detect_location">detect location</string>
     <string name="Confirm">confirm</string>
     <string name="title_activity_maps">Map</string>
     <string name="ShippingDetalis">Shipping Details</string>
     <string name="ShippingName">Shipping Name</string>
     <string name="Detailedaddress">Detailed address</string>
-    <string name="PleaseEnglish">Please write the data in English</string>
+    <string name="PleaseEnglish">Please write the Sender Data </string>
+    <string name="PleaseEnglisha">Please write the Receiver Data </string>
     <string name="Governorate">Governorate</string>
     <string name="District">District</string>
     <string name="street">street</string>
@@ -84,7 +86,8 @@
     <string name="pleasewait">Please wait</string>
     <string name="okay">Okay</string>
     <string name="RemeberMe">Remember me</string>
-    <string name="Stateid" translatable="false">state id</string>
+    <string name="Stateid">state id</string>
+    <string name="Statename">state name</string>
     <string name="streetName">street name</string>
     <string name="building_number">building number</string>
     <string name="flower_number">flower number</string>
@@ -105,5 +108,26 @@
     <string name="no">No</string>
     <string name="Okay">okay</string>
     <string name="Empty_Field">Empty Field</string>
+    <string name="ShippingReciverName">Shippinng Reciver Name</string>
+    <string name="phoneoremail">Phone / Email</string>
+    <string name="Promocode">Promo code</string>
+    <string name="enter_Promo_code">enter Promo code</string>
+    <string name="Policy">Policy</string>
+    <string name="orderprice">Order Price</string>
+    <string name="delete">Delete</string>
+    <string name="sure">Sure You Will Cancel The Request ?</string>
+    <string name="sureWord">Sure</string>
+    <string name="No">No</string>
+    <string name="Would">Would You like to make new Request ?</string>
+    <string name="enterEmailOrPhone">Enter The Email or  The Phone !</string>
+    <string name="ChoosePlace">Choose The Sender Place</string>
+    <string name="Newly_shipments">New Shipments</string>
+    <string name="Location">Choose The Sender Location On The Map !</string>
+    <string name="Location2">Choose The Receiver Location On The Map !</string>
+    <string name="messageAnt5a">انتخ .... واحنا نسد</string>
+    <string name="flat_number">flat number</string>
+    <string name="enterflatNumber">Enter the flat number !</string>
+    <string name="Besor3a">بســــــــرعه</string>
+    <string name="wewill">سوف يصل اليك اقرب مندوب  بسرعه</string>
 
 </resources>

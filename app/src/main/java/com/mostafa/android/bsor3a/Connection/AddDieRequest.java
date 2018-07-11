@@ -12,11 +12,30 @@ public class AddDieRequest extends StringRequest {
     private static final String REGISTER_REQUEST_URL = "https://bsor3a.com/clients/new_order";
     private Map<String, String> params;
 
-    public AddDieRequest(String lang, String name,
-                         String id_client, String map_address_client, String client_lat, String client_lag, String map_address_reciver,
-                         String reciver_lat, String reciver_lag, String delivery_time, String space, String name_reciver,
-                         String phone_reciver, String address_reciver, String street_number_reciver, String flower_number_reciver,
-                         String building_number_reciver, Response.Listener<String> listener) {
+    public AddDieRequest(String lang,
+                         String name,
+                         String id_client,
+                         String map_address_client,
+                         String client_lat,
+                         String client_lag,
+                         String map_address_reciver,
+                         String reciver_lat,
+                         String reciver_lag,
+                         String delivery_time,
+                         String space,
+                         String name_reciver,
+                         String phone_reciver,
+                         String address_reciver,
+                         String street_number_reciver,
+                         String flower_number_reciver,
+                         String building_number_reciver,
+                         String promo,
+                         String apartmentNumber,
+                         String id_city,
+                         String street_name,
+                         String building_number,
+                         String flower_number,
+                         Response.Listener<String> listener) {
 
         super(Method.POST, REGISTER_REQUEST_URL, listener, null);
         params = new HashMap<>();
@@ -31,12 +50,18 @@ public class AddDieRequest extends StringRequest {
         params.put("reciver_lag", reciver_lag);
         params.put("delivery_time", delivery_time);
         params.put("space", space);
+        params.put("id_city", id_city);
+        params.put("street_name", street_name);
+        params.put("building_number", building_number);
+        params.put("flower_number", flower_number);
+        params.put("flat_number", apartmentNumber);
         params.put("name_reciver", name_reciver);
         params.put("phone_reciver", phone_reciver);
         params.put("address_reciver", address_reciver);
         params.put("street_number_reciver", street_number_reciver);
         params.put("flower_number_reciver", flower_number_reciver);
         params.put("building_number_reciver", building_number_reciver);
+        params.put("promo_code", "Anta5");
 
     }
 
