@@ -61,8 +61,12 @@ public class AddDieRequest extends StringRequest {
         params.put("street_number_reciver", street_number_reciver);
         params.put("flower_number_reciver", flower_number_reciver);
         params.put("building_number_reciver", building_number_reciver);
-        params.put("promo_code", "Anta5");
+        if (promo == null) {
+            params.put("promo_code", " ");
 
+        } else {
+            params.put("promo_code", promo);
+        }
     }
 
     @Override

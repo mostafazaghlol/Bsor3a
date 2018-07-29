@@ -12,7 +12,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.ScrollView;
-import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -28,6 +27,10 @@ import org.json.JSONObject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import co.mobiwise.materialintro.shape.Focus;
+import co.mobiwise.materialintro.shape.FocusGravity;
+import co.mobiwise.materialintro.shape.ShapeType;
+import co.mobiwise.materialintro.view.MaterialIntroView;
 
 import static com.mostafa.android.bsor3a.MainActivity.MY_PREFS_NAME;
 
@@ -62,6 +65,22 @@ public class LoginActivity extends AppCompatActivity {
                 openNavigationOffTheApp();
                 finish();
             }
+
+            new MaterialIntroView.Builder(LoginActivity.this).setTargetPadding(10)
+                    .enableDotAnimation(true)
+                    .enableIcon(false)
+                    .setFocusGravity(FocusGravity.CENTER)
+                    .setFocusType(Focus.NORMAL)
+                    .setDelayMillis(500)
+                    .enableFadeAnimation(true)
+                    .performClick(false)
+                    .setInfoText(getString(R.string.canRecir14))
+                    .setShape(ShapeType.CIRCLE)
+                    .setTarget(Eduser)
+                    .setUsageId("intro_card960")
+                    .show();
+
+
             loginButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -110,7 +129,7 @@ public class LoginActivity extends AppCompatActivity {
                                     .create()
                                     .show();
                         } else if (messsageid == 1) {
-                            Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
+                            // Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
                             JSONArray data = jsonResponse.getJSONArray("data");
                             for (int k = 0; k < data.length(); k++) {
                                 JSONObject object = data.optJSONObject(k);
@@ -119,6 +138,7 @@ public class LoginActivity extends AppCompatActivity {
                                 String customer_email = object.getString("customer_email");
                                 String customer_img = object.getString("customer_img");
                                 String nickname = object.getString("nick name");
+
                                 if (ChRemeberMe.isChecked()) {
                                     editor.putString("nickname", nickname);
                                     editor.putString("customer_email", customer_email);
@@ -126,7 +146,11 @@ public class LoginActivity extends AppCompatActivity {
                                     editor.putString("customer_id", customer_id);
                                     editor.putString("customer_img", customer_img);
                                     editor.apply();
+                                } else {
+                                    editor.putString("customer_id", customer_id);
+                                    editor.apply();
                                 }
+
 
                             }
                             openNavigationOffTheApp();

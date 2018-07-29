@@ -11,7 +11,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -87,7 +86,7 @@ public class PerviousShipmentsActivity extends Activity {
                         message = check.getString("message");
                         messageId = check.getInt("messageID");
                         if (messageId == 1) {
-                            Toast.makeText(PerviousShipmentsActivity.this, "" + message, Toast.LENGTH_SHORT).show();
+                            //  Toast.makeText(PerviousShipmentsActivity.this, "" + message, Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.INVISIBLE);
                             for (int i = 0; i < data.length() - 1; i++) {
                                 JSONObject Shippingdata = data.getJSONObject(i);
@@ -140,7 +139,7 @@ public class PerviousShipmentsActivity extends Activity {
                         message = check.getString("message");
                         messageId = check.getInt("messageID");
                         if (messageId == 1) {
-                            Toast.makeText(PerviousShipmentsActivity.this, "" + message, Toast.LENGTH_SHORT).show();
+                            // Toast.makeText(PerviousShipmentsActivity.this, "" + message, Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.INVISIBLE);
                             for (int i = 0; i < data.length() - 1; i++) {
                                 JSONObject Shippingdata = data.getJSONObject(i);
@@ -185,8 +184,11 @@ public class PerviousShipmentsActivity extends Activity {
 //                                    })
 //                                    .create()
 //                                    .show();
-                            Toast.makeText(PerviousShipmentsActivity.this, "" + message, Toast.LENGTH_SHORT).show();
-                            finish();
+                            // Toast.makeText(PerviousShipmentsActivity.this, "" + message, Toast.LENGTH_SHORT).show();
+                            Log.e("finished", "hi");
+                            progressBar.setVisibility(View.INVISIBLE);
+                            TxEmpty.setVisibility(View.VISIBLE);
+                            TxEmpty.setText(message);
                         }
                     }
 

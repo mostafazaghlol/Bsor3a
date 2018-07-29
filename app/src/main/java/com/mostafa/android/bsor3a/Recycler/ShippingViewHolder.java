@@ -1,13 +1,13 @@
 package com.mostafa.android.bsor3a.Recycler;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.mostafa.android.bsor3a.MainActivity;
-import com.mostafa.android.bsor3a.MainNavigationActivity;
 import com.mostafa.android.bsor3a.PerviousShipmentsDetailsActivity;
 import com.mostafa.android.bsor3a.R;
 
@@ -21,8 +21,9 @@ public class ShippingViewHolder extends RecyclerView.ViewHolder {
 
     public ShippingViewHolder(View itemView) {
         super(itemView);
-        ShippingName = (TextView) itemView.findViewById(R.id.ShippingName);
-        ShippingFromTo = (TextView) itemView.findViewById(R.id.ShippingFromTo);
+        Context context1 = itemView.getContext();
+        ShippingName = itemView.findViewById(R.id.ShippingName);
+        ShippingFromTo = itemView.findViewById(R.id.ShippingFromTo);
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -31,6 +32,8 @@ public class ShippingViewHolder extends RecyclerView.ViewHolder {
                 openDetails.putExtra("id", postion);
                 openDetails.putExtra("idTag", MainActivity.NEWOROLD);
                 view.getContext().startActivity(openDetails);
+                Context context = view.getContext();
+                ((Activity) context).finish();
             }
         });
     }

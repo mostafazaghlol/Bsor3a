@@ -5,19 +5,20 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
-import android.widget.ScrollView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,33 +32,45 @@ import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.android.gms.maps.model.LatLng;
 import com.mostafa.android.bsor3a.Connection.AddDieRequest;
-import com.mostafa.android.bsor3a.SpinnerSenderData.CityAdapter;
-import com.mostafa.android.bsor3a.SpinnerSenderData.CityItem;
-import com.mostafa.android.bsor3a.SpinnerSenderData.GovernatItem;
-import com.mostafa.android.bsor3a.SpinnerSenderData.GovernteAdapter;
+import com.mostafa.android.bsor3a.Connection.confirm_sms;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import co.mobiwise.materialintro.shape.Focus;
+import co.mobiwise.materialintro.shape.FocusGravity;
+import co.mobiwise.materialintro.shape.ShapeType;
+import co.mobiwise.materialintro.view.MaterialIntroView;
 
 import static com.mostafa.android.bsor3a.MainActivity.MY_PREFS_NAME;
+import static com.mostafa.android.bsor3a.MainNavigationActivity.xFlatNmuber;
+import static com.mostafa.android.bsor3a.MainNavigationActivity.xFlowerNumber;
+import static com.mostafa.android.bsor3a.MainNavigationActivity.xGovernote;
+import static com.mostafa.android.bsor3a.MainNavigationActivity.xbuilding_number;
+import static com.mostafa.android.bsor3a.MainNavigationActivity.xcity_name;
+import static com.mostafa.android.bsor3a.MainNavigationActivity.xstreet_name;
 
 
 public class FullShippmentActivity extends AppCompatActivity {
     @BindView(R.id.EditTextShippingName)
     EditText EdShippingName;
     @BindView(R.id.EditTextGovernorate)
-    Spinner EdGovernorate;
+    EditText EdGovernorate;
     @BindView(R.id.EditTextDistrict)
-    Spinner EdDiscrete;
+    EditText EdDiscrete;
     @BindView(R.id.EditTextStreet)
     EditText EdStreet;
     @BindView(R.id.EditTextHouseNumber)
@@ -68,25 +81,24 @@ public class FullShippmentActivity extends AppCompatActivity {
     EditText EdApartmentNumber;
     @BindView(R.id.promo)
     EditText EdPromo;
-    @BindView(R.id.ButtonRShipping)
-    Button BtShipping;
+
     @BindView(R.id.progress_bar)
     ProgressBar progressBar;
-    @BindView(R.id.scrollView)
-    ScrollView scrollView;
     boolean isTouched = false;
     Calendar currentTime = Calendar.getInstance();
     @BindView(R.id.typefaceText)
     TextView textViewTypedFace;
+    @BindView(R.id.typefaceText11)
+    TextView textViewTypedFace11;
     Typeface face;
     @BindView(R.id.EditTextToShippingName)
     EditText EdToShippingName;
     @BindView(R.id.EditTextToGovernorate)
-    Spinner EdToGovernorate;
+    EditText EdToGovernorate;
     @BindView(R.id.EditTextToPhone)
     EditText EdToPhone;
     @BindView(R.id.EditTextToDistrict)
-    Spinner EdToDiscrete;
+    EditText EdToDiscrete;
     @BindView(R.id.EditTextToStreet)
     EditText EdToStreet;
     @BindView(R.id.EditTextToHouseNumber)
@@ -95,29 +107,26 @@ public class FullShippmentActivity extends AppCompatActivity {
     EditText EdToStorey;
     @BindView(R.id.EditTextToApartmentNumber)
     EditText EdToApartmentNumber;
-    @BindView(R.id.ButtonToShipping)
-    Button BtToShipping;
-    String Id;
+
+    @BindView(R.id.relative2)
+    LinearLayout linearLayout;
+    String Id = "0";
     @BindView(R.id.typefaceText1)
     TextView textViewTypedFace2;
     @BindView(R.id.ButtonFinishShipping)
     Button finishButton;
-    String ShippingName2, Governorate2 = "", Discrete2 = "", Street2, HouseNumber2, Storey2, ApartmentNumber2, promo = " ";
-    String urluser = "https://bsor3a.com/clients/new_order", result;
-    String client_id, ShippingName, Governorate = "", Discrete = "", Street, HouseNumber, Storey, ApartmentNumber;
+    String ShippingName2 = "", Governorate2 = "", Discrete2 = "", Street2 = "", HouseNumber2 = "", Storey2 = "", ApartmentNumber2 = "", promo = " ";
+    String urluser = "https://bsor3a.com/Clients/new_order", result;
+    String client_id = "", ShippingName = "", Governorate = "", Discrete = "", Street = "", HouseNumber = "", Storey = "", ApartmentNumber = "";
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
-    String message, name, id_client, map_address_client, clientlat, clientlag, map_address_reciver, reciver_lat, reciver_lag, delivery_time, space, name_receiver, phone_receiver2, address_reciver, street_number_reciver, flower_number_reciver, building_number_reciver, Promo;
+    String message, order_id, price, name, id_client, map_address_client, clientlat, clientlag, map_address_reciver, reciver_lat, reciver_lag, delivery_time, space, name_receiver, phone_receiver2, address_reciver, street_number_reciver, flower_number_reciver, building_number_reciver, Promo;
     String street_name, building_number, flower_number, flat_number;
     boolean isplacepickerFinished = false;
     Intent intent;
-    String placeHolder, lat, lng;
-    ProgressDialog progDailog;
-    //Adapters of The Spinners
-    private ArrayList<GovernatItem> mCountryList;
-    private GovernteAdapter mAdapter, mAdapter2;
-    private ArrayList<CityItem> mCityList1, mCityList2;
-    private CityAdapter mCityAdapter, mCityAdapter2;
+    String placeHolder, lat1 = "", lng1 = "", lat2 = "", lng2 = "";
+    ProgressDialog progDailog, progDailog2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,149 +135,46 @@ public class FullShippmentActivity extends AppCompatActivity {
         // setBar.setStatusBarColored(this);
         ButterKnife.bind(this);
         try {
-            inialize();
-            getcity();
-            // custom_font = Typeface.createFromAsset(getAssets(), "font.otf");
+            sharedPreferences = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+            client_id = sharedPreferences.getString("customer_id", "");
+            setData();
             face = Typeface.createFromAsset(getAssets(), "font.otf");
             textViewTypedFace.setTypeface(face);
             textViewTypedFace2.setTypeface(face);
-            //Adapters of the Spinners
-            mAdapter = new GovernteAdapter(this, mCountryList);
-            mAdapter2 = new GovernteAdapter(this, mCountryList);
-            mCityAdapter = new CityAdapter(this, mCityList1);
-            mCityAdapter2 = new CityAdapter(this, mCityList2);
-            EdGovernorate.setAdapter(mAdapter);
-            EdDiscrete.setAdapter(mCityAdapter);
-            EdToGovernorate.setAdapter(mAdapter);
-            EdToDiscrete.setAdapter(mCityAdapter2);
+            textViewTypedFace11.setTypeface(face);
+
+            new MaterialIntroView.Builder(FullShippmentActivity.this).setTargetPadding(10)
+                    .enableDotAnimation(true)
+                    .enableIcon(false)
+                    .setFocusGravity(FocusGravity.CENTER)
+                    .setFocusType(Focus.NORMAL)
+                    .setDelayMillis(500)
+                    .enableFadeAnimation(true)
+                    .performClick(false)
+                    .setInfoText(getString(R.string.canRecir4))
+                    .setShape(ShapeType.CIRCLE)
+                    .setTarget(EdShippingName)
+                    .setUsageId("intro_card9600") //THIS SHOULD BE UNIQUE ID
+                    .show();
             finishButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (validate() && validate1())
-                        sendData();
-                    else
-                        Toast.makeText(FullShippmentActivity.this, "Error Empty filed !", Toast.LENGTH_SHORT).show();
-                }
-            });
-            EdGovernorate.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    if (position == 0) {
-
-                    } else {
-                        GovernatItem clickedItem = (GovernatItem) parent.getItemAtPosition(position);
-                        String clickedCountryName = clickedItem.getmGovernatName();
-                        Governorate = clickedCountryName;
-                        Log.d("hhhhh", Governorate);
-                        String Id = clickedItem.getId();
-                        isTouched = true;
-                        getcity(Id);
-                    }
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-
-                }
-            });
-            EdDiscrete.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    if (i == 0) {
-
-                    } else {
-                        CityItem clickedItem = (CityItem) adapterView.getItemAtPosition(i);
-                        String clickedCountryName = clickedItem.getmGovernatName();
-                        Discrete = clickedCountryName;
-                        Log.d("hhhhh", Discrete);
-                        String Id = clickedItem.getId();
-                    }
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> adapterView) {
-
-                }
-            });
-            BtShipping.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    try {
-                        intialize();
-                        if (validate1()) {
-                            name = ShippingName;
-                            street_name = Street;
-                            building_number = HouseNumber;
-                            flower_number = Storey;
-                            flat_number = ApartmentNumber;
-                            map_address_client = Governorate;
-                            delivery_time = getTime();
-                            Toast.makeText(FullShippmentActivity.this, getString(R.string.Location), Toast.LENGTH_LONG).show();
-                            openPlacePicker();
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
-            sharedPreferences = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
-            editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
-            client_id = sharedPreferences.getString("customer_id", "");
-            EdToGovernorate.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    if (position == 0) {
-
-                    } else {
-                        GovernatItem clickedItem = (GovernatItem) parent.getItemAtPosition(position);
-                        String clickedCountryName = clickedItem.getmGovernatName();
-                        Governorate2 = clickedCountryName;
-                        Log.d("hhhhh", Governorate);
-                        Id = clickedItem.getId();
-                        isTouched = true;
-                        getcity2(Id);
-                    }
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-
-                }
-            });
-            EdToDiscrete.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                    if (i == 0) {
-
-                    } else {
-                        CityItem clickedItem = (CityItem) adapterView.getItemAtPosition(i);
-                        String clickedCountryName = clickedItem.getmGovernatName();
-                        Discrete2 = clickedCountryName;
-                        Log.d("hhhhh", Discrete);
-                        String Id = clickedItem.getId();
-                    }
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> adapterView) {
-
-                }
-            });
-
-
-            BtToShipping.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
                     intialize();
-                    if (validate()) {
+                    if (validate1() && validate()) {
+                        name = ShippingName;
+                        street_name = Street;
+                        building_number = HouseNumber;
+                        flower_number = Storey;
+                        flat_number = ApartmentNumber;
+                        map_address_client = Governorate;
+                        delivery_time = getTime();
                         name_receiver = ShippingName2;
                         street_number_reciver = Discrete2;
                         flower_number_reciver = Storey2;
                         building_number_reciver = HouseNumber2;
                         id_client = id_client;
-                        Toast.makeText(FullShippmentActivity.this, getString(R.string.Location2), Toast.LENGTH_LONG).show();
-                        openPlacePicker2();
 
+                        startActivityForResult(new Intent(FullShippmentActivity.this, MapsActivity.class), 0);
                     }
                 }
             });
@@ -277,103 +183,27 @@ public class FullShippmentActivity extends AppCompatActivity {
         }
     }
 
+
+    private void setData() {
+        Log.e("Governota", xGovernote);
+        Log.e("xcity_name", xcity_name);
+        Log.e("xstreet_name", xstreet_name);
+        Log.e("xbuilding_number", xbuilding_number);
+        Log.e("xFlowerNumber", xFlowerNumber);
+        Log.e("xFlatNmuber", xFlatNmuber);
+        EdGovernorate.setText(xGovernote);
+        EdDiscrete.setText(xcity_name);
+        EdStreet.setText(xstreet_name);
+        EdHouseNumber.setText(xbuilding_number);
+        EdStorey.setText(xFlowerNumber);
+        EdApartmentNumber.setText(xFlatNmuber);
+    }
+
     private boolean validate() {
-        if (Governorate2.isEmpty()) {
-            Toast.makeText(this, getString(R.string.enterGovernorate), Toast.LENGTH_SHORT).show();
-
-            return false;
-        }
-        if (Discrete2.isEmpty()) {
-            Toast.makeText(this, getString(R.string.enterDiscrete), Toast.LENGTH_SHORT).show();
-
-            return false;
-        }
-        return !(ShippingName2.isEmpty() || Governorate2.isEmpty() || Discrete2.isEmpty()
-                || Street2.isEmpty() || HouseNumber2.isEmpty() || Storey2.isEmpty() || ApartmentNumber.isEmpty() || phone_receiver2.isEmpty());
-    }
-
-    //gettting the cities
-    private void getcity(String id) {
-        mCityList1.clear();
-        mCityList1.add(new CityItem(getString(R.string.District), ""));
-        scrollView.setVisibility(View.INVISIBLE);
-        progressBar.setVisibility(View.VISIBLE);
-        Response.Listener<String> listener = new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject object = new JSONObject(response);
-                    int messageId = object.getInt("messageID");
-                    if (messageId == 1) {
-                        JSONArray array = object.getJSONArray("main_data");
-                        for (int i = 0; i < array.length(); i++) {
-                            JSONObject object1 = array.getJSONObject(i);
-                            String state_name = object1.getString("city name");
-                            String id = object1.getString("id_city");
-                            mCityList1.add(new CityItem(state_name, id));
-                            progressBar.setVisibility(View.INVISIBLE);
-                            scrollView.setVisibility(View.VISIBLE);
-                        }
-                    } else if (messageId == 0) {
-                        Toast.makeText(FullShippmentActivity.this, "Sorry,there is no any city", Toast.LENGTH_SHORT).show();
-                        progressBar.setVisibility(View.INVISIBLE);
-                        scrollView.setVisibility(View.VISIBLE);
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-
-        getcity getstates = new getcity(id, listener);
-        RequestQueue queue = Volley.newRequestQueue(FullShippmentActivity.this);
-        queue.add(getstates);
-    }
-
-    //inalize the cities
-    private void getcity() {
-        mCityList1 = new ArrayList<>();
-        mCityList1.add(new CityItem(getString(R.string.District), ""));
-        mCityList2 = new ArrayList<>();
-        mCityList2.add(new CityItem(getString(R.string.District), ""));
-    }
-
-    //getting the countries
-    private void inialize() {
-        mCountryList = new ArrayList<>();
-        mCountryList.add(new GovernatItem(getString(R.string.Governorate), 0));
-        Response.Listener<String> listener = new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject object = new JSONObject(response);
-                    int messageId = object.getInt("messageID");
-                    if (messageId == 1) {
-                        JSONArray array = object.getJSONArray("main_data");
-                        // mCountryList.clear();
-                        for (int i = 0; i < array.length(); i++) {
-                            JSONObject object1 = array.getJSONObject(i);
-                            String state_name = object1.getString("state name");
-                            String id = object1.getString("id_state");
-                            mCountryList.add(new GovernatItem(state_name, id));
-                            progressBar.setVisibility(View.INVISIBLE);
-                            scrollView.setVisibility(View.VISIBLE);
-                        }
-                    } else if (messageId == 0) {
-                        Toast.makeText(FullShippmentActivity.this, "Sorry,there is no any Country", Toast.LENGTH_SHORT).show();
-                        progressBar.setVisibility(View.INVISIBLE);
-                        scrollView.setVisibility(View.VISIBLE);
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-
-        getstates getstates = new getstates(listener);
-        RequestQueue queue = Volley.newRequestQueue(FullShippmentActivity.this);
-        queue.add(getstates);
-
+        return !(ShippingName.isEmpty() || Street.isEmpty() || HouseNumber.isEmpty() || Storey.isEmpty() || ApartmentNumber.isEmpty() ||
+                ShippingName2.isEmpty() || Governorate2.isEmpty() || Discrete2.isEmpty()
+                || Street2.isEmpty() || HouseNumber2.isEmpty() || Storey2.isEmpty()
+                || ApartmentNumber.isEmpty() || phone_receiver2.isEmpty() || phone_receiver2.length() != 11);
     }
 
     private String getTheDay(int dayOfweek) {
@@ -445,44 +275,6 @@ public class FullShippmentActivity extends AppCompatActivity {
 
         }
     }
-
-    private void getcity2(String id) {
-        mCityList2.clear();
-        mCityList2.add(new CityItem(getString(R.string.District), ""));
-        scrollView.setVisibility(View.INVISIBLE);
-        progressBar.setVisibility(View.VISIBLE);
-        Response.Listener<String> listener = new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject object = new JSONObject(response);
-                    int messageId = object.getInt("messageID");
-                    if (messageId == 1) {
-                        JSONArray array = object.getJSONArray("main_data");
-                        for (int i = 0; i < array.length(); i++) {
-                            JSONObject object1 = array.getJSONObject(i);
-                            String state_name = object1.getString("city name");
-                            String id = object1.getString("id_city");
-                            mCityList2.add(new CityItem(state_name, id));
-                            progressBar.setVisibility(View.INVISIBLE);
-                            scrollView.setVisibility(View.VISIBLE);
-                        }
-                    } else if (messageId == 0) {
-                        Toast.makeText(FullShippmentActivity.this, "Sorry,there is no any city", Toast.LENGTH_SHORT).show();
-                        progressBar.setVisibility(View.INVISIBLE);
-                        scrollView.setVisibility(View.VISIBLE);
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            }
-        };
-
-        getcity getstates = new getcity(id, listener);
-        RequestQueue queue = Volley.newRequestQueue(FullShippmentActivity.this);
-        queue.add(getstates);
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -492,18 +284,18 @@ public class FullShippmentActivity extends AppCompatActivity {
 
                     Place place = PlacePicker.getPlace(this, data);
                     placeHolder = place.getAddress().toString();
-                    lat = String.valueOf(place.getLatLng().latitude);
-                    lng = String.valueOf(place.getLatLng().longitude);
+                    lat1 = String.valueOf(place.getLatLng().latitude);
+                    lng1 = String.valueOf(place.getLatLng().longitude);
 
 
-                    clientlat = lat;
-                    clientlag = lng;
+                    clientlat = lat1;
+                    clientlag = lng1;
                     if (promo.length() > 0) {
                         promo = promo;
                     } else {
                         promo = "";
                     }
-                    Toast.makeText(this, "" + getString(R.string.getLocationofreceiverplz), Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(this, "" + getString(R.string.getLocationofreceiverplz), Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -511,14 +303,114 @@ public class FullShippmentActivity extends AppCompatActivity {
         } else if (requestCode == 3) {
             Place place = PlacePicker.getPlace(this, data);
             placeHolder = place.getAddress().toString();
-            lat = String.valueOf(place.getLatLng().latitude);
-            lng = String.valueOf(place.getLatLng().longitude);
+            lat2 = String.valueOf(place.getLatLng().latitude);
+            lng2 = String.valueOf(place.getLatLng().longitude);
             map_address_reciver = Governorate2;
-            reciver_lat = lat;
-            reciver_lag = lng;
+            reciver_lat = lat2;
+            reciver_lag = lng2;
             address_reciver = map_address_reciver;
-            space = getDistance(new LatLng(Double.parseDouble(lat), Double.parseDouble(lng)), new LatLng(Double.parseDouble(clientlat), Double.parseDouble(clientlag)));
+            space = getDistance(new LatLng(Double.parseDouble(lat1), Double.parseDouble(lng1)), new LatLng(Double.parseDouble(clientlat), Double.parseDouble(clientlag)));
+        } else if (requestCode == 0) {
+            if (resultCode == 100) {
+                try {
+                    clientlat = data.getStringExtra("latClient");
+                    clientlag = data.getStringExtra("lagClient");
+                    reciver_lat = data.getStringExtra("latReciver");
+                    reciver_lag = data.getStringExtra("lagReciver");
+                    space = getDistance(new LatLng(Double.parseDouble(clientlat), Double.parseDouble(clientlag)),
+                            new LatLng(Double.parseDouble(reciver_lat), Double.parseDouble(reciver_lag)));
+                    map_address_client = Street;
+                    map_address_reciver = Street2;
+                    address_reciver = map_address_reciver;
+                    if (promo.length() > 0) {
+                        promo = promo;
+                    } else {
+                        promo = "";
+                    }
+                    //sendData();
+                    onRegisterSuccess();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
         }
+    }
+
+    private void onRegisterSuccess() {
+        processing();
+        Log.e("SendDataName", name);
+        Log.e("SendDataId", client_id);
+        Log.e("SendDataAddress", map_address_client);
+        Log.e("SendDataLat", clientlat);
+        Log.e("SendDataLng", clientlag);
+        Log.e("SendDataAddress", map_address_reciver);
+        Log.e("SendDataLat", reciver_lat);
+        Log.e("SendDataLag", reciver_lag);
+        Log.e("SendDataTime", delivery_time);
+        Log.e("SendDataspaace", space);
+        Log.e("SendDataname_receiver", name_receiver);
+        Log.e("SendDataphone_receiver2", phone_receiver2);
+        Log.e("SendDataaddress_reciver", address_reciver);
+        Log.e("street_number_reciver", street_number_reciver);
+        Log.e("flower_number_reciver", flower_number_reciver);
+        Log.e("building_number_reciver", building_number_reciver);
+        Log.e("SendDatastreet_name", street_name);
+        Log.e("SendDatabuilding_number", building_number);
+        Log.e("SendDataId", Id);
+        Log.e("SendDataflower_number", flower_number);
+        Log.e("SendDataflat_number", flat_number);
+        Log.e("street_number_reciver", street_number_reciver);
+        Log.e("flower_number_reciver", flower_number_reciver);
+        Log.e("building_number_reciver", building_number_reciver);
+        if (promo == null) {
+            promo = " ";
+        } else {
+            promo = promo;
+        }
+        new uploadOrder().execute(name, client_id,
+                map_address_client,
+                clientlat,
+                clientlag,
+                map_address_reciver,
+                reciver_lat,
+                reciver_lag,
+                delivery_time,
+                space,
+                Id,
+                street_name,
+                building_number,
+                flower_number,
+                flat_number, name_receiver,
+                phone_receiver2,
+                address_reciver,
+                street_number_reciver,
+                flower_number_reciver,
+                building_number_reciver
+                , promo);
+    }
+
+    private String street(LatLng x) {
+        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+
+        try {
+            List<Address> addresses = geocoder.getFromLocation(x.latitude, x.longitude, 1);
+
+            if (addresses != null) {
+                Address returnedAddress = addresses.get(0);
+                StringBuilder strReturnedAddress = new StringBuilder();
+                for (int i = 0; i < returnedAddress.getMaxAddressLineIndex(); i++) {
+                    strReturnedAddress.append(returnedAddress.getAddressLine(i)).append("");
+                }
+                return strReturnedAddress.toString();
+            } else {
+                return "No Address returned!";
+            }
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return "No Address returned!";
     }
 
     private String getDistance(LatLng latLng, LatLng latLng1) {
@@ -542,30 +434,30 @@ public class FullShippmentActivity extends AppCompatActivity {
     private void sendData() {
         try {
 
-            Log.e("SendData", name);
-            Log.e("SendData", client_id);
-            Log.e("SendData", map_address_client);
-            Log.e("SendData", clientlat);
-            Log.e("SendData", clientlag);
-            Log.e("SendData", map_address_reciver);
-            Log.e("SendData", reciver_lat);
-            Log.e("SendData", reciver_lag);
-            Log.e("SendData", delivery_time);
-            Log.e("SendData", space);
-            Log.e("SendData", name_receiver);
-            Log.e("SendData", phone_receiver2);
-            Log.e("SendData", address_reciver);
-            Log.e("SendData", street_number_reciver);
-            Log.e("SendData", flower_number_reciver);
-            Log.e("SendData", building_number_reciver);
-            Log.e("SendData", street_name);
-            Log.e("SendData", building_number);
-            Log.e("SendData", Id);
-            Log.e("SendData", flower_number);
-            Log.e("SendData", flat_number);
-            Log.e("SendData", street_number_reciver);
-            Log.e("SendData", flower_number_reciver);
-            Log.e("SendData", building_number_reciver);
+            Log.e("SendDataName", name);
+            Log.e("SendDataId", client_id);
+            Log.e("SendDataAddress", map_address_client);
+            Log.e("SendDataLat", clientlat);
+            Log.e("SendDataLng", clientlag);
+            Log.e("SendDataAddress", map_address_reciver);
+            Log.e("SendDataLat", reciver_lat);
+            Log.e("SendDataLag", reciver_lag);
+            Log.e("SendDataTime", delivery_time);
+            Log.e("SendDataspaace", space);
+            Log.e("SendDataname_receiver", name_receiver);
+            Log.e("SendDataphone_receiver2", phone_receiver2);
+            Log.e("SendDataaddress_reciver", address_reciver);
+            Log.e("street_number_reciver", street_number_reciver);
+            Log.e("flower_number_reciver", flower_number_reciver);
+            Log.e("building_number_reciver", building_number_reciver);
+            Log.e("SendDatastreet_name", street_name);
+            Log.e("SendDatabuilding_number", building_number);
+            Log.e("SendDataId", Id);
+            Log.e("SendDataflower_number", flower_number);
+            Log.e("SendDataflat_number", flat_number);
+            Log.e("street_number_reciver", street_number_reciver);
+            Log.e("flower_number_reciver", flower_number_reciver);
+            Log.e("building_number_reciver", building_number_reciver);
             processing();
             Response.Listener<String> responseListener = new Response.Listener<String>() {
                 @Override
@@ -591,7 +483,7 @@ public class FullShippmentActivity extends AppCompatActivity {
                                         .setPositiveButton(getString(R.string.okay), new DialogInterface.OnClickListener() {
                                             @Override
                                             public void onClick(DialogInterface dialogInterface, int i) {
-                                                finishIt();
+                                                finishIt(order_id);
                                             }
                                         }).setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
                                     @Override
@@ -601,6 +493,8 @@ public class FullShippmentActivity extends AppCompatActivity {
                                 })
                                         .create()
                                         .show();
+
+
                             } else {
 
                             }
@@ -644,17 +538,31 @@ public class FullShippmentActivity extends AppCompatActivity {
         }
     }
 
-    private void finishIt() {
+    private void finishIt(String order_id) {
+        Response.Listener<String> listener = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject j = new JSONObject(response);
+                } catch (JSONException j1) {
+                    j1.printStackTrace();
+                }
+            }
+        };
 
+        confirm_sms obj = new confirm_sms("1", order_id, listener);
+        RequestQueue requestQueue = Volley.newRequestQueue(FullShippmentActivity.this);
+        requestQueue.add(obj);
 
         final AlertDialog.Builder dialog = new AlertDialog.Builder(this).setTitle(getString(R.string.wewill)).setMessage(getString(R.string.messageAnt5a));
-        dialog.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+        dialog.setPositiveButton(getString(R.string.Confirm), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
                 startActivity(new Intent(FullShippmentActivity.this, MainNavigationActivity.class));
                 finish();
             }
         });
+        dialog.setIcon(R.drawable.correct);
         final AlertDialog alert = dialog.create();
         alert.show();
 
@@ -744,8 +652,10 @@ public class FullShippmentActivity extends AppCompatActivity {
         progDailog = new ProgressDialog(FullShippmentActivity.this);
         progDailog.setTitle(getString(R.string.UploadData));
         progDailog.setMessage(getString(R.string.pleasewait));
+        progDailog.setIcon(R.drawable.logo);
         progDailog.setProgress(0);
         progDailog.setMax(70);
+        progDailog.setCanceledOnTouchOutside(false);
         Thread thread = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -766,21 +676,34 @@ public class FullShippmentActivity extends AppCompatActivity {
         progDailog.show();
     }
 
+    public void processing2() {
+        progDailog2 = new ProgressDialog(FullShippmentActivity.this);
+        progDailog2.setTitle(getString(R.string.UploadData));
+        progDailog2.setMessage(getString(R.string.pleasewait));
+        progDailog2.setProgress(0);
+        progDailog2.setMax(70);
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                int progress = 0;
+                while (progress <= 50) {
+                    try {
+                        progDailog2.setProgress(progress);
+                        progress++;
+                        Thread.sleep(500);
+                    } catch (Exception e) {
+
+                    }
+                }
+                progDailog2.dismiss();
+            }
+        });
+        thread.start();
+        progDailog2.show();
+    }
+
     private boolean validate1() {
-        if (Governorate.isEmpty()) {
-            Toast.makeText(this, getString(R.string.enterGovernorate), Toast.LENGTH_SHORT).show();
 
-            return false;
-        }
-        if (Discrete.isEmpty()) {
-            Toast.makeText(this, getString(R.string.enterDiscrete), Toast.LENGTH_SHORT).show();
-
-            return false;
-        }
-        if (ShippingName.isEmpty() || Street.isEmpty() || HouseNumber.isEmpty() || Storey.isEmpty() || ApartmentNumber.isEmpty()) {
-            Log.d("hhhhh", "Error");
-            return false;
-        }
         return true;
     }
 
@@ -790,6 +713,8 @@ public class FullShippmentActivity extends AppCompatActivity {
         HouseNumber = getTextFromEditText(EdHouseNumber, R.string.enterHouseNumber);
         Storey = getTextFromEditText(EdStorey, R.string.enterStorey);
         ApartmentNumber = getTextFromEditText(EdApartmentNumber, R.string.enterApartmentNumber);
+        Governorate = getTextFromEditText(EdGovernorate, R.string.enterGovernorate);
+        Discrete = getTextFromEditText(EdDiscrete, R.string.enterDiscrete);
         if (EdPromo.getText().length() > 0) {
             promo = getTextFromEditText(EdPromo, R.string.enter_Promo_code);
         }
@@ -798,13 +723,27 @@ public class FullShippmentActivity extends AppCompatActivity {
         HouseNumber2 = getTextFromEditText(EdToHouseNumber, R.string.enterHouseNumber);
         Storey2 = getTextFromEditText(EdToStorey, R.string.enterStorey);
         ApartmentNumber2 = getTextFromEditText(EdToApartmentNumber, R.string.enterApartmentNumber);
-        phone_receiver2 = getTextFromEditText(EdToPhone, R.string.enterPhone);
+        phone_receiver2 = getTextFromEditText(EdToPhone, R.string.enterPhone, 11);
+        Discrete2 = getTextFromEditText(EdToDiscrete, R.string.enterDiscrete);
+        Governorate2 = getTextFromEditText(EdToGovernorate, R.string.enterGovernorate);
     }
 
     public String getTextFromEditText(EditText editText, int id) {
 
         if (editText.getText().toString().isEmpty()) {
             editText.setError(getString(id));
+        } else {
+            return editText.getText().toString();
+        }
+        return "";
+    }
+
+    public String getTextFromEditText(EditText editText, int id, int numberOfCharacter) {
+
+        if (editText.getText().toString().isEmpty()) {
+            editText.setError(getString(id));
+        } else if (editText.getText().length() != numberOfCharacter) {
+            editText.setError(getString(R.string.enterPhoneGood));
         } else {
             return editText.getText().toString();
         }
@@ -865,5 +804,116 @@ public class FullShippmentActivity extends AppCompatActivity {
         public Map<String, String> getParams() {
             return params;
         }
+    }
+
+
+    public class uploadOrder extends AsyncTask<String, Boolean, Boolean> {
+        @Override
+        protected Boolean doInBackground(String... strings) {
+            String name = strings[0];
+            String id_client = strings[1];
+            String map_address_client = strings[2];
+            String client_lat = strings[3];
+            String client_lag = strings[4];
+            String map_address_reciver = strings[5];
+            String reciver_lat = strings[6];
+            String reciver_lag = strings[7];
+            String delivery_time = strings[8];
+            String space = strings[9];
+            String id_city = strings[10];
+            String street_name = strings[11];
+            String building_number = strings[12];
+            String flower_number = strings[13];
+            String flat_number = strings[14];
+            String name_reciver = strings[15];
+            String phone_reciver = strings[16];
+            String address_reciver = strings[17];
+            String street_number_reciver = strings[18];
+            String flower_number_reciver = strings[19];
+            String building_number_reciver = strings[20];
+            String promo_code = strings[21];
+
+            // if  you have  to send  data  to the databse
+            ArrayList<NameValuePair> pairs = new ArrayList<NameValuePair>();
+            pairs.add(new BasicNameValuePair("lang", String.valueOf(MainActivity.lang)));
+            pairs.add(new BasicNameValuePair("name", name));
+            pairs.add(new BasicNameValuePair("id_client", id_client));
+            pairs.add(new BasicNameValuePair("map_address_client", map_address_client));
+            pairs.add(new BasicNameValuePair("client_lat", client_lat));
+            pairs.add(new BasicNameValuePair("client_lag", client_lag));
+            pairs.add(new BasicNameValuePair("map_address_reciver", map_address_reciver));
+            pairs.add(new BasicNameValuePair("reciver_lat", reciver_lat));
+            pairs.add(new BasicNameValuePair("reciver_lag", reciver_lag));
+            pairs.add(new BasicNameValuePair("delivery_time", delivery_time));
+            pairs.add(new BasicNameValuePair("space", space));
+            pairs.add(new BasicNameValuePair("id_city", id_city));
+            pairs.add(new BasicNameValuePair("street_name", street_name));
+            pairs.add(new BasicNameValuePair("building_number", building_number));
+            pairs.add(new BasicNameValuePair("flower_number", flower_number));
+            pairs.add(new BasicNameValuePair("flat_number", flat_number));
+            pairs.add(new BasicNameValuePair("name_reciver", name_reciver));
+            pairs.add(new BasicNameValuePair("phone_reciver", phone_reciver));
+            pairs.add(new BasicNameValuePair("address_reciver", address_reciver));
+            pairs.add(new BasicNameValuePair("street_number_reciver", street_number_reciver));
+            pairs.add(new BasicNameValuePair("flower_number_reciver", flower_number_reciver));
+            pairs.add(new BasicNameValuePair("building_number_reciver", building_number_reciver));
+            pairs.add(new BasicNameValuePair("promo_code", promo_code));
+
+            JsonReader3 j = new JsonReader3("https://bsor3a.com/Clients/new_order", pairs);
+            result = j.sendRequest();
+            JSONObject jsonobject;
+            try {
+                jsonobject = new JSONObject(result);
+                JSONArray jsonArray = jsonobject.getJSONArray("message");
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject respons = jsonArray.getJSONObject(i);
+                    int messageID = respons.getInt("messageID");
+                    if (messageID == 1) {
+                        message = respons.getString("message");
+                        price = "";
+                        if (respons.has("price")) {
+                            price = respons.getString("price");
+                        }
+                        order_id = respons.getString("order_id");
+                    } else {
+                        progDailog.cancel();
+                        Toast.makeText(FullShippmentActivity.this, "" + "error", Toast.LENGTH_SHORT).show();
+
+                    }
+
+                }
+
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
+            return false;
+        }
+
+        @Override
+        protected void onPostExecute(Boolean aBoolean) {
+            super.onPostExecute(aBoolean);
+            progDailog.cancel();
+            AlertDialog.Builder builder = new AlertDialog.Builder(FullShippmentActivity.this);
+            builder.setMessage(message + "\n" + getString(R.string.orderprice) + price)
+                    .setPositiveButton(getString(R.string.okay), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                            finishIt(order_id);
+                        }
+                    }).setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    DeleteRequest(order_id);
+                }
+            })
+                    .create()
+                    .show();
+
+        }
+
     }
 }

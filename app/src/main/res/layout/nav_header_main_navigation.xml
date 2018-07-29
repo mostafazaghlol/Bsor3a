@@ -15,9 +15,20 @@
         android:id="@+id/profile_image"
         android:layout_width="96dp"
         android:layout_height="96dp"
+        android:layout_gravity="center"
         android:src="@drawable/user"
-        app:civ_border_width="2dp"
         app:civ_border_color="#FF000000"
-        android:layout_gravity="center" />
+        app:civ_border_width="2dp" />
+
+    <TextView
+        android:id="@+id/nickname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="mostafafa"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
 </LinearLayout>

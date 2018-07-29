@@ -15,9 +15,7 @@ import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
-import android.util.JsonReader;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -29,7 +27,6 @@ import android.widget.Toast;
 import com.mostafa.android.bsor3a.MainActivity;
 import com.mostafa.android.bsor3a.PolicyActivity;
 import com.mostafa.android.bsor3a.R;
-import com.mostafa.android.bsor3a.setBar;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
@@ -41,6 +38,11 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import co.mobiwise.materialintro.animation.MaterialIntroListener;
+import co.mobiwise.materialintro.shape.Focus;
+import co.mobiwise.materialintro.shape.FocusGravity;
+import co.mobiwise.materialintro.shape.ShapeType;
+import co.mobiwise.materialintro.view.MaterialIntroView;
 
 import static com.mostafa.android.bsor3a.MainActivity.MY_PREFS_NAME;
 
@@ -74,8 +76,6 @@ public class RegisterActivity extends Activity {
 
     @BindView(R.id.CBAccecpt)
     CheckBox CBAccecpt;
-    private int CAMERA_REQUEST = 188;
-    private int PICK_IMAGE = 100;
     String encodimg = "0";
     Uri imageUri;
     ProgressDialog progDailog;
@@ -84,6 +84,9 @@ public class RegisterActivity extends Activity {
     String codeFromServer, emailFromServer, nicknameFromServer;
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
+    private int CAMERA_REQUEST = 188;
+    private int PICK_IMAGE = 100;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -113,6 +116,38 @@ public class RegisterActivity extends Activity {
                 }
             }
         });
+
+
+        new MaterialIntroView.Builder(RegisterActivity.this).setTargetPadding(10)
+                .enableDotAnimation(true)
+                .enableIcon(false)
+                .setFocusGravity(FocusGravity.CENTER)
+                .setFocusType(Focus.NORMAL)
+                .setDelayMillis(500)
+                .enableFadeAnimation(true)
+                .performClick(false)
+                .setInfoText(getString(R.string.canRecir15))
+                .setShape(ShapeType.CIRCLE)
+                .setTarget(userImage)
+                .setUsageId("intro_card9600").setListener(new MaterialIntroListener() {
+            @Override
+            public void onUserClicked(String s) {
+                new MaterialIntroView.Builder(RegisterActivity.this).setTargetPadding(10)
+                        .enableDotAnimation(true)
+                        .enableIcon(false)
+                        .setFocusGravity(FocusGravity.CENTER)
+                        .setFocusType(Focus.NORMAL)
+                        .setDelayMillis(500)
+                        .enableFadeAnimation(true)
+                        .performClick(false)
+                        .setInfoText(getString(R.string.canRecir16))
+                        .setShape(ShapeType.CIRCLE)
+                        .setTarget(EdfullName)
+                        .setUsageId("intro_card96000")
+                        .show();
+            }
+        })
+                .show();
 
     }
 
@@ -245,6 +280,10 @@ public class RegisterActivity extends Activity {
         startActivity(intent);
     }
 
+    public void end() {
+        finish();
+    }
+
     class GetDateUser extends AsyncTask<String, Boolean, Boolean> {
         @Override
         protected Boolean doInBackground(String... strings) {
@@ -343,8 +382,5 @@ public class RegisterActivity extends Activity {
             startActivity(intent);
             finish();
         }
-    }
-    public void end() {
-        finish();
     }
 }

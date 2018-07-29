@@ -2,8 +2,8 @@ package com.mostafa.android.bsor3a.LoginAndRegister;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,8 +14,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.toolbox.Volley;
 import com.mostafa.android.bsor3a.LoginAndRegister.Requests.ConfirmationRequest;
-import com.mostafa.android.bsor3a.LoginAndRegister.Requests.LoginRequest;
-import com.mostafa.android.bsor3a.LoginAndRegister.Requests.ModifyRequest;
 import com.mostafa.android.bsor3a.MainActivity;
 import com.mostafa.android.bsor3a.MainNavigationActivity;
 import com.mostafa.android.bsor3a.R;
@@ -100,7 +98,7 @@ public class ConfirmationActivity extends AppCompatActivity {
 
     private void openMainNavigationActivity() {
         startActivity(new Intent(ConfirmationActivity.this, MainNavigationActivity.class));
-        Toast.makeText(this, "" + message, Toast.LENGTH_SHORT).show();
+        // Toast.makeText(this, "" + message, Toast.LENGTH_SHORT).show();
         finish();
     }
 

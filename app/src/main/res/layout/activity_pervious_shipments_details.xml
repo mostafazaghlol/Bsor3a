@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/splash"
+    android:orientation="vertical"
     tools:context="com.mostafa.android.bsor3a.PerviousShipmentsDetailsActivity">
 
     <RelativeLayout
-        style="@style/pageRelativeStyle2"
-        android:id="@+id/xx">
+        android:id="@+id/xx"
+        style="@style/pageRelativeStyle2">
 
         <ImageView
             android:id="@+id/backLogin"
@@ -24,16 +23,17 @@
     </RelativeLayout>
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/xxx"
         android:layout_width="match_parent"
         android:layout_height="270dp"
-        android:background="@drawable/tablebackground"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
         android:layout_below="@id/xx"
-        android:id="@+id/xxx">
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/tablebackground">
 
         <LinearLayout
+            android:id="@+id/linearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -42,14 +42,13 @@
             android:layout_marginLeft="15dp"
             android:layout_marginStart="15dp"
             android:layout_marginTop="14dp"
-            android:orientation="vertical"
-            android:id="@+id/linearLayout">
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@string/ShippingName"
+                android:text="@string/ShippingDetalis"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -126,16 +125,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="@string/ShippingName"
+                android:text="@string/ShippingName2"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/ShDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="40dp"
-                android:id="@+id/ShDate"
                 android:gravity="left"
                 android:text="@string/Date"
                 android:textColor="@color/white"
@@ -143,33 +142,33 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/ShFrom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:gravity="left"
                 android:text="@string/From"
-                android:id="@+id/ShFrom"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/ShTo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:gravity="left"
-                android:id="@+id/ShTo"
                 android:text="@string/To"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/ShCost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:gravity="center"
-                android:id="@+id/ShCost"
                 android:text="@string/ShippingCost"
                 android:textColor="@color/white"
                 android:textSize="16sp"
@@ -180,24 +179,24 @@
     </RelativeLayout>
 
     <Button
+        android:id="@+id/xxxx"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/delete"
-        android:layout_margin="20dp"
-        android:onClick="deletex"
-        android:id="@+id/xxxx"
-        android:textColor="@color/white"
-        android:textAppearance="?android:textAppearanceMedium"
-        android:textSize="30sp"
-        android:textStyle="bold"
         android:layout_below="@id/xxx"
-        android:background="#FF0000" />
+        android:layout_margin="20dp"
+        android:background="#FF0000"
+        android:onClick="deletex"
+        android:text="@string/delete"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <ProgressBar
+        android:id="@+id/xxxxx"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scrollbarAlwaysDrawHorizontalTrack="true"
         android:layout_centerInParent="true"
-        android:id="@+id/xxxxx"
+        android:scrollbarAlwaysDrawHorizontalTrack="true"
         android:visibility="invisible" />
 </RelativeLayout>

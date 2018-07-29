@@ -1,6 +1,7 @@
 package com.mostafa.android.bsor3a;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -22,52 +23,97 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.toolbox.Volley;
 import com.mostafa.android.bsor3a.LoginAndRegister.LoginActivity;
 import com.mostafa.android.bsor3a.LoginAndRegister.ModifyTheDataActivity;
+import com.mostafa.android.bsor3a.LoginAndRegister.Requests.GetDataRequest;
 import com.mostafa.android.bsor3a.Techincal.TechincalActivity;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import co.mobiwise.materialintro.animation.MaterialIntroListener;
+import co.mobiwise.materialintro.shape.Focus;
+import co.mobiwise.materialintro.shape.FocusGravity;
+import co.mobiwise.materialintro.shape.ShapeType;
+import co.mobiwise.materialintro.view.MaterialIntroView;
 
 import static com.mostafa.android.bsor3a.MainActivity.MY_PREFS_NAME;
 
 public class MainNavigationActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    public static String xFlatNmuber, xFlowerNumber, xbuilding_number, xstreet_name, xnickname, xcity_name,
+            xGovernote, xphone, xemail, xname;
     @BindView(R.id.RequestClient)
     Button ButtonRequestClient;
+    @BindView(R.id.backLogin)
+    ImageView ButtonBackLogin;
     NavigationView navigationView;
     DrawerLayout drawer;
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
     String imageUrl;
     Typeface face;
+    String client_id, nickname;
+    ProgressDialog progDailog2;
+    private boolean x = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main_navigation);
+        ButterKnife.bind(this);
         try {
             prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
             editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
             imageUrl = prefs.getString("customer_img", "");
 
-
-            // custom_font = Typeface.createFromAsset(getAssets(), "font.otf");
+            client_id = prefs.getString("customer_id", "");
+            nickname = prefs.getString("nickname", "");
+            Log.e("client_id", client_id);
+            getData();
             face = Typeface.createFromAsset(getAssets(), "font.otf");
-
-            setContentView(R.layout.activity_main_navigation);
-
-            //            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-            ButterKnife.bind(this);
-            //setBar.setStatusBarColored(this);
-//        navigationView.getBackground().setAlpha(122);
-            //setSupportActionBar(toolbar);
             drawer = findViewById(R.id.drawer_layout);
-            //ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-            // this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-            //drawer.addDrawerListener(toggle);
-            //toggle.syncState();
-
             navigationView = findViewById(R.id.nav_view);
+
+            new MaterialIntroView.Builder(this).setTargetPadding(10)
+                    .enableDotAnimation(true)
+                    .enableIcon(false)
+                    .setFocusGravity(FocusGravity.CENTER)
+                    .setFocusType(Focus.NORMAL)
+                    .setDelayMillis(0)
+                    .enableFadeAnimation(true)
+                    .performClick(false)
+                    .setInfoText(getString(R.string.canRecir))
+                    .setShape(ShapeType.RECTANGLE)
+                    .setTarget(ButtonRequestClient)
+                    .setUsageId("intro_card").setListener(new MaterialIntroListener() {
+                @Override
+                public void onUserClicked(String s) {
+                    new MaterialIntroView.Builder(MainNavigationActivity.this).setTargetPadding(10)
+                            .enableDotAnimation(true)
+                            .enableIcon(false)
+                            .setFocusGravity(FocusGravity.CENTER)
+                            .setFocusType(Focus.NORMAL)
+                            .setDelayMillis(0)
+                            .enableFadeAnimation(true)
+                            .performClick(false)
+                            .setInfoText(getString(R.string.canRecir1))
+                            .setShape(ShapeType.CIRCLE)
+                            .setTarget(ButtonBackLogin)
+                            .setUsageId("intro_card2") //THIS SHOULD BE UNIQUE ID
+                            .show();
+                }
+            }) //THIS SHOULD BE UNIQUE ID
+                    .show();
+
             navigationView.setNavigationItemSelectedListener(this);
             navigationView.getBackground().setAlpha(30);
             View view = navigationView.getHeaderView(0);
@@ -99,6 +145,9 @@ public class MainNavigationActivity extends AppCompatActivity
                     openMapActivity();
                 }
             });
+
+            TextView nicknam1e = view.findViewById(R.id.nickname);
+            nicknam1e.setText(nickname);
         } catch (Exception e) {
             Log.e("MainNavigationActivity", e.getMessage().toString());
         }
@@ -138,6 +187,7 @@ public class MainNavigationActivity extends AppCompatActivity
         mNewTitle.setSpan(new CustomTypefaceSpan("", font), 0, mNewTitle.length(), Spannable.SPAN_INCLUSIVE_INCLUSIVE);
         mi.setTitle(mNewTitle);
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -149,6 +199,77 @@ public class MainNavigationActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    private void getData() {
+        processing2();
+        Response.Listener<String> listener = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONObject j = new JSONObject(response);
+                    JSONArray array = j.getJSONArray("data");
+                    for (int i = 0; i < array.length(); i++) {
+                        JSONObject ob = array.getJSONObject(0);
+                        xemail = ob.getString("email");
+                        xphone = ob.getString("phone");
+                        xGovernote = ob.getString("state_name");
+                        xcity_name = ob.getString("city_name");
+                        xnickname = ob.getString("nickname");
+                        xbuilding_number = ob.getString("building_number");
+                        xstreet_name = ob.getString("street_name");
+                        xFlowerNumber = ob.getString("flower_number");
+                        xFlatNmuber = ob.getString("flat_number");
+                        editor.putString("xemail", xemail);
+                        editor.putString("xphone", xphone);
+                        editor.putString("xGovernote", xGovernote);
+                        editor.putString("xcity_name", xcity_name);
+                        editor.putString("xnickname", xnickname);
+                        editor.putString("xbuilding_number", xbuilding_number);
+                        editor.putString("xstreet_name", xstreet_name);
+                        editor.putString("xFlowerNumber", xFlowerNumber);
+                        editor.putString("xFlatNmuber", xFlatNmuber);
+                        editor.commit();
+                        progDailog2.cancel();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        GetDataRequest getDataRequest = new GetDataRequest(client_id, listener);
+        RequestQueue requestQueue = Volley.newRequestQueue(MainNavigationActivity.this);
+        requestQueue.add(getDataRequest);
+
+
+    }
+
+    public void processing2() {
+        progDailog2 = new ProgressDialog(MainNavigationActivity.this);
+        progDailog2.setTitle(getString(R.string.UploadData));
+        progDailog2.setMessage(getString(R.string.pleasewait));
+        progDailog2.setIcon(R.drawable.logo);
+        progDailog2.setProgress(0);
+        progDailog2.setMax(70);
+        progDailog2.setCanceledOnTouchOutside(true);
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                int progress = 0;
+                while (progress <= 30) {
+                    try {
+                        progDailog2.setProgress(progress);
+                        progress++;
+                        Thread.sleep(1000);
+                    } catch (Exception e) {
+
+                    }
+                }
+                progDailog2.dismiss();
+            }
+        });
+        thread.start();
+        progDailog2.show();
+    }
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -185,6 +306,9 @@ public class MainNavigationActivity extends AppCompatActivity
             builder.setNegativeButton(getResources().getString(R.string.no), null);
             AlertDialog alertDialog = builder.create();
             alertDialog.show();
+
+        } else if (id == R.id.AboutDeve) {
+            startActivity(new Intent(MainNavigationActivity.this, AboutDevelopersActivity.class));
 
         }
         DrawerLayout drawer = findViewById(R.id.drawer_layout);

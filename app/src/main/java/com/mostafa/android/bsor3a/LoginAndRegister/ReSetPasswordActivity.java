@@ -38,12 +38,7 @@ public class ReSetPasswordActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_re_set_password);
         ButterKnife.bind(this);
-        BTReset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ResetPasswordMethod();
-            }
-        });
+
     }
 
     private void ResetPasswordMethod() {

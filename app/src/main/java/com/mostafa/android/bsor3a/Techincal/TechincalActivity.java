@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +25,11 @@ import org.json.JSONObject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import co.mobiwise.materialintro.animation.MaterialIntroListener;
+import co.mobiwise.materialintro.shape.Focus;
+import co.mobiwise.materialintro.shape.FocusGravity;
+import co.mobiwise.materialintro.shape.ShapeType;
+import co.mobiwise.materialintro.view.MaterialIntroView;
 
 public class TechincalActivity extends AppCompatActivity {
     @BindView(com.mostafa.android.bsor3a.R.id.firstNumber)
@@ -34,6 +40,8 @@ public class TechincalActivity extends AppCompatActivity {
     TextView TxEmail;
     @BindView(R.id.WebSite)
     TextView TxWebSite;
+    @BindView(R.id.socialMedia)
+    LinearLayout linearLayout;
     String phone, email, hot_line, fax, face_account, googleplus, twitter;
 
     @Override
@@ -46,6 +54,54 @@ public class TechincalActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(TechincalActivity.this, new String[]{Manifest.permission.CALL_PHONE}, 1);
         }
         setData();
+        new MaterialIntroView.Builder(TechincalActivity.this).setTargetPadding(10)
+                .enableDotAnimation(true)
+                .enableIcon(false)
+                .setFocusGravity(FocusGravity.CENTER)
+                .setFocusType(Focus.NORMAL)
+                .setDelayMillis(0)
+                .enableFadeAnimation(true)
+                .performClick(false)
+                .setInfoText(getString(R.string.canRecir7))
+                .setShape(ShapeType.CIRCLE)
+                .setTarget(TxFirstNumber)
+                .setUsageId("intro_card3000").setListener(new MaterialIntroListener() {
+            @Override
+            public void onUserClicked(String s) {
+                new MaterialIntroView.Builder(TechincalActivity.this).setTargetPadding(10)
+                        .enableDotAnimation(true)
+                        .enableIcon(false)
+                        .setFocusGravity(FocusGravity.CENTER)
+                        .setFocusType(Focus.NORMAL)
+                        .setDelayMillis(0)
+                        .enableFadeAnimation(true)
+                        .performClick(false)
+                        .setInfoText(getString(R.string.canRecir8))
+                        .setShape(ShapeType.CIRCLE)
+                        .setTarget(TxEmail)
+                        .setUsageId("intro_card3001").setListener(new MaterialIntroListener() {
+                    @Override
+                    public void onUserClicked(String s) {
+                        new MaterialIntroView.Builder(TechincalActivity.this).setTargetPadding(10)
+                                .enableDotAnimation(true)
+                                .enableIcon(false)
+                                .setFocusGravity(FocusGravity.CENTER)
+                                .setFocusType(Focus.NORMAL)
+                                .setDelayMillis(0)
+                                .enableFadeAnimation(true)
+                                .performClick(false)
+                                .setInfoText(getString(R.string.canRecir9))
+                                .setShape(ShapeType.CIRCLE)
+                                .setTarget(linearLayout)
+                                .setUsageId("intro_card3002") //THIS SHOULD BE UNIQUE ID
+                                .show();
+                    }
+                }) //THIS SHOULD BE UNIQUE ID
+                        .show();
+            }
+        }) //THIS SHOULD BE UNIQUE ID
+                .show();
+
     }
 
     private void setData() {

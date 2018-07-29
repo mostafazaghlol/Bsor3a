@@ -4,15 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-
-
-import com.mostafa.android.bsor3a.LoginAndRegister.LoginActivity;
 
 import java.util.Locale;
 
@@ -20,15 +17,16 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
+    public static final String MY_PREFS_NAME = "MyPrefsFile";
     public static int NEWOROLD = 0;
+    //1 for arabic and 2 for english
+    public static int lang = 0;
     @BindView(R.id.ArabicButton)
     Button ArabicButton;
     @BindView(R.id.EnglishButton)
     Button EnglishButton;
     private Locale myLocale;
-    //1 for arabic and 2 for english
-    public static int lang = 0;
-    public static final String MY_PREFS_NAME = "MyPrefsFile";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                     editor.apply();
                     changeLang("ar");
                     lang = 2;
-                    startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                    startActivity(new Intent(MainActivity.this, WelcomeActivity.class));
                     finish();
                 }
             });
@@ -61,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                     editor.apply();
                     changeLang("en");
                     lang = 1;
-                    startActivity(new Intent(MainActivity.this,LoginActivity.class));
+                    startActivity(new Intent(MainActivity.this, WelcomeActivity.class));
                     finish();
                 }
             });

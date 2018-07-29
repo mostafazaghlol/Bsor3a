@@ -1,6 +1,7 @@
 package com.mostafa.android.bsor3a;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -8,7 +9,6 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -25,6 +25,11 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import co.mobiwise.materialintro.animation.MaterialIntroListener;
+import co.mobiwise.materialintro.shape.Focus;
+import co.mobiwise.materialintro.shape.FocusGravity;
+import co.mobiwise.materialintro.shape.ShapeType;
+import co.mobiwise.materialintro.view.MaterialIntroView;
 
 public class PerviousShipmentsDetailsActivity extends Activity {
     @BindView(R.id.ShDate)
@@ -45,17 +50,13 @@ public class PerviousShipmentsDetailsActivity extends Activity {
     Button delete;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pervious_shipments_details);
-        //setBar.setStatusBarColored(this);
         ButterKnife.bind(this);
         int id = getIntent().getIntExtra("id", 0);
         int idTag = getIntent().getIntExtra("idTag", 0);
-//        OrderId=getIntent().getStringExtra("id");
-        Toast.makeText(this, "" + String.valueOf(id), Toast.LENGTH_SHORT).show();
         Shipping shippingObject = new Shipping();
         if (idTag == 1) {
             shippingObject = NewShipmentsActivity.dataList.get(id);
@@ -64,6 +65,38 @@ public class PerviousShipmentsDetailsActivity extends Activity {
             shippingObject = PerviousShipmentsActivity.dataList.get(id);
             delete.setVisibility(View.GONE);
         }
+
+        new MaterialIntroView.Builder(PerviousShipmentsDetailsActivity.this).setTargetPadding(10)
+                .enableDotAnimation(true)
+                .enableIcon(false)
+                .setFocusGravity(FocusGravity.CENTER)
+                .setFocusType(Focus.NORMAL)
+                .setDelayMillis(500)
+                .enableFadeAnimation(true)
+                .performClick(false)
+                .setInfoText(getString(R.string.canRecir6))
+                .setShape(ShapeType.CIRCLE)
+                .setTarget(relativeLayout)
+                .setUsageId("intro_card200010").setListener(new MaterialIntroListener() {
+            @Override
+            public void onUserClicked(String s) {
+                if (delete.getVisibility() == View.VISIBLE) {
+                    new MaterialIntroView.Builder(PerviousShipmentsDetailsActivity.this).setTargetPadding(10)
+                            .enableDotAnimation(true)
+                            .enableIcon(false)
+                            .setFocusGravity(FocusGravity.CENTER)
+                            .setFocusType(Focus.NORMAL)
+                            .setDelayMillis(500)
+                            .enableFadeAnimation(true)
+                            .performClick(false)
+                            .setInfoText(getString(R.string.canRecir5))
+                            .setShape(ShapeType.CIRCLE)
+                            .setTarget(delete).setUsageId("intro20022").show();
+                }
+            }
+        }) //THIS SHOULD BE UNIQUE ID
+                .show();
+
         orderId = shippingObject.getId();
         String Date = shippingObject.getCreation_date();
         String From = shippingObject.getFrom();
@@ -98,7 +131,8 @@ public class PerviousShipmentsDetailsActivity extends Activity {
     }
 
     public void back(View view) {
-        onBackPressed();
+        startActivity(new Intent(PerviousShipmentsDetailsActivity.this, NewShipmentsActivity.class));
+        finish();
     }
 
     public void deletex(final View view) {
@@ -113,10 +147,10 @@ public class PerviousShipmentsDetailsActivity extends Activity {
                         JSONObject jsonObject = new JSONObject(response);
                         JSONArray message = jsonObject.getJSONArray("message");
                         String message1 = message.getJSONObject(0).getString("message");
-                        Toast.makeText(PerviousShipmentsDetailsActivity.this, "" + message1, Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(PerviousShipmentsDetailsActivity.this, "" + message1, Toast.LENGTH_SHORT).show();
                         view.setVisibility(View.INVISIBLE);
                         pro.setVisibility(View.INVISIBLE);
-//                        startActivity(new Intent(PerviousShipmentsDetailsActivity.this,PerviousShipmentsActivity.class));
+                        startActivity(new Intent(PerviousShipmentsDetailsActivity.this, NewShipmentsActivity.class));
                         finish();
                     } catch (JSONException e) {
                         e.printStackTrace();

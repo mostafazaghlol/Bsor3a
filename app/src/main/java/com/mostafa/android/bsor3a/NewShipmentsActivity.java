@@ -10,7 +10,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -74,7 +73,6 @@ public class NewShipmentsActivity extends Activity {
     }
 
     private void getData(final String clientID) {
-
         final Response.Listener<String> listener = new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -87,7 +85,7 @@ public class NewShipmentsActivity extends Activity {
                         message = check.getString("message");
                         messageId = check.getInt("messageID");
                         if (messageId == 1) {
-                            Toast.makeText(NewShipmentsActivity.this, "" + message, Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(NewShipmentsActivity.this, "" + message, Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.INVISIBLE);
                             for (int i = 0; i < data.length() - 1; i++) {
                                 JSONObject Shippingdata = data.getJSONObject(i);
@@ -116,7 +114,6 @@ public class NewShipmentsActivity extends Activity {
                                         , id, code_order, clientID, creation_date, status, id_reciver, map_address_client, client_lat
                                         , client_lag, map_address_reciver, reciver_lag, reciver_lat, total_price, promo_id, delivery_time, space
                                         , rate_client, rate_delivery, date_delivery));
-
                             }
                             mHistoryAdapter.notifyDataSetChanged();
 
@@ -140,7 +137,7 @@ public class NewShipmentsActivity extends Activity {
                         message = check.getString("message");
                         messageId = check.getInt("messageID");
                         if (messageId == 1) {
-                            Toast.makeText(NewShipmentsActivity.this, "" + message, Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(NewShipmentsActivity.this, "" + message, Toast.LENGTH_SHORT).show();
                             progressBar.setVisibility(View.INVISIBLE);
                             for (int i = 0; i < data.length() - 1; i++) {
                                 JSONObject Shippingdata = data.getJSONObject(i);
@@ -174,19 +171,11 @@ public class NewShipmentsActivity extends Activity {
                             mHistoryAdapter.notifyDataSetChanged();
 
                         } else if (messageId == 0) {
+                            //progressBar.setVisibility(View.INVISIBLE);
+                            mHistoryRecyclerView.setVisibility(View.INVISIBLE);
                             progressBar.setVisibility(View.INVISIBLE);
-//                            AlertDialog.Builder builder = new AlertDialog.Builder(NewShipmentsActivity.this);
-//                            builder.setMessage(message)
-//                                    .setNegativeButton("" + getString(R.string.Okay), new DialogInterface.OnClickListener() {
-//                                        @Override
-//                                        public void onClick(DialogInterface dialogInterface, int i) {
-//                                            finish();
-//                                        }
-//                                    })
-//                                    .create()
-//                                    .show();
-                            Toast.makeText(NewShipmentsActivity.this, "" + message, Toast.LENGTH_SHORT).show();
-                            finish();
+                            TxEmpty.setText(message);
+                            TxEmpty.setVisibility(View.VISIBLE);
                         }
                     }
 
@@ -205,19 +194,16 @@ public class NewShipmentsActivity extends Activity {
     @Override
     protected void onStop() {
         dataList.clear();
-        getData(clientID);
         super.onStop();
     }
 
     @Override
     protected void onResume() {
-        getData(clientID);
         super.onResume();
     }
 
     @Override
     protected void onStart() {
-        getData(clientID);
         super.onStart();
     }
 

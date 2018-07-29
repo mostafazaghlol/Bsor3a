@@ -28,14 +28,15 @@
     <string name="title_activity_maps">الخريـطه</string>
     <string name="ShippingDetalis">تفاصيل الشحنه</string>
     <string name="ShippingName">نوع الشحنه</string>
+    <string name="ShippingName2">بيانات الشحنه</string>
     <string name="Detailedaddress">العنوان بالتفصيل</string>
     <string name="PleaseEnglish">برجاء كتابة بيانات المرسل</string>
     <string name="Governorate">المحافظه</string>
     <string name="District">الحــى</string>
     <string name="street">الشارع</string>
     <string name="Dash">--</string>
-    <string name="HouseNumber">رقم المنـزل</string>
-    <string name="Storey">الدور</string>
+    <string name="HouseNumber">رقم المبنى</string>
+    <string name="Storey">رقم الدور</string>
     <string name="Apartmentnumber">رقم الشقة</string>
     <string name="thecurrentpassword">ادخال كلمة السر الحالية</string>
     <string name="Cancel">الغـاء</string>
@@ -66,7 +67,7 @@
     <string name="enterShortName">ادخل الاسم المختصر هنا !</string>
     <string name="yes">نعم</string>
     <string name="pleasewait">"من فضلك انتظر "</string>
-    <string name="okay">نعم</string>
+    <string name="okay">تـأكيد</string>
     <string name="choosePicture">اختر الصوره</string>
     <string name="choosePic">التقط الصوره</string>
     <string name="picfromstudio">الصوره من الاستديو</string>
@@ -83,8 +84,8 @@
     <string name="enterShipping">ادخل اسم الشحنه !</string>
     <string name="enterGovernorate">ادخل اسم المحافظه !</string>
     <string name="enterDiscrete">ادخل اسم الحى !</string>
-    <string name="enterHouseNumber">ادخل رقم المنزل !</string>
-    <string name="enterStorey">ادخل رقم الطابق !</string>
+    <string name="enterHouseNumber">ادخل رقم المبنى !</string>
+    <string name="enterStorey">ادخل رقم الدور !</string>
     <string name="enterApartmentNumber">ادخل رقم الشقه !</string>
     <string name="goout">"خروج "</string>
     <string name="dogoout">هل تريد الخروج ؟</string>
@@ -92,11 +93,11 @@
     <string name="Okay">نعم</string>
     <string name="Empty_Field">لم يتم تحديده</string>
     <string name="Home">"الرئيسيه "</string>
-    <string name="ShippingReciverName">اسم مسقبل الشحنه</string>
+    <string name="ShippingReciverName">اسم مستلم الشحنه</string>
     <string name="phoneoremail">"الموبايل / الايميل "</string>
     <string name="Stateid">"الحى "</string>
     <string name="Promocode">كود الخصم</string>
-    <string name="PleaseEnglisha">يرجى كتابة بيانات المستقبل</string>
+    <string name="PleaseEnglisha">يرجى كتابة بيانات مستلم الشحنه</string>
     <string name="enter_Promo_code">ادخل كود الخصم</string>
     <string name="orderprice">سعر الطلب:</string>
     <string name="Policy">السياسة العامة</string>
@@ -109,18 +110,64 @@
     <string name="Location">حدد مكان إستلام الشحنة</string>
     <string name="enterEmailOrPhone">ادخل الايميل او التليفون !</string>
     <string name="Location2">حدد مكان تسليم الشحنة</string>
-    <string name="messageAnt5a">انتخ .... واحنا نسد</string>
+    <string name="messageAnt5a">   انتخ .... واحنا نسد    </string>
     <string name="flat_number">رقم الشقه</string>
     <string name="enterflatNumber">ادخل رقم الشقه !</string>
     <string name="Besor3a">بســــــــرعه</string>
     <string name="wewill">سوف يصل اليك اقرب مندوب  بسرعه</string>
     <string name="Statename">"الحى "</string>
-    <string name="ChoosePlace">اختر مكان المرسل ؟</string>
+    <string name="ChoosePlace">اختر مكان مرسل الشحنه </string>
     <string name="address">العنـوان</string>
     <string name="getLocationofreceiver">مكان المستلم</string>
     <string name="getLocationofreceiverplz">حدد مكان المستلم</string>
     <string name="getLocationofsender">مكان المرسل</string>
-    <string name="SendTheRequest">"ابعت طلب "</string>
+    <string name="SendTheRequest">"تــأكيد طلب "</string>
+    <string name="UpdateDate">احضار البيانات الخاصه بك !</string>
+    <string name="item_developer">عن المطورين</string>
 
+    <string name="next">التالى</string>
+    <string name="skip">تخطى</string>
+    <string name="start">فهمتك</string>
+
+    <string name="slide_1_title">مرحبا بسـرعه!</string>
+    <string name="slide_1_desc">أسهل طريقة لنقل أي شيء في القاهرة والجيزة!</string>
+
+    <string name="slide_2_title">بسرعة</string>
+    <string name="slide_2_desc">احجز بسرعة وسهولة</string>
+
+    <string name="slide_3_title">خصومات كبيرة</string>
+    <string name="slide_3_desc">أفضل الخصومات على كل خدمة التى نقدمها!</string>
+
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again">Play Again</string>
+    <string name="canRecir"> لكى تقــوم بطلـب منـدوب وتوصيـل طلبك تقوم بالضغط على زر ـــــ  </string>
+    <string name="canRecir1"> من هنا يمكنك الـوصول الى تفاصيل حسابك الشخصي ـــــ  </string>
+    <string name="canRecir2"> من هنا يمكن تحديد مكان المستقبل ـــــ  </string>
+    <string name="canRecir4">ضع معلومات عن الشحنه  ـــــ  </string>
+    <string name="canRecir5"> من هنا يمكن حذف الطلب   ـــــ  </string>
+    <string name="canRecir6"> معلومات عن الطلب    ـــــ  </string>
+    <string name="canRecir7"> اتصل بالاداره من هنا     ـــــ  </string>
+    <string name="canRecir8">  ارسل  للالاداره من هنا     ـــــ  </string>
+    <string name="canRecir9">  يمكنك متابعة الاداره على مواقع التواصل الاجتماعى من هنا     ـــــ  </string>
+    <string name="canRecir10">يمكنك اختيار مكان المرسل بالضغط هنا     ـــــ  </string>
+    <string name="canRecir11">يمكنك اختيار مكان المستقبل بالضغط هنا     ـــــ </string>
+    <string name="canRecir12">اضغط هنا لانهاء العمليه     ـــــ</string>
+    <string name="canRecir13">اضغط هنا لاعادة العمليه     ـــــ</string>
+    <string name="slide_4_desc">المعلومات الشخصية الخاصة بك آمنة</string>
+    <string name="slide_4_title">أمنه</string>
+    <string name="slide_5_title">سهله</string>
+    <string name="slide_5_desc">سهولة طلب الطلبات من المندوب الاقرب لك</string>
+    <string name="ChoosePlace2">اختر مكان مستقبل الشحنه </string>
+    <string name="Thanks">شكرا</string>
+    <string name="Reset">اعادة تعيين</string>
+
+    <string name="UploadData">جارى تحميـل البيانات</string>
+
+    <string name="canRecir14">قم بتسجيل الدخول عن طريق رقم الموبيل او البريد الالكترونى ـــــ  </string>
+    <string name="canRecir15">اختر الصوره الشخصيه ـــــ  </string>
+    <string name="canRecir16">قم بملأ جميع الحقول المطلوبه للتسجيل وكتابة جميع بياناتك الشخصيه  ـــــ  </string>
+    <string name="enterPhoneGood">يجب أن يكون رقم التليفون صحـيـح </string>
+    <string name="PleaseWrite">برجاء كتابة البيانات باللغة العربيه</string>
+    <string name="sender">مكان المرســل</string>
 
 </resources>

@@ -19,7 +19,7 @@
     <string name="Email">Email</string>
     <string name="AcceptTerms">Accept Terms</string>
     <string name="PlAcceptTerms">Please Accept Terms</string>
-    <string name="google_maps_key">AIzaSyDr-PGFlFC-Ee65nnZ_gqeRIAjt5TgWUJo</string>
+    <string name="google_maps_key">AIzaSyD26stzHf4YNGn15iC8IEjj6-3y3vdM_IE</string>
     <string name="title_activity_main_navigation" translatable="false">MainNavigationActivity</string>
     <string name="facebook_app_id" translatable="false">418072448598793</string>
     <string name="fb_login_protocol_scheme" translatable="false">fb418072448598793</string>
@@ -82,7 +82,7 @@
     <string name="enterEmail">Enter Email Here !</string>
     <string name="enterShortName">Enter Short Name Here !</string>
     <string name="yes">Yes</string>
-    <string name="UploadData" translatable="false">Upload Data</string>
+    <string name="UploadData">Update Data</string>
     <string name="pleasewait">Please wait</string>
     <string name="okay">Okay</string>
     <string name="RemeberMe">Remember me</string>
@@ -134,5 +134,148 @@
     <string name="getLocationofreceiver">Reciver Loction</string>
     <string name="SendTheRequest">send the request</string>
     <string name="getLocationofreceiverplz">Get  The Location OF The Reciver</string>
+    <string name="UpdateDate">Update Data</string>
+    <string name="EnterLocation" translatable="false">Enter the Location to make the request !</string>
+    <string name="hello" translatable="false">h e l l o !</string>
+    <string name="paragraph" translatable="false">You can use your Fingerprint  to grant access to the app.</string>
+    <string name="email" translatable="false">Email address</string>
+    <string name="password" translatable="false">Password</string>
+    <string name="login" translatable="false">login</string>
+    <string name="forgetPassword" translatable="false">Forget password?</string>
+    <string name="StillNoAccount" translatable="false">Still without account?</string>
+    <string name="CreateAccount" translatable="false">create one</string>
+    <string name="signup" translatable="false">S I G N  U P</string>
+    <string name="paragraphSignup" translatable="false">Create an account to use Rehana  without limits.for free</string>
+    <string name="Fullname" translatable="false">Full Name</string>
+    <string name="Repeatpassword" translatable="false">Repeat Password</string>
+    <string name="signupbt" translatable="false">Sign up</string>
+    <string name="Alreadyhave" translatable="false">I already have an account.</string>
+    <string name="title_activity_main" translatable="false">MainActivity</string>
+
+
+    <string name="surgeries" translatable="false">Surgeries</string>
+    <string name="Nonsurgeries" translatable="false">Non-surgical operation</string>
+    <string name="processes" translatable="false">Hair and other processes</string>
+    <string name="inquiries" translatable="false">inquiries</string>
+    <string name="vision" translatable="false">our vision</string>
+    <string name="callus" translatable="false">call us</string>
+
+    <string name="first_button" translatable="false">Lip ,Nose And Eyeling Surgery</string>
+    <string name="second_button" translatable="false">Injet the face Legs And Buttocks</string>
+    <string name="third_button" translatable="false">lighten the skin and sensitive areas of glutamium spanish </string>
+    <string name="fourth_button" translatable="false">Lighten the skin and sensetive areas of glutamium spanish </string>
+    <string name="fifth_button" translatable="false">botox and filler injectios</string>
+
+    <string name="eighth_button" translatable="false">weight loss ,tensing and laser body sculpting</string>
+
+    <string name="sixth_button" translatable="false">Removal of Excess hair cellulite and laser white lines</string>
+    <string name="seventh_button" translatable="false">Enlarging and reducing the size of the chest and tighten the dilution</string>
+
+
+    <string name="item_servecies" translatable="false">Services</string>
+    <string name="item_profile" translatable="false">Profile</string>
+    <string name="item_book" translatable="false">Booking</string>
+    <string name="item_calculate" translatable="false">Calculate the cost</string>
+    <string name="item_reservations" translatable="false">Comfirmed Reservations</string>
+    <string name="item_coupon" translatable="false">Coupon</string>
+    <string name="item_offers" translatable="false">Offers</string>
+    <string name="item_LOGOUT" translatable="false">Log out</string>
+    <string name="chooseyourserv" translatable="false">Choose your services</string>
+    <string name="eyeleftprocess" translatable="false">Eye Lift Process</string>
+    <string name="rhinoplastv" translatable="false">Rhinoplasty</string>
+    <string name="theprocessoffateinjection" translatable="false">The Process Of Fat Injection</string>
+    <string name="Embellrsktheear" translatable="false">Embellrsk The Ear</string>
+    <string name="introduction" translatable="false">Introduction</string>
+    <string name="Rate" translatable="false">Rate</string>
+    <string name="quit" translatable="false">caution Quit</string>
+    <string name="quitQuestion" translatable="false">Do you want to go out ?</string>
+    <string name="RateServices" translatable="false">rate services</string>
+    <string name="Thanks">Thanks</string>
+    <string name="ServicesType" translatable="false">Services Type</string>
+    <string name="TimeandDate" translatable="false">Time and Date</string>
+    <string name="finish" translatable="false">finish</string>
+    <string name="save" translatable="false">Save</string>
+    <string name="EyelidTightening" translatable="false">Eyelid tightening</string>
+    <string name="LipGlossProcess" translatable="false">Lip Gloss process</string>
+    <string name="processofTon" translatable="false">The process of Toning and Strengthening the jaws</string>
+    <string name="processoffat" translatable="false">the process of fat injection</string>
+    <string name="breastimplants" translatable="false">Breast implants</string>
+    <string name="selectYourPic" translatable="false">Select your Picture ,Edit</string>
+    <string name="selectServices" translatable="false">Select Services</string>
+    <string name="Description" translatable="false">Description</string>
+    <string name="DescriptionYourAge" translatable="false">Describe your age and some details of your situation</string>
+    <string name="send" translatable="false">send</string>
+    <string name="getDate" translatable="false">DATE: 20-10-2017</string>
+    <string name="myreservation" translatable="false">My Reservations</string>
+    <string name="Offers" translatable="false">Offers</string>
+    <string name="fackoffer" translatable="false">50% Eye Left Pocessor</string>
+    <string name="FakeDate" translatable="false">Fack data</string>
+    <string name="item_home" translatable="false">Home</string>
+    <string name="InvalidDate" translatable="false">invalid date choose  a future date.</string>
+    <string name="again" translatable="false">again</string>
+    <string name="rememberme" translatable="false">Remember me</string>
+    <string name="checkit" translatable="false">search</string>
+    <string name="item_contact" translatable="false">Contact us</string>
+    <string name="item_about" translatable="false">About Us</string>
+    <string name="item_reservations2" translatable="false">Waited Reservations</string>
+    <string name="myComfirmedreservation" translatable="false">Confirmed Reservations</string>
+    <string name="mywaitedreservation" translatable="false">Waited Reservations</string>
+    <string name="phone_sales" translatable="false">sales : </string>
+    <string name="phone_support" translatable="false">support : </string>
+    <string name="chossePicture" translatable="false">"Add an image!"</string>
+    <string name="item_old_calculate" translatable="false">Old calculations</string>
+    <string name="item_new_calculate" translatable="false">New calculations</string>
+    <string name="mustlog" translatable="false">You must login !</string>
+    <string name="writedescription" translatable="false">Write the description</string>
+    <string name="calculatecost" translatable="false">Cost calculation underway</string>
+    <string name="pick" translatable="false">pick</string>
+    <string name="nocoupun" translatable="false">There is no coupons</string>
+    <string name="developedby" translatable="false">developed By</string>
+
+    <string name="item_developer">About developers</string>
+
+
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">Hello Transportation!</string>
+    <string name="slide_1_desc">The easiest way to transfer anything in Cairo and Giza!</string>
+
+    <string name="slide_2_title">Fast</string>
+    <string name="slide_2_desc">Book Your Transportation Fast and Easy</string>
+
+    <string name="slide_3_title">Great Discounts</string>
+    <string name="slide_3_desc">Best discounts on every single service we offer!</string>
+
+
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again">Play Again</string>
+    <string name="canRecir">From here the reservation can be made by the delegate</string>
+    <string name="canRecir1">From here You Can reach Your Account details </string>
+    <string name="canRecir2">From here You Can Locate the Reciver</string>
+    <string name="canRecir4">Put The Data Of The Shipping Here !</string>
+    <string name="canRecir5">You Can Delete The Request !</string>
+    <string name="canRecir6">Here The Information of The Shipment</string>
+    <string name="canRecir7">You Can Call US</string>
+    <string name="canRecir8">You Can Send Us Email</string>
+    <string name="canRecir9">You Can Follow Us On Social Media</string>
+    <string name="slide_4_title">High Security</string>
+    <string name="slide_5_title">Easy</string>
+    <string name="slide_4_desc">Your Personal Information is secure</string>
+    <string name="slide_5_desc">easy to request order from your nearest delegate</string>
+    <string name="ChoosePlace2">Choose the Reciver Location</string>
+    <string name="Reset">Reset</string>
+    <string name="canRecir10">Choose The Sender Place In The Map</string>
+    <string name="canRecir11">Choose The Reciver Place In The Map</string>
+    <string name="canRecir12">Click Here To finish The Process</string>
+    <string name="canRecir13">You Can Reset The Map</string>
+    <string name="ShippingName2">Shipping Details</string>
+    <string name="canRecir15">Here You can choose The Profile Picture</string>
+    <string name="canRecir14"> Sign in with your mobile number or e-mail </string>
+    <string name="canRecir16">Fill in all fields required to register and write all your personal data</string>
+    <string name="enterPhoneGood">It must be a vaild number .</string>
+    <string name="PleaseWrite">Please Write The Data In Arabic</string>
+    <string name="sender">The Sender Place</string>
 
 </resources>

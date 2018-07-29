@@ -22,6 +22,10 @@
             android:icon="@drawable/support"
             android:title="@string/Technical_support" />
         <item
+            android:id="@+id/AboutDeve"
+            android:icon="@drawable/support"
+            android:title="@string/item_developer" />
+        <item
             android:id="@+id/sign_out"
             android:icon="@drawable/logout"
             android:title="@string/sign_out" />

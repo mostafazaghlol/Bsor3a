@@ -41,10 +41,13 @@ public class ShippingAdapter extends RecyclerView.Adapter<ShippingViewHolder> {
     @Override
     public void onBindViewHolder(ShippingViewHolder holder, int position) {
         try {
-            String name = itemList.get(position).getName();
+            String name = itemList.get(position).getName().trim();
+            if (name.length() > 8) {
+                name = name.substring(0, 8);
+            }
             holder.ShippingName.setText(name);
-            String from = itemList.get(position).getFrom();
-            String to = itemList.get(position).getTo();
+            String from = itemList.get(position).getFrom().trim();
+            String to = itemList.get(position).getTo().trim();
             if (from.length() > 8) {
                 from = from.substring(0, 8);
             }

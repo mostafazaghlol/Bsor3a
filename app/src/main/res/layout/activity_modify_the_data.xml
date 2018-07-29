@@ -76,16 +76,16 @@
                 style="@style/editText"
 
                 android:drawableLeft="@drawable/home"
-                android:drawableTint="@color/Orange"
                 android:drawablePadding="20dp"
+                android:drawableTint="@color/Orange"
                 android:hint="@string/Governorate" />
             <EditText
                 android:id="@+id/EditStateid"
                 style="@style/editText"
 
                 android:drawableLeft="@drawable/home"
-                android:drawableTint="@color/Orange"
                 android:drawablePadding="20dp"
+                android:drawableTint="@color/Orange"
                 android:hint="@string/Statename" />
 
 
@@ -95,9 +95,9 @@
                 android:layout_gravity="left"
 
                 android:drawableLeft="@drawable/home"
-                android:drawableTint="@color/Orange"
                 android:drawablePadding="20dp"
-                android:hint="@string/streetName"
+                android:drawableTint="@color/Orange"
+                android:hint="@string/address"
                 android:inputType="text" />
 
             <EditText
@@ -106,18 +106,16 @@
                 android:layout_gravity="left"
 
                 android:drawableLeft="@drawable/home"
-                android:drawableTint="@color/Orange"
                 android:drawablePadding="20dp"
+                android:drawableTint="@color/Orange"
                 android:hint="@string/building_number" />
 
             <EditText
                 android:id="@+id/Editflower_number"
                 style="@style/editText"
-                android:layout_gravity="left"
-                android:gravity="center|left"
                 android:drawableLeft="@drawable/home"
-                android:drawableTint="@color/Orange"
                 android:drawablePadding="20dp"
+                android:drawableTint="@color/Orange"
                 android:hint="@string/flower_number" />
 
             <EditText
@@ -125,8 +123,8 @@
                 style="@style/editText"
 
                 android:drawableLeft="@drawable/home"
-                android:drawableTint="@color/Orange"
                 android:drawablePadding="20dp"
+                android:drawableTint="@color/Orange"
                 android:hint="@string/flat_number" />
             <LinearLayout
                 android:layout_width="wrap_content"
