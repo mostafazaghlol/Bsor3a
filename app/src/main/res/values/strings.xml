@@ -277,5 +277,8 @@
     <string name="enterPhoneGood">It must be a vaild number .</string>
     <string name="PleaseWrite">Please Write The Data In Arabic</string>
     <string name="sender">The Sender Place</string>
+    <string name="okay2">Okay</string>
+    <string name="gps_network_not_enabled">تحديد موقعك غير فعال برجاء فتح خاصية تحديد المواقع</string>
+    <string name="open_location_settings">قم بفتح الاعدادات</string>
 
 </resources>

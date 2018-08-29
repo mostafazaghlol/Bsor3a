@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/splash"
-    tools:context="com.mostafa.android.bsor3a.MainActivity">
+    tools:context="com.mentors.android.bsor3a.MainActivity">
 
     <ImageView
         android:layout_width="150dp"

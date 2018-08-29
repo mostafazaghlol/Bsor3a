@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/splash"
     android:orientation="vertical"
-    tools:context="com.mostafa.android.bsor3a.AboutDevelopersActivity">
+    tools:context="com.mentors.android.bsor3a.AboutDevelopersActivity">
 
 
     <RelativeLayout

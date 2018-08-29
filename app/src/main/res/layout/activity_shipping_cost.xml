@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.mostafa.android.bsor3a.ShippingCostActivity">
+    tools:context="com.mentors.android.bsor3a.ShippingCostActivity">
 
     <RelativeLayout style="@style/pageRelativeStyle2">
 

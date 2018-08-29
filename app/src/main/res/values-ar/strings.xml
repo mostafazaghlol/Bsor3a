@@ -68,6 +68,7 @@
     <string name="yes">نعم</string>
     <string name="pleasewait">"من فضلك انتظر "</string>
     <string name="okay">تـأكيد</string>
+    <string name="okay2">موافق</string>
     <string name="choosePicture">اختر الصوره</string>
     <string name="choosePic">التقط الصوره</string>
     <string name="picfromstudio">الصوره من الاستديو</string>
@@ -140,8 +141,8 @@
 
     <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
     <string name="play_again">Play Again</string>
-    <string name="canRecir"> لكى تقــوم بطلـب منـدوب وتوصيـل طلبك تقوم بالضغط على زر ـــــ  </string>
-    <string name="canRecir1"> من هنا يمكنك الـوصول الى تفاصيل حسابك الشخصي ـــــ  </string>
+    <string name="canRecir"> لكى تقــوم بطلـب منـدوب وتوصيـل طلبك تقوم بالضغط على زر</string>
+    <string name="canRecir1"> من هنا يمكنك الـوصول الى تفاصيل حسابك الشخصي</string>
     <string name="canRecir2"> من هنا يمكن تحديد مكان المستقبل ـــــ  </string>
     <string name="canRecir4">ضع معلومات عن الشحنه  ـــــ  </string>
     <string name="canRecir5"> من هنا يمكن حذف الطلب   ـــــ  </string>
@@ -158,7 +159,7 @@
     <string name="slide_5_title">سهله</string>
     <string name="slide_5_desc">سهولة طلب الطلبات من المندوب الاقرب لك</string>
     <string name="ChoosePlace2">اختر مكان مستقبل الشحنه </string>
-    <string name="Thanks">شكرا</string>
+    <string name="Thanks">#لملوك_الانتخه</string>
     <string name="Reset">اعادة تعيين</string>
 
     <string name="UploadData">جارى تحميـل البيانات</string>
@@ -169,5 +170,7 @@
     <string name="enterPhoneGood">يجب أن يكون رقم التليفون صحـيـح </string>
     <string name="PleaseWrite">برجاء كتابة البيانات باللغة العربيه</string>
     <string name="sender">مكان المرســل</string>
+    <string name="gps_network_not_enabled">تحديد موقعك غير فعال برجاء فتح خاصية تحديد المواقع</string>
+    <string name="open_location_settings">قم بفتح الاعدادات</string>
 
 </resources>
